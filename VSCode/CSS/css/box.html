@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model</title>
+    <style>
+        body{
+            margin: 100px;
+            
+        }
+        * div {
+            font-size: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: black;
+            background-color: aliceblue;
+            padding: 50px;
+            border-top: solid skyblue;
+            border-bottom: solid skyblue;
+            display: inline;
+        }
+
+        .c1 {
+            /*1 valor = todos os lados*/
+            background-color: blue;
+            border-left: solid skyblue;
+        }
+
+        .c2 {
+            /*2 valores = [cima e baixo] e [direita e esquerda]*/
+        
+        }
+
+        .c3 {
+            /*3 valores = [sentido horario] cima, direita,baixo
+            e esquerda*/
+         
+            background-color: red;
+            border-right: solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+</body>
+
+</html>

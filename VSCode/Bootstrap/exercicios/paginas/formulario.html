@@ -1,0 +1,82 @@
+<div class="jumbotron p-4 my-1">
+    <h1 class="display4">Formulários</h1>
+    <p class="lead m-1">Exemplo de alguns componentes de formulários.</p>
+</div>
+<nav class="mb-5">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#/paginas/bemVindo.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Formulários</li>
+    </ol>
+</nav>
+
+<p class="lead">
+    <a href="https://getbootstrap.com/docs/4.0/components/forms/" target="_black">Documentação Oficial</a>
+</p>
+
+<!-- Formulário -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            Exemplo de formulário
+        </h5>
+    </div>
+    <div class="card-body">
+        <form action="" class="container-fluid">
+            <div class="form-row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="nome">E-mail</label>
+                        <input type="text" class="form-control" id="email" placeholder="Informe o e-mail.">
+                        <small class="form-text text-muted">* Necessário a confirmação do e-mail.</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="linguagemPreferida">Liguagem</label>
+                        <select id="linguagemPreferida" class="form-control">
+                            <option value="">Selecione</option>
+                            <option value="javascript">JS</option>
+                            <option value="java">Java</option>
+                            <option value="css">CSS</option>
+                            <option value="python">Python</option>
+                            <option value="outra">Outra</option>
+                        </select>
+                    </div>
+                </div>
+            </div>           
+            <div class="form-row mb-0">
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Checked checkbox
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-row mb-0">
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn btn-primary mr-1" type="submit">Salvar</button>
+                    <button class="btn btn-secundary" type="reset">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

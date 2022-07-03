@@ -1,0 +1,15 @@
+{
+  "name": "funcionarios",
+  "version": "1.0.0",
+  "description": " por Guilherme Henrique",
+  "main": "funcionarios.js",
+  "scripts": {
+    "start": "nodemon",
+    "dev": "nodemon"
+  },
+  "author": "Guilherme Henrique",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
