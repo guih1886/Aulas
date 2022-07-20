@@ -1,4 +1,11 @@
 .roxo {
-    background-color: rgb(79, 16, 139);
     color: aliceblue;
+}
+
+.roxo h1 {
+    margin: 0;
+}
+
+.roxo ~ a {
+    background-color: red;
 }

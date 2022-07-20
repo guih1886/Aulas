@@ -1,14 +1,15 @@
-import React from "react";
-import Cabecalho from "../components/Cabecalho";
-import Link from 'next/link'
+import styles from '../styles/Layout.module.css'
+import Navegador from '../components/Navegador'
 
-
-export default function Main() {
+export default function Estiloso() {
     return (
-        /*<React.Fragment>
-        <Cabecalho titulo="Aprendendo Next & React"/>
-        <Cabecalho titulo="E estou amando!!!"/>
-        </React.Fragment>*/
-        <Link href={"/"}>Voltar</Link>
+        <div>
+            <Navegador texto="Estiloso" destino='/estiloso' color='blue'></Navegador><br />
+            <Navegador texto="JSX" destino='/jsx'></Navegador>
+            <Navegador texto="Exemplo" destino='/exemplo'></Navegador>
+            <Navegador texto="Navagação #1" destino='/cliente/123'></Navegador>
+            <Navegador texto="Componente com Estado" destino='/estado'></Navegador>
+            <Navegador texto="Integração com API #01" destino='/integracao'></Navegador>
+        </div>
     )
 }

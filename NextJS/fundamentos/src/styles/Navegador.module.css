@@ -1,0 +1,20 @@
+.navegador {
+    color: white;
+    background-color: dodgerblue;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tag div{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.navegador:hover {
+    background-color: rgb(21, 97, 173);
+}
