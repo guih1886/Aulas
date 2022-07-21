@@ -6,7 +6,7 @@ export default function Layout(props) {
         <div className={styles.layout}>
             <div className={styles.cabecalho}>
                 <h1>{props.titulo ?? 'Mais um exemplo'}</h1>
-                <Link href={"/main"}>Voltar</Link>
+                <Link href={"/"}>Voltar</Link>
             </div>
             <div className={styles.conteudo}>
                 {props.children}

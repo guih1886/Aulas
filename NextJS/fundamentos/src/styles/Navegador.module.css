@@ -1,13 +1,15 @@
 .navegador {
+    display: flex;
     color: white;
     background-color: dodgerblue;
     padding: 30px;
     margin: 10px;
     border-radius: 8px;
     cursor: pointer;
+    justify-content: center;
 }
 
-.tag div{
+.body {
     display: flex;
     flex-wrap: wrap;
     height: 100vh;
