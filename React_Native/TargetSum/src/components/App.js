@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
-
-import { View, Text, StyleSheet } from 'react-native'
+import Game from './Game'
 
 export default class App extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Hello</Text>
-            </View>
+            <Game randomNumberCount={6}/>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'gray',
-        flex: 1
-    },
-})
