@@ -19,13 +19,10 @@ export default class DealsList extends Component {
         )
     }
 }
-
 const styles = StyleSheet.create({
     list: {
         backgroundColor: '#fff',
-        flex: 1,
         width: '100%',
-        paddingTop: 20,
-        color: 'red'
+        marginBottom: 100
     }
 })

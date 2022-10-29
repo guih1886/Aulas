@@ -13,25 +13,28 @@ export default class DealDetail extends Component {
         deal: this.props.initialDealData
     }
     async componentDidMount() {
-        const fullDeal = await ajax.fetchDealDetail(this.props.deal.key)
-        console.log(fullDeal)
+        const fullDeal = await ajax.fetchDealDetail(this.state.deal.key)
         this.setState({ deal: fullDeal })
     }
     render() {
-        const {deal} = this.state
+        const { deal } = this.state
         return (
             <View style={styles.deal}>
-                <TouchableOpacity onBack={this.props.onBack} style={styles.backLink}>
-                    <Text>Back</Text>
+                <TouchableOpacity onBack={this.props.onBack}>
+                    <Text style={styles.backLink}>Back</Text>
                 </TouchableOpacity>
                 <Image source={{ uri: deal.media[0] }} style={styles.image} />
-                <View style={styles.info}>
-                    <Text style={styles.title}>{deal.title}</Text>
-                    <View style={styles.footer}>
-                        <Text style={styles.cause}>{deal.cause.name}</Text>
-                        <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
+                    <View>
+                        <View style={styles.detail}>
+                            <View>
+                                <Text style={styles.title}>{deal.title}</Text>
+                            </View>
+                            <View style={styles.footer}>
+                                <Text style={styles.cause}>{deal.cause}</Text>
+                                <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
+                            </View>
+                        </View>
                     </View>
-                </View>
                 {deal.user && (
                     <View>
                         <Image source={{ uri: deal.user.avatar }} style={styles.avatar} />
@@ -47,19 +50,18 @@ export default class DealDetail extends Component {
 }
 
 const styles = StyleSheet.create({
-    deal: {
-        marginHorizontal: 12,
-        marginTop: 12,
-        borderColor: '#bbb',
-        borderWidth: 1
+
+    backLink: {
+        marginBottom: 10,
+        color: '#22f',
+        marginLeft: 10
     },
     image: {
         width: '100%',
         height: 150,
-        backgroundColor: '#ccc'
+        backgroundColor: '#ccc',
     },
     info: {
-        padding: 10,
         borderColor: '#ddd',
         borderWidth: 1,
         borderTopWidth: 0,
@@ -77,20 +79,14 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     cause: {
-        flex: 2
     },
     price: {
         alignContent: 'flex-end'
     },
     avatar: {
-        width: 60,
-        height: 60
+
     },
     description: {
 
-    },
-    backLink:{
-        marginBottom: 5,
-        color: '#22f'
     },
 })

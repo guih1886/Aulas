@@ -3,16 +3,30 @@ import { View, Text, StyleSheet } from 'react-native'
 import ajax from '../ajax'
 import DealDetail from './DealDetail'
 import DealsList from './DealsList'
+import SearchBar from './SearchBar'
 
 export default class App extends Component {
     state = {
         deals: [],
+        dealsFormSearch: [],
         currentDealId: null,
     }
     async componentDidMount() {
-        const deal = await ajax.fetchInitialDeals()
-        this.setState({ deals: deal })
+        const deals = await ajax.fetchInitialDeals()
+        this.setState({ deals })
     }
+    searchDeals = async (searchTerm) => {
+        let dealsFormSearch = []
+        if(searchTerm){
+            dealsFormSearch = await ajax.fetchDealSearchResult(searchTerm)
+        } else {
+            dealsFormSearch = []
+        }
+        this.setState({ dealsFormSearch });
+    }
+    /*clearSearch = () => {
+        this.setState({ dealsFormSearch: [] })
+    }*/
     setCurrentDeal = (dealId) => {
         this.setState({ currentDealId: dealId })
     }
@@ -26,16 +40,24 @@ export default class App extends Component {
     }
     render() {
         if (this.state.currentDealId) {
-            return <DealDetail initialDealData={this.currentDeal()} onBack={this.unsetCurrentDeal}/>
+            return (
+                <View style={styles.main}>
+                    <DealDetail initialDealData={this.currentDeal} onBack={this.unsetCurrentDeal} />
+                </View>
+            )
         }
-        if (this.state.deals.length > 0) {
-            return <DealsList deals={this.state.deals} onItemPress={this.setCurrentDeal}></DealsList>
+        const dealsToDisplay = this.state.dealsFormSearch.length > 0 ? this.state.dealsFormSearch : this.state.deals
+        if (dealsToDisplay.length > 0) {
+            return (
+                <View style={styles.main}>
+                    <SearchBar searchDeals={this.searchDeals}/>
+                    <DealsList deals={dealsToDisplay} onItemPress={this.setCurrentDeal} />
+                </View>
+            )
         }
         return (
             <View style={styles.container}>
-                {
-                    <Text style={styles.header}>Bakesale</Text>
-                }
+                <Text style={styles.header}>Bakesale</Text>
             </View>
         )
     }
@@ -48,5 +70,8 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 40,
+    },
+    main: {
+        marginTop: 10
     }
 })
