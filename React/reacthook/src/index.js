@@ -1,7 +1,7 @@
 import {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Fetch';
+import App from './RenderTypes';
 
 export const TreesContext = createContext()
 
