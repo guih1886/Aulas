@@ -23,7 +23,7 @@ export default function ArticlePage() {
             const newArticleInfo = response.data
             setArticleInfo(newArticleInfo)
         }
-        if (isLoading) {
+        if (!isLoading) {
             loadArticleInfo()
         }
     }, [user, isLoading])
