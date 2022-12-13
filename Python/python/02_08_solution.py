@@ -81,3 +81,4 @@ canvas = Canvas(30, 30)
 scribe = TerminalScribe(canvas)
 
 scribe.drawSquare(20)
+
