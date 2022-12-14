@@ -1,0 +1,1 @@
+Linha gerada com a função altera arquivo.

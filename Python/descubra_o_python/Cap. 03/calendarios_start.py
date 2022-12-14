@@ -5,24 +5,23 @@
 import calendar
 
 # criando um calendário no formato texto
+
+
 def CalendarioTexto():
     calendarioTexto = calendar.TextCalendar(calendar.SUNDAY)
-    txtCalendario = calendarioTexto.formatmonth(2019, 6)
-    print (txtCalendario)
+    txtCalendario = calendarioTexto.formatmonth(2022, 12)
+    print(txtCalendario)
 
-#CalendarioTexto()
+
+CalendarioTexto()
+
 # Criando um calendário no formato HTML
+
 
 def CalendarioHTML():
     calendarioHTML = calendar.HTMLCalendar(calendar.SUNDAY)
     htmlCalendario = calendarioHTML.formatmonth(2019, 6)
-    print (htmlCalendario)
+    print(htmlCalendario)
+
 
 CalendarioHTML()
-
-
-# loop ao longo dos dias de um mês
-
-
-
-
