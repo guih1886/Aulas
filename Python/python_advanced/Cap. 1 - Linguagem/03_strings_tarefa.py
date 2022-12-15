@@ -4,12 +4,25 @@
 def main():
     # definindo alguns valores iniciais
     b = bytes([0x41, 0x42, 0x43, 0x44])
+    print(b)
 
-    # TODO: Tente juntar os dois.
+    s = "Isto é uma string"
+    print(s)
 
-    # TODO: Bytes e strings precisam ser apropriadamente encoded
+    # Tente combinar os dois. A linha abaixo vai mostrar um erro:
+    # print(s + b)
 
-    # TODO: Faça o encode da string como UTF-32
+    # Bytes e strings precisam ser apropriadamente encoded e
+    # decoded antes de serem usados em conjunto
+    s2 = b.decode('utf-8')
+    print(s + s2)
+
+    b2 = s.encode('utf-8')
+    print(b + b2)
+
+    # Faça o encode da string como UTF-32
+    b3 = s.encode('utf-32')
+    print(b3)
 
 
 if __name__ == "__main__":
