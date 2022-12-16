@@ -1,21 +1,27 @@
-# demonstrate built-in utility functions
+# Conhecendo funções embutidas
 
 
 def main():
-    # TODO: Use any() e all() para testar para valores boleanos
+    # Use any() e all() para testar para valores boleanos
     lista = [1, 2, 3, 0, 5, 6]
-
-    # TODO: A função any vai devolver true caso qualquer valor da lista
+    
+    # A função any vai devolver true caso qualquer valor da lista
     # seja verdade
-
-    # TODO: A função all vai devolver true apenas se todos valores da
+    print(any(lista))
+    
+    # A função all vai devolver true apenas se todos valores da
     # lista forem verdade
-
-    # TODO: As funções min e max devolvem os valores mínimo e máximo
+    print(all(lista))
+    
+    # As funções min e max devolvem os valores mínimo e máximo
     # respectivamente
-
-    # TODO: Use sum() para somar todos os valores da lista
-
-
+    print("mínimo: ", min(lista))
+    print("máximo: ", max(lista))    
+    
+    # Use sum() para somar todos os valores da lista
+    print("somatório: ", sum(lista))
+    
+    
 if __name__ == "__main__":
     main()
+    

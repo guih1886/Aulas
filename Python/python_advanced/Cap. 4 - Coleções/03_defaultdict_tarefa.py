@@ -1,5 +1,5 @@
 # Usando objetos defaultdict
-import collections
+from collections import defaultdict
 
 def main():
     # Definindo uma lista de itens para contar
@@ -7,13 +7,14 @@ def main():
               'maçã', 'uva', 'banana', 'banana']
 
     # TODO: Use um dicionário default para contar cada elemento
-    contador_frutas = {}
+    contador_frutas = defaultdict(int)
 
     # Conte os elementos da lista
     for fruta in frutas:
         contador_frutas[fruta] += 1
 
     # Faça o print do resultado
+    print(contador_frutas)
     for (c, v) in contador_frutas.items():
         print(c + ": " + str(v))
 

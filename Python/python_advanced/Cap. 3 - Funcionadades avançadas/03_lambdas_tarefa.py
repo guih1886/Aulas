@@ -13,9 +13,16 @@ def main():
     temp_em_c = [0, 12, 34, 100]
     temp_em_f = [32, 65, 100, 212]
 
-    # TODO: Defina funções tradicionais para converter as temperaturas
+    # Use regular functions to convert temps
+    print(list(map(fahrenheit_para_celsius, temp_em_f)))
+    print(list(map(celsius_para_fahrenheit, temp_em_c)))
 
-    # TODO: Use lambdas tpara converter as temperaturas
+    # Use lambdas to accomplish the same thing
+    # lambda são funções anônimas, que recebem ou não parametros
+    # lambda (params): (expressao)
+
+    print(list(map(lambda temp: (temp-32) * 5/9, temp_em_f)))
+    print(list(map(lambda temp: (temp * 9/5) + 32, temp_em_c)))
 
 
 if __name__ == "__main__":

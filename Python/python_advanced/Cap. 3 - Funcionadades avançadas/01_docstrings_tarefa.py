@@ -2,7 +2,13 @@
 
 
 def minha_funcao():
-    pass
+    """Minha função que faz um print
+
+    Params:
+        arg1: primeiro argumento. O que você quiser passar.
+        arg2: segundo argumento. Default: None. O que te fizer feliz.
+    """
+    print(arg1, arg2)
 
 
 def main():
