@@ -8,19 +8,26 @@ class Pessoa():
         self.nivel = nivel
         self.senioridade = anos_trabalhados
 
-    # TODO: Implemente as comparações usando o nível de cada pessoa
+    # Implemente as comparações usando o nível de cada pessoa
     def __ge__(self, other):
-        pass
+        if self.nivel == other.nivel:
+            return self.senioridade >= other.senioridade
+        return self.nivel >= other.nivel
 
     def __gt__(self, other):
-        pass
+        if self.nivel == other.nivel:
+            return self.senioridade > other.senioridade
+        return self.nivel > other.nivel
 
     def __lt__(self, other):
-        pass
+        if self.nivel == other.nivel:
+            return self.senioridade < other.senioridade
+        return self.nivel < other.nivel
 
     def __le__(self, other):
-        pass
-
+        if self.nivel == other.nivel:
+            return self.senioridade <= other.senioridade
+        return self.nivel <= other.nivel
 
 
 def main():
@@ -32,9 +39,14 @@ def main():
     dpto.append(Pessoa("Rebeca", "Robinson", 5, 13))
     dpto.append(Pessoa("Thiago", "Tavares", 5, 12))
 
-    # TODO: Descobrindo quem é mais sênior
+    # Descobrindo quem é mais sênior
+    print(bool(dpto[3] > dpto[2]))
+    print(bool(dpto[4] < dpto[3]))
 
-    # TODO: Organizando as pessoas por senioridade
+    # Organizando as pessoas por senioridade
+    pessoas = sorted(dpto)
+    for pessoa in pessoas:
+        print(pessoa.nome)
 
 
 if __name__ == "__main__":

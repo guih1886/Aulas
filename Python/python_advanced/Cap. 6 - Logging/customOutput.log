@@ -1,0 +1,6 @@
+2022-12-16 20:37:06,719: INFO | Guilherme (main): Esta é uma mensagem de informação
+2022-12-16 20:37:06,720: WARNING | Guilherme (main): Esta é uma mensagem de aviso
+2022-12-16 20:37:06,720: INFO | Guilherme (outra_funcao): Esta é outra mensagem de informação
+2022-12-16 20:37:06,856: INFO | Guilherme (main): Esta é uma mensagem de informação
+2022-12-16 20:37:06,856: WARNING | Guilherme (main): Esta é uma mensagem de aviso
+2022-12-16 20:37:06,856: INFO | Guilherme (outra_funcao): Esta é outra mensagem de informação

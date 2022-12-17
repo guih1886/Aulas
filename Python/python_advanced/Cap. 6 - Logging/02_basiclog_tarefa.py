@@ -1,11 +1,12 @@
 # Uso do módulo logging
+import logging
 
 # TODO: Use o módulo embutido logging
 
 
 def main():
     # TODO: Use basicConfig para configurar seu logging
-    logging.basicConfig()
+    logging.basicConfig(level=logging.DEBUG, filename='output.log')
 
     # Testando cada um dos níveis de log
     logging.debug("Esta é uma mensagem de debug")
