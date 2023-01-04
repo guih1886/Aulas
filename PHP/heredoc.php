@@ -1,6 +1,6 @@
 <?php
-$name = 'Guilherme Henrique';
-$email = 'guilherme_18henrique@yahoo.com.br';
+$name = "Guilherme Henrique";
+$email = "guilherme_18henrique@yahoo.com.br";
 
 $texto = <<<LABEL
     Olá $name,

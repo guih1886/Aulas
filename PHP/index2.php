@@ -11,10 +11,11 @@
 <body>
     <?php
     $name = "Guilherme Henrique";
-    $apelido = "guih1886"
-        ?>
-    <h1>Olá meu nome é:</h1>
-    <h3><?= $name . ", e meu apelido é " . $apelido ?></h3>
+    $apelido = "guih1886";
+    $count = strlen($name);
+    ?>
+    <p>Meu nome é: <?= $name ?></p>
+    <p>O seu nome tem <?= $count ?> caracteres.</p>
 </body>
 
 </html>

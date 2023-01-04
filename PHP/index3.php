@@ -10,11 +10,12 @@
 
 <body>
     <?php
-    $name = "Guilherme Henrique";
-    $apelido = "guih1886"
-        ?>
-    <h1>Olá meu nome é:</h1>
-    <h3><?= $name . ", e meu apelido é " . $apelido ?></h3>
+    $name = 'guilherme henrique';
+    $apelido = 'guih1886';
+    $nameMaiusculo = strtoupper($name);
+    $apelidoMaiusculo = strtoupper($apelido);
+    ?>
+    <p><?="Meu nome é " . $nameMaiusculo . 'e meu apelido é ' . $apelidoMaiusculo ?></p>
 </body>
 
 </html>
