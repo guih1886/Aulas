@@ -2,7 +2,6 @@
 
 if ($_SERVER['request_method'] != 'post') {
     die('Acesso negado.');
-    exit();
 }
 ;
 if (!isset($_POST['usuario']) || !isset($_POST['senha'])) {
