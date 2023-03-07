@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios_Java;
 //Verificar se um número está entre 100 e 200
 
 import java.util.Scanner;
