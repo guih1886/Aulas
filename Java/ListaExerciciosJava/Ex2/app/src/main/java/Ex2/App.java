@@ -14,9 +14,9 @@ public class App {
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("Digite o numero 1: ");
-        n1 = leitor.nextInt();
+        n1 = leitor.nextFloat();
         System.out.print("Digite o numero 2: ");
-        n2 = leitor.nextInt();
+        n2 = leitor.nextFloat();
         soma = n1 + n2;
         System.out.println("Soma: " + soma);
         subtracao = n1 - n2;
