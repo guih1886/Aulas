@@ -1,11 +1,12 @@
 package com.mycompany.ex1;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pessoa {
 
     private String nome;
-    private Date dataNascimento;
+    private String dataNascimento;
     private float altura;
 
     public String imprimeDados() {
@@ -22,12 +23,14 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
     public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        String data = sf.format(dataNascimento);
+        this.dataNascimento = data;
     }
 
     public float getAltura() {
