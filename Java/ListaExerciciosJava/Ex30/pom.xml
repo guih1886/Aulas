@@ -11,4 +11,5 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>com.mycompany.ex30.Ex30</exec.mainClass>
     </properties>
+    <name>Ex030</name>
 </project>
