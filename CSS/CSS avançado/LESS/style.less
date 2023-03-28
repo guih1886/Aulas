@@ -1,0 +1,25 @@
+@cor-titulo: purple;
+@cor-titulo2: gold;
+@cor-background: gray;
+
+body {
+    background-color: @cor-background;
+}
+
+p,
+h1 {
+    color: aqua;
+}
+
+//hierarquia
+.hierarquia {
+    font-size: 30px;
+
+    p {
+        color: @cor-titulo;
+    }
+
+    h1 {
+        color: @cor-titulo2;
+    }
+}

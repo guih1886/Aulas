@@ -1,0 +1,26 @@
+@cor-titulo: red;
+@cor-titulo2: gold;
+@cor-background: gray;
+@margin: 0.02;
+
+//mixins
+.cores(@tamanho, @tag) {
+    color: @cor-titulo;
+    background-color: black;
+    font-size: @tamanho;
+
+    & when (@tag ='h1') {
+        color: aquamarine;
+    }
+}
+
+h1 {
+    //condicional, true, false
+    color: if(iscolor(@cor-titulo2), @cor-titulo2, red);
+    margin: percentage(@margin);
+    .cores(30px, 'h1');
+}
+
+.hierarquia {
+    .cores(10px, '.hierarquia');
+}

@@ -1,0 +1,15 @@
+@cor-titulo: purple;
+@cor-titulo2: gold;
+@cor-background: gray;
+@tamanho: 25px;
+
+.tamanhos(@tag) {
+    & when (@tag ='h1') {
+        font-size: @tamanho * 1.2;
+        background-color: aqua
+    }
+}
+
+h1 {
+    .tamanhos('h1');
+}
