@@ -1,0 +1,12 @@
+$color: black;
+$font-color: red;
+
+@mixin tipos() {
+    color: $font-color;
+    background-color: $font-color;
+}
+
+.titulo {
+    @include tipos();
+    font-size: 20px;
+}

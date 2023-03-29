@@ -1,0 +1,32 @@
+$cor: lightblue;
+$background: black;
+$tamanho: '17';
+
+@mixin fundoP($color) {
+    background-color: $color;
+}
+
+div {
+    p {
+        @include fundoP($background);
+
+        b {
+            color: aquamarine;
+        }
+    }
+}
+
+body {
+    @include fundoP($background);
+
+    @if($background ==black) {
+        color: $cor;
+    }
+
+    @else {
+        color: darkblue;
+        font-size: #{$tamanho};
+    }
+
+    margin:10%*2;
+}
