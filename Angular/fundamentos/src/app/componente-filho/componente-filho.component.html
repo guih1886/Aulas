@@ -1,0 +1,6 @@
+<p>O sobrenome está definido no componente completo: {{nome}} {{sobrenome}}</p>
+<label for="nome">
+    Digite o nome:
+</label>
+<input type="text" id="nome" [(ngModel)]="nome">
+<button type="button" (click)="mostraNome.emit(nome + ' ' + sobrenome)">Mostrar nome completo</button>

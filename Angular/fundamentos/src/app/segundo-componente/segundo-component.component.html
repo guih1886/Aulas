@@ -1,0 +1,7 @@
+<h1>Bem vindo!</h1>
+<p>{{ nome }}</p>
+<p>{{ dataNascimento | date: "dd/MM/yyyy" }}</p>
+<img [src]="imgSrc" alt="foto-bonita">
+<button (click)="mostrarData()" type="button">
+    Mostrar data de nascimento
+</button>
