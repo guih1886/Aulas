@@ -4,6 +4,9 @@ import { PrimeiraPaginaComponent } from '../primeira-pagina/primeira-pagina.comp
 import { SegundaPaginaComponent } from '../segunda-pagina/segunda-pagina.component';
 import { NaoEncontradaComponent } from '../nao-encontrada/nao-encontrada.component';
 import { PaginaComParametrosComponent } from '../pagina-com-parametros/pagina-com-parametros.component';
+import { PaginaProtegidaComponent } from '../pagina-protegida/pagina-protegida.component';
+import { AuthGuard } from '../auth.guard';
+import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
   { path: "primeira-pagina", component: PrimeiraPaginaComponent },
@@ -11,6 +14,8 @@ const routes: Routes = [
   { path: "", redirectTo: "primeira-pagina", pathMatch: "full" },
   { path: "pagina-com-parametros/:id", component: PaginaComParametrosComponent },
   { path: 'lazy-loading', loadChildren: () => import('../lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule) },
+  { path: 'pagina-protegida', component: PaginaProtegidaComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: "**", component: NaoEncontradaComponent }
 ]
 
