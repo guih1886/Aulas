@@ -1,3 +1,4 @@
+//
 package com.mycompany.ex015;
 
 public class Funcionario {
