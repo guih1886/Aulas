@@ -1,48 +1,27 @@
 .main-header {
-    padding: 10px 0px;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+
+    text-align: center;
 
     .container-menu {
         display: flex;
         flex-direction: column;
-        row-gap: 20px;
         flex: 1;
-
-        .search-form {
-            height: 44px;
-            display: flex;
-
-            input {
-                box-sizing: border-box;
-                height: 56px;
-                padding: 28px;
-                flex: 1;
-                background-color: var(--light-gray);
-                color: var(--gray);
-                border: none;
-                transition: all -3s ease-in-out;
-                font-size: 22px;
-            }
-
-            button {
-                width: 56px;
-                height: 56px;
-                background-color: var(--blue);
-                border: none;
-                color: #fff;
-                font-size: 22px;
-            }
-        }
     }
 }
 
 .main-header__title {
-    font-size: 80px;
-    letter-spacing: -1.5px;
+    display: flex;
+    width: 40%;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--blue);
+    font-size: 60px;
+
 }
 
 .main-header__title :hover {
@@ -50,22 +29,16 @@
     cursor: pointer;
 }
 
-.main-header__title--blue {
-    color: var(--blue);
-    color: blue;
-    font-size: 60px;
-}
-
 .main-header__menu ul {
     display: flex;
-    justify-content: flex-end;
+    margin: 20px 20px;
+    justify-content: center;
 }
 
 .main-header__menu a {
     padding: 10px 10px;
     color: var(--gray);
-    font-weight: 400;
-    font-size: 22px;
+    font-size: 28px;
     text-decoration: none;
     transition: all .3s ease-in-out;
 }
