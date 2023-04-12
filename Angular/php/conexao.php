@@ -1,5 +1,5 @@
 <?php
-$url = "localhost";
+$url = "http://localhost/phpmyadmin";
 $user = "root";
 $senha = "";
 $base = "api";
