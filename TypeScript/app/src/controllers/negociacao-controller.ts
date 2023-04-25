@@ -18,10 +18,11 @@ export class NegociacaoController {
     private mensagemView = new MensagemView("#mensagemView")
 
     constructor() {
-        //casting das duas formas, no final e no começo do retorno
+        //comentado por conta do dominject
+        /* //casting das duas formas, no final e no começo do retorno
         this.inputData = document.querySelector("#data") as HTMLInputElement
         this.inputQuantidade = <HTMLInputElement>document.querySelector("#quantidade")
-        this.inputValor = document.querySelector("#valor") as HTMLInputElement
+        this.inputValor = document.querySelector("#valor") as HTMLInputElement */
         this.negociacoesView.update(this.negociacoes)
     }
 
