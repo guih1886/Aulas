@@ -1,3 +1,5 @@
+import { domInject } from "../decorators/domInject.js";
+import { tempoExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/diasDaSemana.js";
 import Negociacao from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -5,11 +7,14 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
 
 export class NegociacaoController {
+    @domInject("#data")
     private inputData: HTMLInputElement
+    @domInject("#quantidade")
     private inputQuantidade: HTMLInputElement
+    @domInject("#valor")
     private inputValor: HTMLInputElement
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView("#negociacoesView", true);
+    private negociacoesView = new NegociacoesView("#negociacoesView");
     private mensagemView = new MensagemView("#mensagemView")
 
     constructor() {
@@ -20,6 +25,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes)
     }
 
+    @tempoExecucao()
     public adiciona(): void {
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value)
         if (!this.eDiaSemana(negociacao.data)) {
