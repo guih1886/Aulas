@@ -1,8 +1,13 @@
-export default class Negociacao {
+import { Modelo } from "../interfaces/modelo.js";
+
+export default class Negociacao implements Modelo<Negociacao>{
     constructor(
         private _data: Date,
         public readonly quantidade: number,
-        public readonly valor: number) {
+        public readonly valor: number) { }
+
+    public paraTexto(): string {
+        return `${this.data}`
     }
 
     get volume(): number {
@@ -21,5 +26,11 @@ export default class Negociacao {
             parseInt(quantidadeString),
             parseFloat(valorString)
         )
+    }
+
+    public ehIgual(negociacao: Negociacao): boolean {
+        return this.data.getDate() === negociacao.data.getDate() &&
+            this.data.getMonth() === negociacao.data.getMonth() &&
+            this.data.getFullYear() === negociacao.data.getFullYear()
     }
 }

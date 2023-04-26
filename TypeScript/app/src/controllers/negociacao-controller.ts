@@ -3,6 +3,8 @@ import { tempoExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/diasDaSemana.js";
 import Negociacao from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
+import { imprimir } from "../utils/imprimir.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
 
@@ -16,6 +18,7 @@ export class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView("#negociacoesView");
     private mensagemView = new MensagemView("#mensagemView")
+    private negociacoesService = new NegociacoesService()
 
     constructor() {
         //comentado por conta do dominject
@@ -33,6 +36,7 @@ export class NegociacaoController {
             this.mensagemView.update("Somente dias úteis são permitidos para negociações.")
         } else {
             this.negociacoes.adiciona(negociacao)
+            imprimir(negociacao, this.negociacoes)
             this.limparFormulario();
             this.atualizaView();
         }
@@ -52,5 +56,19 @@ export class NegociacaoController {
     private atualizaView(): void {
         this.negociacoesView.update(this.negociacoes)
         this.mensagemView.update("Negociação adicionada com sucesso!")
+    }
+
+    importaDados(): void {
+        this.negociacoesService.obterNegociacoes()
+            .then(negociacoesDeHoje => {
+                return negociacoesDeHoje.filter(negociacoesDeHoje => {
+                    return !this.negociacoes.listar().some(negociacao => negociacao.ehIgual(negociacoesDeHoje))
+                })
+            }).then(negociacoesDeHoje => {
+                for (let negociacao of negociacoesDeHoje) {
+                    this.negociacoes.adiciona(negociacao)
+                }
+                this.negociacoesView.update(this.negociacoes)
+            })
     }
 }
