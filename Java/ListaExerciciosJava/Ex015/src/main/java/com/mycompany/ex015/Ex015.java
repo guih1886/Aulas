@@ -16,5 +16,6 @@ public class Ex015 {
         } else {
             System.out.print("Nao esta entre 100 e 200");
         }
+        leitor.close();
     }
 }

@@ -29,5 +29,6 @@ public class Ex034 {
         if ((idade >= 0 && idade < 5) || idade >= 26) {
             System.out.println("Idade fora da faixa.");
         }
+        leitor.close();
     }
 }

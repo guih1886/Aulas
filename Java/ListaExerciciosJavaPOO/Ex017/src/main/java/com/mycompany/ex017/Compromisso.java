@@ -217,4 +217,5 @@ public class Compromisso {
     public void setTipoCompromisso(TipoCompromisso tipoCompromisso) {
         this.tipoCompromisso = tipoCompromisso;
     }
+
 }

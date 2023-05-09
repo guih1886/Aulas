@@ -14,6 +14,6 @@ public class Ex013 {
         if (n1 > 10) {
             System.out.print("Maior que 10!");
         }
-
+        leitor.close();
     }
 }

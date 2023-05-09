@@ -19,5 +19,6 @@ public class Ex006 {
         valorB = aux;
 
         System.out.print("Valor A: " + valorA + " | Valor B: " + valorB);
+        leitor.close();
     }
 }

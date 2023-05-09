@@ -12,5 +12,6 @@ public class Ex010 {
         valorCompra = leitor.nextFloat();
 
         System.out.print("Valor das prestacoes: " + valorCompra / 5);
+        leitor.close();
     }
 }

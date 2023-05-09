@@ -15,5 +15,6 @@ public class Ex008 {
         qtdDolar = leitor.nextFloat();
 
         System.out.print("Quantidade em reais: " + qtdDolar * cotacaoDolar);
+        leitor.close();
     }
 }

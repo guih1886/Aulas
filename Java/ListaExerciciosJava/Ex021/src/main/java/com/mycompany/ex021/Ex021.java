@@ -23,7 +23,7 @@ public class Ex021 {
             idade = leitor.nextInt();
             System.out.println("Informe sua saúde: ");
             saude = leitor.next();
-
+            leitor.close();
             if (sexo == 'm' || sexo == 'M') {
                 if (idade >= 18) {
                     contadorAptos++;
@@ -35,6 +35,7 @@ public class Ex021 {
             }
             System.out.println("Quantidade de pessoas aptas: " + contadorAptos);
             System.out.println("Quantidade de pessoas não aptas: " + contadorNaoAptos);
+            System.out.println("Nome: +" + nome + " | Saude: " + saude);
         }
         System.out.print("Obrigado por jogar!");
     }

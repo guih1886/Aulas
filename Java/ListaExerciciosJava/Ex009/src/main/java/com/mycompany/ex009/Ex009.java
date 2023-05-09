@@ -12,5 +12,6 @@ public class Ex009 {
         valorDeposito = leitor.nextFloat();
 
         System.out.print("Valor com rendimento: " + (valorDeposito + (valorDeposito * 0.07)));
+        leitor.close();
     }
 }

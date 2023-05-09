@@ -16,5 +16,6 @@ public class Ex012 {
         custoCarro = custoCarro + (custoCarro * percentualDistribuidor);
 
         System.out.print("Valor do carro ao consumidor: " + custoCarro);
+        leitor.close();
     }
 }

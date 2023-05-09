@@ -25,5 +25,7 @@ public class Ex002 {
         System.out.println("Multiplicacao: " + multiplicacao);
         divisao = n1 / n2;
         System.out.println("Divisao: " + divisao);
+
+        leitor.close();
     }
 }

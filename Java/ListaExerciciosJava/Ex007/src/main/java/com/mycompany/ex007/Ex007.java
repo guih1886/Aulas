@@ -14,5 +14,6 @@ public class Ex007 {
         F = ((9 * C) + 160) / 5;
 
         System.out.print("Temperatura em Fahrenheit: " + F);
+        leitor.close();
     }
 }

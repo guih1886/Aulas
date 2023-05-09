@@ -16,5 +16,6 @@ public class Ex1 {
         n2 = leitor.nextInt();
         result = n1 + n2;
         System.out.print("Resultado: " + result);
+        leitor.close();
     }
 }

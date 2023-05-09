@@ -19,6 +19,7 @@ public class Ex014 {
         } else {
             System.out.print("Numero 2 e maior que o 1!");
         }
+        leitor.close();
 
     }
 }

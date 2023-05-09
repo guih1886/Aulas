@@ -22,5 +22,6 @@ public class Ex004 {
 
         System.out.print(nomeVendedor + ": salario fixo - " + salario
                 + " | salario do mes: " + salarioMes);
+        leitor.close();
     }
 }

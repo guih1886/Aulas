@@ -32,5 +32,6 @@ public class Ex035 {
             default:
                 System.out.println("Tipo de cliente inválido.");
         }
+        leitor.close();
     }
 }

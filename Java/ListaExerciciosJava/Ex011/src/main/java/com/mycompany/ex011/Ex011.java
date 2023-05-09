@@ -17,6 +17,6 @@ public class Ex011 {
 
         valorVenda = valorCusto + (valorCusto * margem);
         System.out.print("Valor de venda: " + valorVenda);
-
+        leitor.close();
     }
 }

@@ -17,5 +17,6 @@ public class Ex003 {
 
         consumoMedio = distanciaPercorrida / combustivelConsumido;
         System.out.print("Consumo medio foi de: " + consumoMedio + " km/l");
+        leitor.close();
     }
 }

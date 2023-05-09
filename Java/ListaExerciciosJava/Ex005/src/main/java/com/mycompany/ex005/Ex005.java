@@ -12,6 +12,7 @@ public class Ex005 {
         for (; i < 3; i++) {
             System.out.print("Digite a nota " + (i + 1) + ": ");
             notas += leitor.nextFloat();
+            leitor.close();
         }
         System.out.print("Media: " + notas / i);
     }
