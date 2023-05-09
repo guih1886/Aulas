@@ -21,7 +21,7 @@ public class FuncionarioTeste {
         fun4.aumentarSalario(10);
 
         //mostrando quantos funcionários teve a empresa
-        fun4.getPassaramPelaEmpresa();
+        System.out.println("Passaram pela empresa "+Funcionario.passaramPelaEmpresa+" funcionários até hoje.");
 
     }
 }
