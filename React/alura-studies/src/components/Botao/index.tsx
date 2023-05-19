@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import style from './Botao.module.scss';
 
-export default class Botao extends Component {
+export default class Botao extends React.Component<{texto: string}> {
     render() {
         return (
-            <button>Botão</button>
+            <button className={style.botao}>{this.props.texto}</button>
         )
     }
 }
