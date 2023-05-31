@@ -6,7 +6,6 @@ import axios from 'axios';
 import { IPaginacao } from '../../interfaces/IPaginacao';
 
 const ListaRestaurantes = () => {
-
   const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
   const [proximaPagina, setProximaPagina] = useState("");
 
