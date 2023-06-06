@@ -1,0 +1,25 @@
+{
+  "eventos": [
+    {
+      "descricao": "Estudar React",
+      "inicio": "2023-06-06T09:00",
+      "fim": "2023-06-06T13:00",
+      "completo": false,
+      "id": 1642342747
+    },
+    {
+      "descricao": "Estudar TypeScript",
+      "inicio": "2023-06-07T09:00",
+      "fim": "2023-06-07T13:00",
+      "completo": false,
+      "id": 1642342959
+    },
+    {
+      "descricao": "Estudar Recoil",
+      "inicio": "2023-06-08T09:00",
+      "fim": "2023-06-08T13:00",
+      "completo": false,
+      "id": 1642342960
+    }
+  ]
+}
