@@ -1,7 +1,7 @@
-// src/componentes/Cabecalho/index.tsx
+import React from 'react'
 import './estilos.css'
 
-const Cabecalho = () => {
+export default function Cabecalho() {
     return (
         <header className="cabecalho">
             <div className="imagem-logo" role="img" aria-label='Logo do Sorteador'></div>
@@ -9,5 +9,3 @@ const Cabecalho = () => {
         </header>
     )
 }
-
-export default Cabecalho

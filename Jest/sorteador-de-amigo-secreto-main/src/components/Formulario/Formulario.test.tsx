@@ -1,5 +1,4 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import React from 'react'
 import Formulario from './Formulario'
 import { RecoilRoot } from 'recoil'
 
@@ -41,7 +40,7 @@ describe("o comportamento do Formulario.tsx", () => {
         //garantir que o input esteja com o foco ativo
         expect(input).toHaveFocus()
         //garantir que o input tenha um valor
-        expect(input).toHaveValue()
+        expect(input).toHaveValue("")
     })
 
     test("nomes duplicados não podem ser incluidos na lista", () => {
@@ -67,7 +66,7 @@ describe("o comportamento do Formulario.tsx", () => {
                 value: "Ana Catarina"
             }
         })
-        fireEvent.click(botao)
+        fireEvent.click(botao)        
         const mensagemDeErro = screen.getByRole('alert')
         expect(mensagemDeErro.textContent).toBe("Nomes duplicados não são permitidos!")
     })
@@ -86,7 +85,7 @@ describe("o comportamento do Formulario.tsx", () => {
         //inserir um valor no input
         fireEvent.change(input, {
             target: {
-                value: "Ana Catarina"
+                value: "Ana Catarina",
             }
         })
         fireEvent.click(botao)
