@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAdicionarParticipante } from '../../state/hooks/useAdicionarParticipante';
 import { useMensagemErro } from '../../state/hooks/useMensagemErro';
-import { useRecoilValue } from 'recoil';
-import { listaParticipantesState } from '../../state/atom';
-import { Card } from '../Card/Card';
+import './estilo.css'
 
 export default function Formulario() {
 
@@ -11,7 +9,6 @@ export default function Formulario() {
     const inputRef = useRef<HTMLInputElement>(null)
     const adicionar = useAdicionarParticipante()
     const mensagemErro = useMensagemErro()
-    const lista = useRecoilValue(listaParticipantesState)
 
     const adicionarParticipante = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault()
@@ -21,15 +18,12 @@ export default function Formulario() {
     }
 
     return (
-        <Card>
-            <form onSubmit={adicionarParticipante}>
+        <form className='form-grupo' onSubmit={adicionarParticipante}>
+            <div className="grupo-input-btn">
                 <input ref={inputRef} value={nome} type="text" onChange={e => setNome(e.target.value)} placeholder='Insira os nomes dos participantes' />
                 <button disabled={!nome}>Adicionar</button>
-                {mensagemErro && <p role='alert'>{mensagemErro}</p>}
-                {lista.map(item => (
-                    <div>{item}</div>
-                ))}
-            </form>
-        </Card>
+            </div>
+            {mensagemErro && <p className='alerta erro' role='alert'>{mensagemErro}</p>}
+        </form>
     )
 }
