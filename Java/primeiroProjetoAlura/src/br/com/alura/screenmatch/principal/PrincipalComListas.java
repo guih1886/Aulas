@@ -12,11 +12,11 @@ import java.util.List;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme("O poderoso chefão", 1970);
+        Filme meuFilme = new Filme("O poderoso chefão", 1970, 200);
         meuFilme.avalia(9);
-        Filme outroFilme = new Filme("Avatar", 2023);
+        Filme outroFilme = new Filme("Avatar", 2023, 200);
         outroFilme.avalia(6);
-        var filmeDoPaulo = new Filme("Dog ville", 2003);
+        var filmeDoPaulo = new Filme("Dog ville", 2003, 200);
         filmeDoPaulo.avalia(10);
         Serie lost = new Serie("Lost", 2000);
 

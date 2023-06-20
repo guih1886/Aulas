@@ -26,6 +26,12 @@ public class Titulo implements Comparable<Titulo> {
         }
     }
 
+    public Titulo(String nome, int anoDeLancamento, int duracaoMinutos) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+        this.duracaoEmMinutos = duracaoMinutos;
+    }
+
     public String getNome() {
         return nome;
     }
