@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fc96666-22be-4ef9-b5ab-3c3f0355d676" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/DadosPessoais.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/Terceirizado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/promocao/PromocaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/Cargo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/Cargo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/model/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/Reajuste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/reajuste/Reajuste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/ValidacaoPercentualReajuste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/reajuste/ValidacaoPercentualReajuste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/ValidacaoPeriodicidadeReajuste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/reajuste/ValidacaoPeriodicidadeReajuste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/ValidacaoReajuste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../solid/src/br/com/alura/rh/service/reajuste/ValidacaoReajuste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
