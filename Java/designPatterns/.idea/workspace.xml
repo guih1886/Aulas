@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afa92ed3-920d-4ebd-afd2-52209c9d9e20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TestePedidos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/Desconto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/DescontoMaiorQueQuinheintos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/DescontoMaisQueCintoItens.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/SemDesconto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/exception/DomainException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Aprovado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/EmAnalise.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Finalizado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Reprovado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/SituacaoOrcamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/GeraPedido.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/GeraPedidoHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/acao/AcaoAposGerarPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/acao/EnviarEmailPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/acao/SalvarPedidoNoBancoDeDados.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TesteDescontos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TesteDescontos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TesteImpostos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TesteImpostos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/CalculadoraDeDescontos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/CalculadoraDeDescontos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/Orcamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestePedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestePedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/GeraPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/GeraPedido.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +51,7 @@
       <recent name="br.com.alura.loja.imposto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.alura.loja.pedido.acao" />
       <recent name="" />
       <recent name="br.com.alura.loja.imposto" />
     </key>
