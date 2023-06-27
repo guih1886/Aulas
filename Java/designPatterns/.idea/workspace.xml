@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afa92ed3-920d-4ebd-afd2-52209c9d9e20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/designPatterns.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TesteDescontos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TesteImpostos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/CalculadoraDeDescontos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/imposto/CalculadoraDeImpostos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/imposto/ICMS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/imposto/ISS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/imposto/Imposto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/imposto/TipoImposto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/Orcamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestePedidos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/Desconto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/DescontoMaiorQueQuinheintos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/DescontoMaisQueCintoItens.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/SemDesconto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/exception/DomainException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Aprovado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/EmAnalise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Finalizado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/Reprovado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/situacao/SituacaoOrcamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/GeraPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/alura/loja/pedido/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TesteDescontos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TesteDescontos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TesteImpostos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TesteImpostos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/CalculadoraDeDescontos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/loja/desconto/CalculadoraDeDescontos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/alura/loja/orcamento/Orcamento.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="2Ra71NX2rbubSMwfgNH2M028xbE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -47,14 +50,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="br.com.alura.loja.imposto" />
