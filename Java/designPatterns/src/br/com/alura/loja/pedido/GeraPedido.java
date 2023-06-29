@@ -1,5 +1,6 @@
 package br.com.alura.loja.pedido;
 
+import br.com.alura.loja.orcamento.ItemOrcamento;
 import br.com.alura.loja.orcamento.Orcamento;
 import br.com.alura.loja.pedido.acao.AcaoAposGerarPedido;
 
@@ -20,7 +21,8 @@ public class GeraPedido {
     }
 
     public void executa() {
-        Orcamento orcamento = new Orcamento(new BigDecimal("600"), 4);
+        Orcamento orcamento = new Orcamento();
+        orcamento.adicionarItem(new ItemOrcamento(new BigDecimal("600")));
         Pedido pedido = new Pedido(this.cliente, LocalDate.now(), orcamento);
     }
 
