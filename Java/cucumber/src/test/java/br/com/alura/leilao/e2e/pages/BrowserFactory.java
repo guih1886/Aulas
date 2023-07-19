@@ -1,5 +1,6 @@
 package br.com.alura.leilao.e2e.pages;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,7 @@ public class BrowserFactory {
 //  Documentação
 //	http://chromedriver.storage.googleapis.com/index.html
 //	https://github.com/mozilla/geckodriver/releases	
+
 
 	public WebDriver createWebDriver() {
 		String webdriver = System.getProperty("browser", "chrome");
