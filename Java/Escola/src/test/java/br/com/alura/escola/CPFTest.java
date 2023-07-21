@@ -2,6 +2,7 @@ package br.com.alura.escola;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import br.com.alura.escola.dominio.aluno.CPF;
 import org.junit.jupiter.api.Test;
 
 public class CPFTest {
