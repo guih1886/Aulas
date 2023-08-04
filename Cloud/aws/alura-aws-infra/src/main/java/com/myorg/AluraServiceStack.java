@@ -3,10 +3,13 @@ package com.myorg;
 import software.amazon.awscdk.Fn;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
+import software.amazon.awscdk.services.ecr.IRepository;
+import software.amazon.awscdk.services.ecr.Repository;
 import software.amazon.awscdk.services.ecs.Cluster;
 import software.amazon.awscdk.services.ecs.ContainerImage;
 import software.amazon.awscdk.services.ecs.patterns.ApplicationLoadBalancedFargateService;
 import software.amazon.awscdk.services.ecs.patterns.ApplicationLoadBalancedTaskImageOptions;
+import software.amazon.awscdk.services.elasticloadbalancingv2.HealthCheck;
 import software.constructs.Construct;
 
 import java.util.HashMap;
@@ -27,8 +30,10 @@ public class AluraServiceStack extends Stack {
         autenticacao.put("SPRING_DATASOURCE_USERNAME", "admin");
         autenticacao.put("SPRING_DATASOURCE_PASSWORD", Fn.importValue("pedidos-db-senha"));
 
+        IRepository Irepositorio = Repository.fromRepositoryName(this, "repositorio", "img-pedidos-ms");
 
-        ApplicationLoadBalancedFargateService.Builder.create(this, "AluraService")
+
+        ApplicationLoadBalancedFargateService app = ApplicationLoadBalancedFargateService.Builder.create(this, "AluraService")
                 .serviceName("Alura-Service-Ola")
                 .cluster(cluster)           // Required
                 .cpu(512)                   // Default is 256
@@ -37,7 +42,7 @@ public class AluraServiceStack extends Stack {
                 .desiredCount(6)            // Default is 1
                 .taskImageOptions(
                         ApplicationLoadBalancedTaskImageOptions.builder()
-                                .image(ContainerImage.fromRegistry("guih1886/ms-pedidos-alura-food"))
+                                .image(ContainerImage.fromEcrRepository(Irepositorio))
                                 .containerPort(8080)
                                 .containerName("App_Ola")
                                 .environment(autenticacao)
@@ -45,5 +50,7 @@ public class AluraServiceStack extends Stack {
                 .memoryLimitMiB(1024)       // Default is 512
                 .publicLoadBalancer(true)   // Default is true
                 .build();
+
+        app.getTargetGroup().configureHealthCheck(HealthCheck.builder().path("/ola").build());
     }
 }
