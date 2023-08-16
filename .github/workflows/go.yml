@@ -28,7 +28,7 @@ jobs:
       run: docker-compose --project-directory "DevOps/CI/projeto-go-testes-main" up -d
 
     - name: Test
-      run: go test -v DevOps/CI/projeto-go-testes-main/
+      run: go test -v DevOps/CI/projeto-go-testes-main/main_test.go
       
   build:
     needs: test
