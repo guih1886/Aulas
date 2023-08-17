@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         go_version: ["1.17", "1.18", ">=1.18"]
-        os: ["ubuntu-latest", "ubuntu-18.04", "windows-7"]
+        os: ["ubuntu-latest", "ubuntu-18.04"]
     steps:
       - uses: actions/checkout@v3
 
@@ -51,3 +51,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: go build -v DevOps/CI/projeto-go-testes-main/main.go
+
+  docker:
+    needs: build
+    uses: ./.github/workflows/Docker.yml
