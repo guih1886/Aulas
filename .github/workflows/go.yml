@@ -36,7 +36,6 @@ jobs:
       - name: Create DB
         run: docker-compose --project-directory "DevOps/CI/projeto-go-testes-main" up -d
 
-      - uses: ./Aulas/DevOps/CI/projeto-go-testes-main
       - name: Test
         run: go test -v main_test.go
 
