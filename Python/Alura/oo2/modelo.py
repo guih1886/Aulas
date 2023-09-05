@@ -4,6 +4,10 @@ class Programa:
         self._ano = ano
         self._likes = 0
 
+    # como um toString
+    def __str__(self):
+        return f"Filme: {self._nome} - Ano: {self._ano} - Likes: {self._likes}"
+
     def dar_like(self):
         self._likes += 1
 
@@ -29,6 +33,9 @@ class Filme(Programa):
         super().__init__(nome, ano)
         self._duracao = duracao
 
+    def __str__(self):
+        return f"Filme: {self.nome} - Ano: {self.ano} - Duração: {self.duracao}m - Likes: {self.likes}"
+
     @property
     def duracao(self):
         return self._duracao
@@ -43,6 +50,9 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self._temporadas = temporadas
 
+    def __str__(self):
+        return f"Série: {self.nome} - Ano: {self.ano} - {self.temporadas} temporadas - Likes: {self.likes}"
+
     @property
     def temporadas(self):
         return self._temporadas
@@ -55,10 +65,13 @@ class Serie(Programa):
 filme = Filme("john wick", 2022, 180)
 filme.dar_like()
 filme.dar_like()
-print(f"Filme: {filme.nome} - Ano: {filme.ano} - Duração: {filme.duracao}m - Likes: {filme.likes}")
 
 serie = Serie("breaking bad", 2006, 6)
 serie.dar_like()
 serie.dar_like()
 serie.dar_like()
-print(f"Série: {serie.nome} - Ano: {serie.ano} - Temporadas: {serie.temporadas} - Likes: {serie.likes}")
+
+lista_files_e_series = [filme, serie]
+
+for programa in lista_files_e_series:
+    print(programa)
