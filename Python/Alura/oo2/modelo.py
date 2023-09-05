@@ -62,6 +62,22 @@ class Serie(Programa):
         self._temporadas = value
 
 
+class Playlist():
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    def __getitem__(self, item):  # age como um iteravel, sem precisar de herança de list
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    def __len__(self):
+        return len(self._programas)
+
+
 filme = Filme("john wick", 2022, 180)
 filme.dar_like()
 filme.dar_like()
@@ -72,6 +88,7 @@ serie.dar_like()
 serie.dar_like()
 
 lista_files_e_series = [filme, serie]
+minha_playlist = Playlist("Minha Playlist", lista_files_e_series)
 
-for programa in lista_files_e_series:
+for programa in minha_playlist:
     print(programa)
