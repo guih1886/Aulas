@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed0013d-e623-40d6-962a-b299d71e4824" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/acesso_cep.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex003/bomba_combustivel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex003/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex003/posto_combustivel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex01/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex01/pessoa.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex02/conta_corrente.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex02/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
