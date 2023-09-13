@@ -1,5 +1,6 @@
 from cpf_cnpj import cpfCnpj
 from telefones import validaTelefone
+from acesso_cep import BuscaCep
 
 exemplo_cpf = '69079764124'
 exemplo_cnpj = '01456072000100'
@@ -15,3 +16,7 @@ print("Novo CNPJ: ", cpfCnpj.gerar_novo_cnpj())
 
 telefone = validaTelefone("5519982210064")
 print(telefone)
+print("-"*30)
+
+cep = BuscaCep("13272106")
+cep.busca_cep()
