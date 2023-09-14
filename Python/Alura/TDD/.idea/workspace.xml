@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38791211-0dc9-4665-ba08-36c1eb11fe32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/codigo/bytebank.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_bytebank.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../padroes-brasil/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../padroes-brasil/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex03/bomba_combustivel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex03/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex03/posto_combustivel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex03/tipo_combustivel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex04/elevador.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pythonOO/Ex04/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codigo/bytebank.py" beforeDir="false" afterPath="$PROJECT_DIR$/codigo/bytebank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_bytebank.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_bytebank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pythonOO/Ex003/bomba_combustivel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pythonOO/Ex003/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pythonOO/Ex003/posto_combustivel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pythonOO/Ex01/pessoa.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pythonOO/Ex01/pessoa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +37,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2VMT6tWVmB2U72fAv0as011b2Rs" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,13 +51,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="TDD" />
@@ -66,6 +80,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_bytebank.Testes.test_passado_um_decrescimo_salario_de_100000_deve_retornar_90000" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="TDD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_bytebank.Testes.test_passado_um_decrescimo_salario_de_100000_deve_retornar_90000&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_bytebank.Testes.test_passado_um_decrescimo_salario_de_100000_deve_retornar_90000" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
