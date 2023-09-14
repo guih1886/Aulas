@@ -12,15 +12,16 @@ class Pessoa:
             "Nome: {} - Data de Nascimento: {} - Altura: {}".format(self.__nome, self.__data_nascimento, self.__altura))
 
     def calcula_idade(self):
-        hoje = datetime.date.today().strftime("%d/%m/%Y")
-        mes_atual = hoje[3:5]
-        ano_atual = hoje[6:]
-        mes_nascimento = self.__data_nascimento[3:5]
-        ano_nascimento = self.__data_nascimento[6:]
+        hoje = datetime.date.today()
+        data_nascimento = datetime.datetime.strptime(self.__data_nascimento, "%d/%m/%Y")
+        mes_atual = hoje.month
+        ano_atual = hoje.year
+        mes_nascimento = data_nascimento.month
+        ano_nascimento = data_nascimento.year
 
         if mes_atual > mes_nascimento:
-            idade = int(ano_atual) - int(ano_nascimento)
-            print("{} tem {} anos.".format(self.__nome, idade))
+            idade = ano_atual - ano_nascimento
+            print(f"{self.__nome} tem {idade} anos.")
         else:
             idade = int(ano_atual) - int(ano_nascimento) - 1
-            print("{} tem {} anos.".format(self.__nome, idade))
+            print(f"{self.__nome} tem {idade} anos.")
