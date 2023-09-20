@@ -5,12 +5,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83e01201-088a-46cd-887d-87d1bc155242" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/galeria/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 48px 1.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 48px 1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 48px 2.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 48px 2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 64px 1.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 64px 1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 64px 2.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 64px 2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 96px 1.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 96px 1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/favicon/Favicon 96px 2.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/favicon/Favicon 96px 2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/Banner(2).png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/Banner(2).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/Modal.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/Modal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/galeria/carina-nebula.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/galeria/carina-nebula.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/populares/Foto 1.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/populares/Foto 1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/populares/Foto 2.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/populares/Foto 2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/populares/Foto 3.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/populares/Foto 3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/populares/Foto 4.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/populares/Foto 4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/imagens/populares/Foto 5.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/imagens/populares/Foto 5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/logo/Logo(2).png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/logo/Logo(2).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Home - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Home - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Home - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Home - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Mais curtidas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Mais curtidas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Mais curtidas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Mais curtidas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Mais vistas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Mais vistas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Mais vistas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Mais vistas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Novas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Novas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Novas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Novas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Surpreenda-me - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Surpreenda-me - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/Surpreenda-me - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/Surpreenda-me - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/facebook.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/facebook.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/favorite_outline.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/favorite_outline.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/instagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/instagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/open_in_full.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/open_in_full.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/1x/twitter.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/1x/twitter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Home - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Home - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Home - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Home - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Mais curtidas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Mais curtidas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Mais curtidas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Mais curtidas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Mais vistas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Mais vistas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Mais vistas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Mais vistas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Novas - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Novas - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Novas - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Novas - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Surpreenda-me - ativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Surpreenda-me - ativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/Surpreenda-me - inativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/Surpreenda-me - inativo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/facebook@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/facebook@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/favorite_outline.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/favorite_outline.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/instagram@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/instagram@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/open_in_full.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/open_in_full.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/assets/ícones/2x/twitter@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/assets/ícones/2x/twitter@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/imagem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/galeria/imagem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/galeria/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -28,16 +90,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/guilh/Documents/GitHub/Aulas/Frameworks/Django"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guilh\Documents\GitHub\Aulas\Frameworks\Django\templates\galeria" />
+      <recent name="C:\Users\guilh\Documents\GitHub\Aulas\Frameworks\Django\templates" />
+      <recent name="C:\Users\guilh\Documents\GitHub\Aulas\Frameworks\Django\setup\static" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
