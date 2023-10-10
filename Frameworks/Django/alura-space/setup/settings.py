@@ -144,7 +144,7 @@ MESSAGE_TAGS = {
 
 
 cloudinary.config(
-    cloud_name="dsfi7i5or",
-    api_key="648246423198629",
-    api_secret="B7KbvR5C5E1wXyNrzQx7PSO5-q8"
+    cloud_name=os.getenv('CLOUDNARY_NAME'),
+    api_key=os.getenv("CLOUDNARY_API_KEY"),
+    api_secret=os.getenv("CLOUDNARY_API_SECRET")
 )
