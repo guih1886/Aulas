@@ -14,7 +14,7 @@ class Fotografia(models.Model):
     categoria = models.CharField(max_length=150, choices=OPCOES_CATEGORIA, default="")
     descricao = models.TextField(null=False, blank=False)
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
-    ativo = models.BooleanField(default=False)
+    ativo = models.BooleanField(default=True)
     data_fotografia = models.DateField(default=timezone.now, blank=False)
 
     def __str__(self):
