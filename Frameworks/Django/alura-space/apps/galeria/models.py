@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Fotografia(models.Model):
     OPCOES_CATEGORIA = [
         ("NEBULOSA", "Nebulosa"),
         ("ESTRELA", "Estrela"),
-        ("GALÁXIA", "Galáxia"),
+        ("GALAXIA", "Galáxia"),
         ("PLANETA", "Planeta")
     ]
 
@@ -16,6 +17,13 @@ class Fotografia(models.Model):
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
     ativo = models.BooleanField(default=True)
     data_fotografia = models.DateField(default=timezone.now, blank=False)
+    usuario = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name='user'
+    )
 
     def __str__(self):
         return self.nome

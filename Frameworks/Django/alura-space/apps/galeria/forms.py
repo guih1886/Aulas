@@ -6,7 +6,7 @@ from apps.galeria.models import Fotografia
 class FotografiaForms(forms.ModelForm):
     class Meta:
         model = Fotografia
-        exclude = ['publicada'],
+        exclude = ['ativo']
         labels = {
             'descricao': 'Descrição',
             'data_fotografia': 'Data de Registro',
