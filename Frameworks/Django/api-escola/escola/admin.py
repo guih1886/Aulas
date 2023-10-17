@@ -13,8 +13,8 @@ admin.site.register(Aluno, Alunos)
 
 
 class Cursos(admin.ModelAdmin):
-    list_display = ('id', 'codigo_curso', 'descricao', 'NIVEL')
-    list_display_links = ('id', 'descricao')
+    list_display = ('id', 'codigo_curso', 'descricao', 'nivel')
+    list_display_links = ('id', 'codigo_curso')
     search_fields = ('codigo_curso', 'descricao')
 
 
@@ -22,8 +22,8 @@ admin.site.register(Curso, Cursos)
 
 
 class Metriculas(admin.ModelAdmin):
-    list_display = ('id', 'aluno', 'curso', 'PERIODO')
-    list_display_links = ('id',)
+    list_display = ('id', 'aluno', 'curso', 'periodo')
+    list_display_links = ('id','aluno')
 
 
 admin.site.register(Matricula, Metriculas)
