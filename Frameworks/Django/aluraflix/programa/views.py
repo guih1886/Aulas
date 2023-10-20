@@ -10,7 +10,7 @@ class ProgramaViewSet(viewsets.ModelViewSet):
     queryset = Programa.objects.all()
     serializer_class = ProgramaSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_filters = ['titulo']
+    search_fields = ['titulo']
     filterset_fields = ['tipo']
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
