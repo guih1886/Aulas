@@ -4,7 +4,7 @@ package contas
 A váriavel com letra minuscula age como private, enquanto com maiuscula como public
 */
 type ContaCorrente struct {
-	Titular       string
+	Titular       clientes.Titular
 	NumeroAgencia int
 	NumeroConta   int
 	Saldo         float64
