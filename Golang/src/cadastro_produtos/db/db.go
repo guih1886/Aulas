@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -16,6 +15,5 @@ func ConectaBanco() *sql.DB {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println("Conexão bem-sucedida!")
 	return db
 }
