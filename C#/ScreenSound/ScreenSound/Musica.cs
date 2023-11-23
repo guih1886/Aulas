@@ -1,30 +1,34 @@
 ﻿
-class Musica
+namespace ScreenSound
 {
-    private string nome;
-    private string artista;
-    private int duracao;
-    private bool disponivel;
-
-    public Musica(string nome, string artista, int duracao, bool disponivel)
+    class Musica
     {
-        this.nome = nome;
-        this.artista = artista;
-        this.duracao = duracao;
-        this.disponivel = disponivel;
-    }
+        public string Nome { get; set; }
+        public string Artista { get; set; }
+        public int Duracao { get; set; }
+        private bool Disponivel { get; }
+        public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}."; //somente get
 
-    public void ExibirFichaTecnica()
-    {
-        Console.WriteLine($"Nome: {this.nome} - Artista: {this.artista} - Duração {this.duracao}s ");
-        if (disponivel)
+
+        public Musica(string nome, string artista, int duracao, bool disponivel)
         {
-            Console.WriteLine("Disponível no plano.");
+            Nome = nome;
+            Artista = artista;
+            Duracao = duracao;
+            Disponivel = disponivel;
         }
-        else
+
+        public void ExibirFichaTecnica()
         {
-            Console.WriteLine("Disponível no plano premium.");
+            Console.WriteLine($"Nome: {Nome} - Artista: {Artista} - Duração {Duracao}s ");
+            if (Disponivel)
+            {
+                Console.WriteLine("Disponível no plano.");
+            }
+            else
+            {
+                Console.WriteLine("Disponível no plano premium.");
+            }
         }
     }
 }
-
