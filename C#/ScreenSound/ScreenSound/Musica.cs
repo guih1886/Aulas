@@ -1,34 +1,22 @@
-﻿
-namespace ScreenSound
+﻿class Musica(string nome, Banda artista)
 {
-    class Musica
+    public string Nome { get; } = nome;
+    private Banda Artista { get; } = artista;
+    public int Duracao { get; set; }
+    public bool Disponivel { get; set; }
+    public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}."; //somente get
+    public Genero Genero { get; set; }
+
+    public void ExibirFichaTecnica()
     {
-        public string Nome { get; set; }
-        public string Artista { get; set; }
-        public int Duracao { get; set; }
-        private bool Disponivel { get; }
-        public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}."; //somente get
-
-
-        public Musica(string nome, string artista, int duracao, bool disponivel)
+        Console.WriteLine($"Nome: {Nome} - Artista: {Artista.Nome} - Duração {Duracao}s ");
+        if (Disponivel)
         {
-            Nome = nome;
-            Artista = artista;
-            Duracao = duracao;
-            Disponivel = disponivel;
+            Console.WriteLine("Disponível no plano.");
         }
-
-        public void ExibirFichaTecnica()
+        else
         {
-            Console.WriteLine($"Nome: {Nome} - Artista: {Artista} - Duração {Duracao}s ");
-            if (Disponivel)
-            {
-                Console.WriteLine("Disponível no plano.");
-            }
-            else
-            {
-                Console.WriteLine("Disponível no plano premium.");
-            }
+            Console.WriteLine("Disponível no plano premium.");
         }
     }
 }
