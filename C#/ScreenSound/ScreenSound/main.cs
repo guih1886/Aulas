@@ -1,4 +1,6 @@
-﻿Banda queen = new Banda("Queen");
+﻿using ScreenSound.Modelos;
+
+Banda queen = new Banda("Queen");
 
 Album albumDoQueen = new Album("A night at the opera");
 
@@ -28,13 +30,13 @@ albumDoQueen.ExibirMusicasDoAlbum();
 
 queen.ExibirDiscografia();
 
-Episodio ep1 = new Episodio(2,"SOLID", 450);
+Episodio ep1 = new Episodio(2, "SOLID", 450);
 ep1.AdicionarConvidados("João");
 ep1.AdicionarConvidados("Pedro");
 ep1.AdicionarConvidados("Maria");
 Console.WriteLine(ep1.Resumo);
 
-Episodio ep2 = new Episodio(1,"Outro", 450);
+Episodio ep2 = new Episodio(1, "Outro", 450);
 ep2.AdicionarConvidados("João");
 ep2.AdicionarConvidados("Pedro");
 ep2.AdicionarConvidados("Maria");
