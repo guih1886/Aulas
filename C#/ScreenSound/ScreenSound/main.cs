@@ -1,48 +1,29 @@
-﻿using ScreenSound.Modelos;
+﻿using ScreenSound.Menus;
+using ScreenSound.Modelos;
+using OpenAI_API;
 
-Banda queen = new Banda("Queen");
+//integração com o chatgpt
+var client = new OpenAIAPI("chave");
+var chat = client.Chat.CreateConversation();
+chat.AppendSystemMessage("");
+string resposta = await chat.GetResponseFromChatbotAsync();
 
-Album albumDoQueen = new Album("A night at the opera");
+Dictionary<int, Menu> opcoes = new();
+opcoes.Add(1, new MenuRegistrarBanda());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuMostrarBandas());
+opcoes.Add(4, new MenuAvaliarBanda());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(6, new MenuAvaliarAlbum());
+opcoes.Add(-1, new MenuSair());
 
-Musica musica1 = new Musica("Musica1", queen)
+if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
 {
-    Duracao = 120,
-    Disponivel = true,
-    Genero = new Genero("Rock")
-
-};
-Musica musica2 = new Musica("Musica2", queen)
+    Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
+    menuASerExibido.Executar();
+}
+else
 {
-    Duracao = 354,
-    Disponivel = false,
-    Genero = new Genero("Rock")
-};
+    Console.WriteLine("Opção inválida.");
+}
 
-
-albumDoQueen.AdicionarMusica(musica1);
-albumDoQueen.AdicionarMusica(musica2);
-queen.AdicionarAlbum(albumDoQueen);
-
-musica1.ExibirFichaTecnica();
-musica2.ExibirFichaTecnica();
-
-albumDoQueen.ExibirMusicasDoAlbum();
-
-queen.ExibirDiscografia();
-
-Episodio ep1 = new Episodio(2, "SOLID", 450);
-ep1.AdicionarConvidados("João");
-ep1.AdicionarConvidados("Pedro");
-ep1.AdicionarConvidados("Maria");
-Console.WriteLine(ep1.Resumo);
-
-Episodio ep2 = new Episodio(1, "Outro", 450);
-ep2.AdicionarConvidados("João");
-ep2.AdicionarConvidados("Pedro");
-ep2.AdicionarConvidados("Maria");
-Console.WriteLine(ep2.Resumo);
-
-Podcast podcast1 = new Podcast("Podcast 1", "Guilherme");
-podcast1.AdicionarEpisodios(ep1);
-podcast1.AdicionarEpisodios(ep2);
-podcast1.ExibirDetalhes();
