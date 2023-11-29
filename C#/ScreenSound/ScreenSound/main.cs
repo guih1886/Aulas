@@ -2,11 +2,7 @@
 using ScreenSound.Modelos;
 using OpenAI_API;
 
-//integração com o chatgpt
-var client = new OpenAIAPI("chave");
-var chat = client.Chat.CreateConversation();
-chat.AppendSystemMessage("");
-string resposta = await chat.GetResponseFromChatbotAsync();
+
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarBanda());
