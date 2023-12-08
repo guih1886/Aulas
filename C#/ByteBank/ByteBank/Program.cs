@@ -115,4 +115,10 @@ void TestaArrayDeContasCorrentes()
 //TestaArrayDeContasCorrentes();
 #endregion
 
-new ByteBankAtendimento().AtendimentoCliente();
+//new ByteBankAtendimento().AtendimentoCliente();
+
+var listaDeChaves = ByteBank_GeradorDeChavePix.GeradorPix.GetChavesPix(5);
+foreach (var item in listaDeChaves)
+{
+    Console.WriteLine(item);
+}

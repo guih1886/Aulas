@@ -8,7 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ByteBank_Modelos\ByteBank_Modelos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ByteBank_GeradorDeChavePix">
+      <HintPath>..\..\ByteBank_GeradorDeChavePix\ByteBank_GeradorDeChavePix\bin\Debug\net8.0\ByteBank_GeradorDeChavePix.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
