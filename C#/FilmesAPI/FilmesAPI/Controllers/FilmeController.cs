@@ -9,17 +9,23 @@ public class FilmeController : ControllerBase
 {
 
     [HttpPost]
-    public void AdicionarFilme([FromBody] Filme filme)
+    public IActionResult AdicionarFilme([FromBody] Filme filme)
     {
         Filme.Filmes.Add(filme);
-        Console.WriteLine(filme.Titulo);
-        Console.WriteLine(filme.Genero);
-        Console.WriteLine(filme.Duracao);
+        return CreatedAtAction(nameof(GetFilme), new { id = filme.Id }, filme);
     }
 
     [HttpGet]
-    public List<Filme> ListarFilmes()
+    public IEnumerable<Filme> ListarFilmes()
     {
-        return Filme.Filmes.ToList();
+        return Filme.Filmes;
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetFilme(int id)
+    {
+        var filme = Filme.Filmes.FirstOrDefault(filme => filme.Id == id);
+        if (filme == null) return NotFound();
+        return Ok(filme);
     }
 }
