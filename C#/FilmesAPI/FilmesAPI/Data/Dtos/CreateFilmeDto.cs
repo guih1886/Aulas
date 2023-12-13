@@ -6,7 +6,7 @@ namespace FilmesAPI.Data.Dtos;
 public class CreateFilmeDto
 {
     [Required(ErrorMessage = "O título do filme é obrigatório.")]
-    public string Titulo { get; set; }
+    public string? Titulo { get; set; }
 
     [Required(ErrorMessage = "O genero do filme é obrigatório.")]
     public Genero Genero { get; set; }

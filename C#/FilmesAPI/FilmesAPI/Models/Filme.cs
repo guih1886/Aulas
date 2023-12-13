@@ -15,7 +15,6 @@ namespace FilmesAPI.Models
             new Filme { Id = 6, Titulo = "Filme 6", Genero = Genero.FICCAO, Duracao = 95 },
         };
         [Key]
-        [Required]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O título do filme é obrigatório.")]
