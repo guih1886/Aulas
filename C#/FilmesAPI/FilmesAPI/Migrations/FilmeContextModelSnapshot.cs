@@ -79,6 +79,22 @@ namespace FilmesAPI.Migrations
                     b.ToTable("Filmes");
                 });
 
+            modelBuilder.Entity("FilmesAPI.Models.Sessao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("FilmeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FilmeId");
+
+                    b.ToTable("Sessoes");
+                });
+
             modelBuilder.Entity("FilmesAPI.Models.Cinema", b =>
                 {
                     b.HasOne("FilmesAPI.Models.Endereco", "Endereco")
@@ -90,10 +106,26 @@ namespace FilmesAPI.Migrations
                     b.Navigation("Endereco");
                 });
 
+            modelBuilder.Entity("FilmesAPI.Models.Sessao", b =>
+                {
+                    b.HasOne("FilmesAPI.Models.Filme", "Filme")
+                        .WithMany("Sessoes")
+                        .HasForeignKey("FilmeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Filme");
+                });
+
             modelBuilder.Entity("FilmesAPI.Models.Endereco", b =>
                 {
                     b.Navigation("Cinema")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FilmesAPI.Models.Filme", b =>
+                {
+                    b.Navigation("Sessoes");
                 });
 #pragma warning restore 612, 618
         }
