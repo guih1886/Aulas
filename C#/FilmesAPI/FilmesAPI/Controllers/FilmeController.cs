@@ -39,7 +39,7 @@ public class FilmeController : ControllerBase
     [HttpGet]
     public IEnumerable<ReadFilmeDto> ListarFilmes()
     {
-        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes);
+        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.ToList());
     }
 
     [HttpGet("{id}")]
