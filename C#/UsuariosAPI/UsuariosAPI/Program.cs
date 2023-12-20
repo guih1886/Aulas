@@ -41,7 +41,7 @@ builder.Services.AddAuthentication(ops =>
 ).AddJwtBearer(ops => ops.TokenValidationParameters = new TokenValidationParameters
 {
     ValidateIssuerSigningKey = true,
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("WE8FA2W23FA969W1S")),
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SymmetricSecurityKey"])),
     ValidateAudience = false,
     ValidateIssuer = false,
     ClockSkew = TimeSpan.Zero
