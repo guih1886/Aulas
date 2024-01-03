@@ -67,7 +67,7 @@ public class PatioTeste : IDisposable
 
     [Theory]
     [InlineData("Guilherme", "ASD-9999", "Branco", "Cruze")]
-    public void LocalizaVeiculoNoPatio(string proprietario, string placa, string cor, string modelo)
+    public void LocalizaVeiculoNoPatioComBaseNoIdTicket(string proprietario, string placa, string cor, string modelo)
     {
         //Arrange
         //Patio estacionamento = new Patio();
@@ -80,10 +80,10 @@ public class PatioTeste : IDisposable
         estacionamento.RegistrarEntradaVeiculo(veiculo);
 
         //Act
-        var consultado = estacionamento.PesquisaVeiculo(placa);
+        var consultado = estacionamento.PesquisaVeiculo(veiculo.IdTicket);
 
         //Assert
-        Assert.Equal(placa, consultado.Placa);
+        Assert.Contains("###Ticket Estacionamento Alura###", consultado.Ticket);
     }
 
     [Fact]
