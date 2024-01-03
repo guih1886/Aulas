@@ -11,12 +11,16 @@ public class PatioTeste : IDisposable
 {
     private Veiculo veiculo;
     private Patio estacionamento;
+    private Operador operador;
     public ITestOutputHelper SaidaConsoleHelper;
 
     public PatioTeste(ITestOutputHelper _saidaConsoleHelper)
     {
         veiculo = new Veiculo();
         estacionamento = new Patio();
+        operador = new Operador();
+        operador.Nome = "José";
+        estacionamento.OperadorPatio = operador;
         SaidaConsoleHelper = _saidaConsoleHelper;
         SaidaConsoleHelper.WriteLine("Executou construtor invocado.");
     }
