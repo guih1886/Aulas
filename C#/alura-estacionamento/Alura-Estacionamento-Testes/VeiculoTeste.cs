@@ -64,6 +64,28 @@ public class VeiculoTeste : IDisposable
         Assert.Contains("Tipo do Veiculo: Automovel", dados);
     }
 
+    [Fact]
+    public void TestaNomeProprietarioComMenosDeTresCaracteres()
+    {
+        //Arrange
+        string nomeProprietario = "JP";
+        //Assert
+        Assert.Throws<System.FormatException>(
+            //Act
+            () => new Veiculo(nomeProprietario)
+        );
+    }
+
+    [Fact]
+    public void TestaExcecaoQuartoCaracterDaPlaca()
+    {
+        //Arrange
+        string placa = "ASDF8888";
+        var mensagem = Assert.Throws<System.FormatException>(() => new Veiculo().Placa = placa);
+        //Assert
+        Assert.Equal("O 4° caractere deve ser um hífen", mensagem.Message);
+    }
+
     public void Dispose()
     {
         SaidaConsoleHelper.WriteLine("Execução do Cleanup: Limpando os objetos.");
