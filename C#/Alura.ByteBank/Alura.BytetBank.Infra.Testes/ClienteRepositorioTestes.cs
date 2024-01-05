@@ -3,14 +3,18 @@ using Alura.ByteBank.Dominio.Entidades;
 using Alura.ByteBank.Dominio.Interfaces.Repositorios;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alura.ByteBank.Infraestrutura.Testes;
 
-public class ClienteRepositorioTestes
+public class ClienteRepositorioTestes : IDisposable
 {
+    private ITestOutputHelper output;
     private readonly IClienteRepositorio _repositorio;
-    public ClienteRepositorioTestes()
+    public ClienteRepositorioTestes(ITestOutputHelper _output)
     {
+        this.output = _output;
+        output.WriteLine("Consutrutor invocado.");
         var servico = new ServiceCollection();
         servico.AddTransient<IClienteRepositorio, ClienteRepositorio>();
         var provedor = servico.BuildServiceProvider();
@@ -50,5 +54,10 @@ public class ClienteRepositorioTestes
         Cliente cliente = _repositorio.ObterPorId(id);
         //Assert
         Assert.NotNull(cliente);
+    }
+
+    public void Dispose()
+    {
+        output.WriteLine("Destrutor invocado.");
     }
 }
