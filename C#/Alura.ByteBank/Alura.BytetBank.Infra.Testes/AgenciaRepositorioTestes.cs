@@ -8,7 +8,7 @@ using Xunit.Abstractions;
 
 namespace Alura.ByteBank.Infraestrutura.Testes
 {
-    public class AgenciaRepositorioTestes
+    public class AgenciaRepositorioTestes : IDisposable
     {
         private readonly IAgenciaRepositorio _repositorio;
         public ITestOutputHelper SaidaConsoleTeste;
