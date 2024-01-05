@@ -4,7 +4,7 @@ using Alura.ByteBank.Dominio.Interfaces.Repositorios;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Alura.BytetBank.Infraestrutura.Testes;
+namespace Alura.ByteBank.Infraestrutura.Testes;
 
 public class ClienteRepositorioTestes
 {
