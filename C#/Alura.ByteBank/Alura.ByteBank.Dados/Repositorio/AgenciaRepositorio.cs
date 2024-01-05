@@ -26,15 +26,14 @@ namespace Alura.ByteBank.Dados.Repositorio
 
                 return true;
             }
-            catch
-            {
+            catch{
                 return false;
             }
         }
 
         public bool Atualizar(int id, Agencia agencia)
         {
-
+            
             try
             {
                 if (id != agencia.Id)
@@ -45,8 +44,7 @@ namespace Alura.ByteBank.Dados.Repositorio
                 _contexto.SaveChanges();
                 return true;
             }
-            catch
-            {
+            catch{
                 return false;
             }
         }
@@ -65,8 +63,7 @@ namespace Alura.ByteBank.Dados.Repositorio
                 _contexto.SaveChanges();
                 return true;
             }
-            catch
-            {
+            catch{
                 return false;
             }
         }
@@ -76,15 +73,15 @@ namespace Alura.ByteBank.Dados.Repositorio
             try
             {
                 var agencia = _contexto.Agencias.FirstOrDefault(p => p.Id == id);
-                if (agencia == null)
+                if(agencia == null)
                 {
                     throw new Exception($"Erro ao obter agência com Id = {id}.");
                 }
                 return agencia;
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception($"Erro ao obter agência com Id = {id}.");
+               throw new Exception( ex.Message) ;
             }
         }
 
@@ -116,23 +113,11 @@ namespace Alura.ByteBank.Dados.Repositorio
                 throw new Exception("Erro ao obter Agências.");
             }
         }
-        public Agencia ObterUltimo()
-        {
-            try
-            {
-                return _contexto.Agencias.OrderBy(a => a.Id).Last();
-            }
-            catch
-            {
-                throw new Exception("aqui");
-            }
-        }
 
         public void Dispose()
         {
             _contexto.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }
