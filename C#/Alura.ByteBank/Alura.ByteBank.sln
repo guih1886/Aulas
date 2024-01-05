@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dados", "Dados", "{77071A19
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.ByteBank.Dados", "Alura.ByteBank.Dados\Alura.ByteBank.Dados.csproj", "{5F0506F5-5381-40C0-8D67-770D856A7E83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.BytetBank.Infraestrutura.Testes", "Alura.BytetBank.Infra.Testes\Alura.BytetBank.Infraestrutura.Testes.csproj", "{0C9E8172-943C-4C48-95F9-26C58695FB9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.ByteBank.Infraestrutura.Testes", "Alura.BytetBank.Infra.Testes\Alura.ByteBank.Infraestrutura.Testes.csproj", "{0C9E8172-943C-4C48-95F9-26C58695FB9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
