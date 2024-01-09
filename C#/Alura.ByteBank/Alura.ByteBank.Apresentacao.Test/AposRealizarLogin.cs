@@ -41,6 +41,34 @@ namespace Alura.ByteBank.Apresentacao.Testes
             Assert.NotNull(linkAgencia);
         }
 
+        [Fact]
+        public void CadastraCliente()
+        {
+            //Arrange
+            var guid = Guid.NewGuid().ToString();
+
+            //Act
+            driver.FindElement(By.LinkText("Cliente")).Click();
+            driver.FindElement(By.LinkText("Adicionar Cliente")).Click();
+
+            driver.FindElement(By.Name("Identificador")).Click();
+            driver.FindElement(By.Name("Identificador")).SendKeys(guid);
+
+            driver.FindElement(By.Name("CPF")).Click();
+            driver.FindElement(By.Name("CPF")).SendKeys("601.811.150-00");
+
+            driver.FindElement(By.Name("Nome")).Click();
+            driver.FindElement(By.Name("Nome")).SendKeys("Adelberto Gaudencio");
+
+            driver.FindElement(By.Name("Profissao")).Click();
+            driver.FindElement(By.Name("Profissao")).SendKeys("Lavrador");
+
+            driver.FindElement(By.CssSelector(".btn-primary")).Click();
+
+            //Assert
+            Assert.Contains(guid, driver.PageSource);
+        }
+
         public void Dispose()
         {
             driver.Quit();
