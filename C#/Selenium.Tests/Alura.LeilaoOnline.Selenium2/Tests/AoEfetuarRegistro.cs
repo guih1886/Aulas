@@ -1,4 +1,5 @@
 ﻿using Alura.LeilaoOnline.Selenium2.Fixture;
+using Alura.LeilaoOnline.Selenium2.PageObjects;
 using OpenQA.Selenium;
 using Xunit;
 
@@ -8,27 +9,26 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
     public class AoEfetuarRegistro
     {
         private IWebDriver driver;
+        private RegistroPO registroPO;
         private string url;
 
         public AoEfetuarRegistro(TestFixture fixture)
         {
             driver = fixture.Driver;
             url = fixture.urlBase;
+            registroPO = new RegistroPO(driver);
         }
 
         [Fact]
         public void DadoInfoValidasDeveIrParaPaginaDeAgradecimento()
         {
             //Arrange
-            driver.Navigate().GoToUrl(url);
+            registroPO.VisitarUrlBase();
             string senha = Guid.NewGuid().ToString();
             //Act - Efeturar o registro
-            driver.FindElement(By.Id("Nome")).SendKeys("Adalberto Magalhães");
-            driver.FindElement(By.Id("Email")).SendKeys("adalberto@email.com");
-            driver.FindElement(By.Id("Password")).SendKeys(senha);
-            driver.FindElement(By.Name("ConfirmPassword")).SendKeys(senha);
+            registroPO.PreencheFormularioNovoUsuario("Adalberto Magalhães", "adalberto@email.com", senha, senha);
 
-            driver.FindElement(By.Id("btnRegistro")).Click();
+            registroPO.SubmeteFormuarioCadastroUsuario();
             //Assert - Devo ser direcionado para a página de agradecimento
             Assert.Contains("Obrigado", driver.PageSource);
         }
@@ -41,14 +41,10 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoInfoInvalidasDeveContinuarNaHome(string nome, string email, string senha, string confirmSenha)
         {
             //Arrange
-            driver.Navigate().GoToUrl(url);
+            registroPO.VisitarUrlBase();
             //Act - Efeturar o registro
-            driver.FindElement(By.Id("Nome")).SendKeys(nome);
-            driver.FindElement(By.Id("Email")).SendKeys(email);
-            driver.FindElement(By.Id("Password")).SendKeys(senha);
-            driver.FindElement(By.Name("ConfirmPassword")).SendKeys(confirmSenha);
-
-            driver.FindElement(By.Id("btnRegistro")).Click();
+            registroPO.PreencheFormularioNovoUsuario(nome, email, senha, confirmSenha);
+            registroPO.SubmeteFormuarioCadastroUsuario();
             //Assert - Devo ser direcionado para a página de agradecimento
             Assert.Contains("Leilões Online", driver.Title);
         }
@@ -57,12 +53,12 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoNomeEmBrancoDeveMostrarMensagemDeErro()
         {
             //Arrange
-            driver.Navigate().GoToUrl(url);
+            registroPO.VisitarUrlBase();
             //Act
-            driver.FindElement(By.Id("btnRegistro")).Click();
+            registroPO.SubmeteFormuarioCadastroUsuario();
             //Assert
-            IWebElement elemento = driver.FindElement(By.Id("Nome-error"));
-            Assert.Equal("The Nome field is required.", elemento.Text);
+            var elemento = registroPO.MensagemErro;
+            Assert.Equal("The Nome field is required.", elemento);
         }
     }
 }
