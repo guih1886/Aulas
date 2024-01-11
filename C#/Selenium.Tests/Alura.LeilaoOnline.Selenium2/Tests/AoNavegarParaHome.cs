@@ -1,6 +1,6 @@
 using Alura.LeilaoOnline.Selenium2.Fixture;
+using Alura.LeilaoOnline.Selenium2.PageObjects;
 using OpenQA.Selenium;
-using System.Collections.ObjectModel;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -11,12 +11,14 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
     {
         private IWebDriver driver;
         private ITestOutputHelper output;
+        private RegistroPO registroPO;
 
         //Setup
         public AoNavegarParaHome(TestFixture fixture, ITestOutputHelper _output)
         {
             driver = fixture.Driver;
             output = _output;
+            registroPO = new RegistroPO(driver);
         }
 
         [Fact]
@@ -24,7 +26,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         {
             //Arrange
             //Act
-            driver.Navigate().GoToUrl("http://localhost:5000/");
+            registroPO.VisitarUrlBase();
             //Assert
             Assert.Contains("Leilões", driver.Title);
         }
@@ -33,7 +35,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoNavegadorAbertoDeveMostrarProximosLeiloes()
         {
             //Act
-            driver.Navigate().GoToUrl("http://localhost:5000/");
+            registroPO.VisitarUrlBase();
             //Assert
             Assert.Contains("Próximos Leilões", driver.PageSource);
         }
@@ -42,8 +44,8 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoNavegadorAbertoNaoDeveMostrarMensagensDeErro()
         {
             //Arrange
-            driver.Navigate().GoToUrl("http://localhost:5000/");
-            var erros = driver.FindElements(By.CssSelector("form span"));
+            registroPO.VisitarUrlBase();
+            var erros = registroPO.FormSpan;
             //Act
             //Assert
             foreach (var erro in erros)
