@@ -31,7 +31,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = _repo.Todos.First(u => u.Email == model.Login && u.Senha == model.Password);
+                var usuario = _repo.Todos.FirstOrDefault(u => u.Email == model.Login && u.Senha == model.Password);
                 if (usuario != null)
                 {
                     usuario = _repo.BuscarPorId(usuario.Id);
@@ -39,7 +39,10 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
                     HttpContext.Session.Set<Usuario>("usuarioLogado", usuario);
                     return RedirectToAction("Index", "Interessadas");
                 }
-                ModelState.AddModelError("usuarioInvalido", "Usuário não encontrado");
+                else
+                {
+                    ModelState.AddModelError("usuarioInvalido", "Usuário não encontrado");
+                }
             }
             return View(model);
         }
