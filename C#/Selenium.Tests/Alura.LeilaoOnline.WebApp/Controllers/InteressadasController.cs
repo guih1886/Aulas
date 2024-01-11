@@ -29,8 +29,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
         public IActionResult Index()
         {
             var usuarioLogado = this.HttpContext.Session.Get<Usuario>("usuarioLogado");
-            var interessada = _repoInteressada
-                .BuscarPorId(usuarioLogado.Interessada.Id);
+            var interessada = _repoInteressada.BuscarPorId(usuarioLogado.Interessada.Id);
             var model = new DashboardInteressadaViewModel
             {
                 MinhasOfertas = interessada.Lances,
