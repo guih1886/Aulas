@@ -21,7 +21,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void ValidaCredenciaisLoginCorrretas()
         {
             //Arrange
-            loginPO.VisitarUrlBase();
+            loginPO.VisitarUrlLogin();
             //Act
             loginPO.PreencheFormularioLogin("fulano@example.org", "123");
             loginPO.SubmeterFormularioLogin();
@@ -33,7 +33,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void ValidaCredenciaisLoginIncorrretas()
         {
             //Arrange
-            loginPO.VisitarUrlBase();
+            loginPO.VisitarUrlLogin();
             //Act
             loginPO.PreencheFormularioLogin("fulano@emaple.org.com", "");
             loginPO.SubmeterFormularioLogin();
