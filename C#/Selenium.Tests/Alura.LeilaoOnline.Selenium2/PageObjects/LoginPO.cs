@@ -19,7 +19,7 @@ namespace Alura.LeilaoOnline.Selenium2.PageObjects
             botaoLogin = By.Id("btnLogin");
         }
 
-        public void VisitarUrlBase()
+        public void VisitarUrlLogin()
         {
             driver.Navigate().GoToUrl("http://localhost:5000/Autenticacao/Login");
         }
