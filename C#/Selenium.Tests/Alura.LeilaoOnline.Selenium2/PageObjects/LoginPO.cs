@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Alura.LeilaoOnline.Selenium2.PageObjects
 {
-    internal class LoginPO
+    public class LoginPO
     {
         private IWebDriver driver;
 
@@ -19,19 +19,14 @@ namespace Alura.LeilaoOnline.Selenium2.PageObjects
             botaoLogin = By.Id("btnLogin");
         }
 
-        public void VisitarUrlLogin()
+        public void EfetuarLoginComCredenciais(string login, string senha)
         {
+            //Navega para págiona de login
             driver.Navigate().GoToUrl("http://localhost:5000/Autenticacao/Login");
-        }
-
-        public void PreencheFormularioLogin(string login, string senha)
-        {
+            //Preenche o formulario
             driver.FindElement(inputLogin).SendKeys(login);
             driver.FindElement(inputSenha).SendKeys(senha);
-        }
-
-        public void SubmeterFormularioLogin()
-        {
+            //Submete Formulario
             driver.FindElement(botaoLogin).Submit();
         }
     }

@@ -49,7 +49,7 @@ namespace Alura.LeilaoOnline.Selenium2.PageObjects
         {
             driver.FindElement(this.titulo).SendKeys(titulo);
             driver.FindElement(this.descricao).SendKeys(descricao);
-            //driver.FindElement(this.categoria).SendKeys(categoria);
+            driver.FindElement(this.categoria).SendKeys(categoria);
             driver.FindElement(this.valorInicial).SendKeys(valor.ToString());
             driver.FindElement(this.inicioPregao).SendKeys(inicio.ToString("dd/MM/yyyy"));
             driver.FindElement(this.terminoPregao).SendKeys(termino.ToString("dd/MM/yyyy"));
