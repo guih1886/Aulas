@@ -23,12 +23,10 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoLoginValidoDeveIrParaHome()
         {
             //Arrange
-            loginPO.VisitarUrlLogin();
-            loginPO.PreencheFormularioLogin("fulano@example.org", "123");
-            loginPO.SubmeterFormularioLogin();
+            loginPO.EfetuarLoginComCredenciais("fulano@example.org", "123");
 
             //Act
-            dashboardPO.EfetuarLogout();
+            dashboardPO.Menu.EfetuarLogout();
 
             //Assert
             Assert.Contains("Próximos Leilões", driver.PageSource);
