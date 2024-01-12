@@ -23,9 +23,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoLoginAdmDeveMostrarTresCategorias()
         {
             //Assert
-            loginPO.VisitarUrlLogin();
-            loginPO.PreencheFormularioLogin("fulano@example.org", "123");
-            loginPO.SubmeterFormularioLogin();
+            loginPO.EfetuarLoginComCredenciais("fulano@example.org", "123");
 
             //Act
             novoLeilaoPO.Visitar();
