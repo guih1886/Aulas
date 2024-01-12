@@ -13,6 +13,8 @@ namespace Alura.LeilaoOnline.Selenium2.Fixture
         public TestFixture()
         {
             Driver = new ChromeDriver();
+            //Tempo de espera implicito
+            //Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
         }
 
         public void Dispose()
