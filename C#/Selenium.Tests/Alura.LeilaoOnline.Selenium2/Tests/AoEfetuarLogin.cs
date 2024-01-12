@@ -21,10 +21,9 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void ValidaCredenciaisLoginCorrretas()
         {
             //Arrange
-            loginPO.VisitarUrlLogin();
             //Act
-            loginPO.PreencheFormularioLogin("fulano@example.org", "123");
-            loginPO.SubmeterFormularioLogin();
+            loginPO.EfetuarLoginComCredenciais("fulano@example.org", "123");
+
             //Assert
             Assert.Contains("Dashboard", driver.PageSource);
         }
@@ -33,10 +32,8 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void ValidaCredenciaisLoginIncorrretas()
         {
             //Arrange
-            loginPO.VisitarUrlLogin();
             //Act
-            loginPO.PreencheFormularioLogin("fulano@emaple.org.com", "");
-            loginPO.SubmeterFormularioLogin();
+            loginPO.EfetuarLoginComCredenciais("fulano@emaple.org.com", "");
             //Assert
             Assert.Contains("Login", driver.PageSource);
         }
