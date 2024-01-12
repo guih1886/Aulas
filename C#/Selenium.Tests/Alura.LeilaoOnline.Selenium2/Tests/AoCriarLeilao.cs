@@ -23,9 +23,7 @@ namespace Alura.LeilaoOnline.Selenium2.Tests
         public void DadoLoginAdminEInfoEmailValidaDeveCadastrarLeilao()
         {
             //Arrange
-            loginPO.VisitarUrlLogin();
-            loginPO.PreencheFormularioLogin("fulano@example.org", "123");
-            loginPO.SubmeterFormularioLogin();
+            loginPO.EfetuarLoginComCredenciais("fulano@example.org", "123");
 
             novoPO.Visitar();
             novoPO.PreencheFormularioNovoLeilao(
