@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Headers;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Servicos
 {
-    public class Util
+    public class HttpClientPet
     {
         public HttpClient ConfiguraHttpClient(string url)
         {

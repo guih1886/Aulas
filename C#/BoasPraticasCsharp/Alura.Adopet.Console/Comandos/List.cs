@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http.Json;
+using Alura.Adopet.Console.Modelos;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
+
     public class List
     {
         HttpClient client;

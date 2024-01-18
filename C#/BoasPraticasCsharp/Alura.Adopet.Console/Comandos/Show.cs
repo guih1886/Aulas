@@ -1,5 +1,7 @@
-﻿namespace Alura.Adopet.Console
+﻿namespace Alura.Adopet.Console.Comandos
 {
+    [DocComando(instrucao: "show",
+                documentacao: "adopet show < arquivo > comando que exibe no terminal o conteúdo do arquivo importado.")]
     public class Show
     {
         public void MostrarPetsASerImportado(string caminhoDoArquivoASerExibido)

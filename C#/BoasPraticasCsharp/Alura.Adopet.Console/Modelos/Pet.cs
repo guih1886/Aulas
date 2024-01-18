@@ -1,4 +1,4 @@
-﻿namespace Alura.Adopet.Console
+﻿namespace Alura.Adopet.Console.Modelos
 {
     public class Pet
     {
@@ -13,7 +13,7 @@
         }
         public override string ToString()
         {
-            return $"{this.Id} - {this.Nome} - {this.Tipo}";
+            return $"{Id} - {Nome} - {Tipo}";
         }
     }
 }

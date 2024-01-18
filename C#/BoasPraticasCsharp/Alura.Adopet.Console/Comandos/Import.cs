@@ -1,8 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Alura.Adopet.Console.Modelos;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
+    [DocComando(instrucao: "import",
+        documentacao: "adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
     public class Import
     {
         HttpClient client;
