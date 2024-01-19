@@ -1,6 +1,6 @@
 ﻿using Alura.Adopet.Console.Modelos;
 
-namespace Alura.Adopet.Console.Util.Util
+namespace Alura.Adopet.Console.Util
 {
     public class LeitorDeArquivo
     {
