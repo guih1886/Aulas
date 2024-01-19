@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http.Json;
 using Alura.Adopet.Console.Modelos;
+using Alura.Adopet.Console.Servicos;
 
 namespace Alura.Adopet.Console.Comandos
 {
 
-    public class List
+    public class List : IComando
     {
-        HttpClient client;
-        public List()
+        public async Task ExecutarAsync(string[] args)
         {
-            client = new Util().ConfiguraHttpClient("http://localhost:5057");
+            await ListarPetsAsync();
         }
-        public async Task ListarPetsAsync()
+
+        private async Task ListarPetsAsync()
         {
             var pets = await ListPetsAsync();
             foreach (var pet in pets)
@@ -21,8 +22,9 @@ namespace Alura.Adopet.Console.Comandos
             }
         }
 
-        async Task<IEnumerable<Pet>?> ListPetsAsync()
+        private async Task<IEnumerable<Pet>?> ListPetsAsync()
         {
+            var client = new HttpClientPet().ConfiguraHttpClient("http://localhost:5057");
             HttpResponseMessage response = await client.GetAsync("pet/list");
             return await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
         }
