@@ -16,10 +16,8 @@ namespace Alura.Adopet.Console.Util
                     // cria objeto Pet a partir da separação
                     Pet pet = new Pet(Guid.Parse(propriedades[0]),
                       propriedades[1],
-                      TipoPet.Cachorro
+                      int.Parse(propriedades[2]) == 1 ? TipoPet.Gato : TipoPet.Cachorro
                      );
-
-                    System.Console.WriteLine(pet);
                     listaDePet.Add(pet);
                 }
             }
