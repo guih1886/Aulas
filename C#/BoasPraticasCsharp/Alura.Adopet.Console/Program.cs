@@ -1,11 +1,11 @@
 ﻿using Alura.Adopet.Console.Comandos;
 
-ComandosDoSistema comandos = new();
+ComandosDoSistema comandos = new(caminhoDoArquivo: args[1]);
 
 try
 {
     string comando = args[0].Trim();
-    IComando comandosDoSistema = comandos[comando];
+    IComando comandosDoSistema = comandos[comando]!;
     if (comandosDoSistema is not null)
     {
         await comandosDoSistema.ExecutarAsync(args);

@@ -8,6 +8,13 @@ namespace Alura.Adopet.Console.Comandos
 
     public class List : IComando
     {
+        private readonly HttpClientPet clientPet;
+
+        public List(HttpClientPet clientPet)
+        {
+            this.clientPet = clientPet;
+        }
+
         public async Task ExecutarAsync(string[] args)
         {
             await ListarPetsAsync();
@@ -15,7 +22,7 @@ namespace Alura.Adopet.Console.Comandos
 
         private async Task ListarPetsAsync()
         {
-            var pets = await new HttpClientPet().ListPetsAsync();
+            var pets = await clientPet.ListPetsAsync();
             foreach (var pet in pets)
             {
                 System.Console.WriteLine(pet);
