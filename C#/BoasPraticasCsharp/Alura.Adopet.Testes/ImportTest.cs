@@ -3,6 +3,8 @@ using Alura.Adopet.Console.Modelos;
 using Alura.Adopet.Console.Servicos;
 using Alura.Adopet.Console.Util;
 using Alura.Adopet.Testes.Builder;
+using FluentResults;
+using FluentResults.Extensions;
 using Moq;
 using Xunit;
 
@@ -28,7 +30,7 @@ namespace Alura.Adopet.Testes
         }
 
         [Fact]
-        public async void DadoCaminhoDoArquivoInexistenteDeveLancarErro()
+        public void DadoCaminhoDoArquivoInexistenteDeveLancarErro()
         {
             //Arrange
             List<Pet> listaPet = new();
@@ -40,8 +42,32 @@ namespace Alura.Adopet.Testes
 
             var import = new Import(httpClientPet.Object, leitor.Object);
 
-            //Act + Assert
-            await Assert.ThrowsAnyAsync<Exception>(() => import.ExecutarAsync(args));
+            //Act
+            var resultado = import.ExecutarAsync(args);
+
+            //Assert
+            Assert.False(resultado.IsFaulted);
+        }
+
+        [Fact]
+        public void QuandoPetEstiverNoArquivoDeveSerImportado()
+        {
+            //Arrange
+            List<Pet> listaPet = new List<Pet>();
+            var pet = new Pet(new Guid(), "Adalberto", TipoPet.Cachorro);
+            listaPet.Add(pet);
+
+            var leitorArquivo = LeitorDeArquivosMockBuilder.CriaMock(listaPet);
+            var httpClientPet = HttpClientPetMockBuilder.GetMock();
+
+            var import = new Import(clientPet: httpClientPet.Object, leitor: leitorArquivo.Object);
+            string[] args = { "import", "lista.csv" };
+            //Act
+            var resultado = import.ExecutarAsync(args);
+            //Assert
+            Assert.True(resultado.IsCompletedSuccessfully);
+            var sucesso = (SucessWithPets)resultado.Result.Successes[0];
+            Assert.Equal("Adalberto", sucesso.Data.First().Nome);
         }
     }
 }

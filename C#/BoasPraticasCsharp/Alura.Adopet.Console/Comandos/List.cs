@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Net.Http.Json;
-using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos;
+﻿using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Util;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
 {
@@ -15,18 +14,15 @@ namespace Alura.Adopet.Console.Comandos
             this.clientPet = clientPet;
         }
 
-        public async Task ExecutarAsync(string[] args)
+        public async Task<Result> ExecutarAsync(string[] args)
         {
-            await ListarPetsAsync();
+            return await ListarPetsAsync();
         }
 
-        private async Task ListarPetsAsync()
+        private async Task<Result> ListarPetsAsync()
         {
             var pets = await clientPet.ListPetsAsync();
-            foreach (var pet in pets)
-            {
-                System.Console.WriteLine(pet);
-            }
+            return Result.Ok().WithSuccess(new SucessWithPets(pets, "Listagem executada com sucesso."));
         }
     }
 }

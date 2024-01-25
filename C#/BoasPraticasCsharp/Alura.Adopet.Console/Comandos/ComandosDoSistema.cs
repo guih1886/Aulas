@@ -5,7 +5,7 @@ namespace Alura.Adopet.Console.Comandos
 {
     internal class ComandosDoSistema
     {
-        private Dictionary<string, IComando> comandosDoSistema;
+        public Dictionary<string, IComando> comandosDoSistema;
 
         public ComandosDoSistema(string caminhoDoArquivo)
         {
@@ -18,7 +18,7 @@ namespace Alura.Adopet.Console.Comandos
             };
         }
 
-        public IComando? this[string key] => comandosDoSistema.ContainsKey(key) ? comandosDoSistema[key] : null;
+        public IComando? this[string key] => comandosDoSistema.ContainsKey(key) ? this.comandosDoSistema[key] : null;
 
         private static HttpClientPet CriarInstanciaHttpPet()
         {

@@ -1,4 +1,6 @@
-﻿using Alura.Adopet.Testes;
+﻿using Alura.Adopet.Console.Util;
+using Alura.Adopet.Testes;
+using FluentResults;
 using System.Reflection;
 
 namespace Alura.Adopet.Console.Comandos
@@ -15,22 +17,28 @@ namespace Alura.Adopet.Console.Comandos
             docs = DocumentacaoDoSistema.ToDictionary(Assembly.GetExecutingAssembly());
         }
 
-        public Task ExecutarAsync(string[] args)
+        public Task<Result> ExecutarAsync(string[] args)
         {
-            this.MostrarAjuda(args);
-            return Task.CompletedTask;
+            var resultado = GerarDocumentacao(args);
+            return Task.FromResult(Result.Ok().WithSuccess(new SucessWithDocs(resultado)));
         }
 
-        private void MostrarAjuda(string[] comandosHelp)
+        private IEnumerable<string> GerarDocumentacao(string[] comandosHelp)
         {
-            System.Console.WriteLine("Lista de comandos.");
+            List<string> resultado = new List<string>();
             // se não passou mais nenhum argumento mostra help de todos os comandos
-            if (comandosHelp.Length == 1)
+            if (comandosHelp == null)
             {
-                System.Console.WriteLine("Comando possíveis: ");
                 foreach (var doc in docs.Values)
                 {
-                    System.Console.WriteLine(doc.Documentacao);
+                    resultado.Add(doc.Documentacao);
+                }
+            }
+            if (comandosHelp.Length == 1)
+            {
+                foreach (var doc in docs.Values)
+                {
+                    resultado.Add(doc.Documentacao);
                 }
             }
             // exibe o help daquele comando específico
@@ -40,10 +48,15 @@ namespace Alura.Adopet.Console.Comandos
                 if (docs.ContainsKey(comandoASerExibido))
                 {
                     var comando = docs[comandoASerExibido];
-                    System.Console.WriteLine(comando.Documentacao);
+                    resultado.Add(comando.Documentacao);
+                }
+                else
+                {
+                    resultado.Add("Comando não encontrado.");
                 }
 
             }
+            return resultado;
         }
     }
 }

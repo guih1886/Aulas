@@ -1,8 +1,7 @@
-﻿using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using Alura.Adopet.Console.Modelos;
+﻿using Alura.Adopet.Console.Modelos;
 using Alura.Adopet.Console.Servicos;
 using Alura.Adopet.Console.Util;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
 {
@@ -19,26 +18,34 @@ namespace Alura.Adopet.Console.Comandos
             this.leitor = leitor;
         }
 
-        public async Task ExecutarAsync(string[] args)
+        public async Task<Result> ExecutarAsync(string[] args)
         {
-            await this.ImportacaoArquivoPetAsync(caminhoDoArquivoDeImportacao: args[1]);
+            return await ImportacaoArquivoPetAsync(caminhoDoArquivoDeImportacao: args[1]);
         }
 
-        private async Task ImportacaoArquivoPetAsync(string caminhoDoArquivoDeImportacao)
+        private async Task<Result> ImportacaoArquivoPetAsync(string caminhoDoArquivoDeImportacao)
         {
-            List<Pet> listaDePet = leitor.RealizaLeitura();
-            foreach (var pet in listaDePet)
+            try
             {
-                try
+                List<Pet> listaDePet = leitor.RealizaLeitura();
+                foreach (var pet in listaDePet)
                 {
-                    await clientPet.CreatePetAsync(pet);
+                    try
+                    {
+                        await clientPet.CreatePetAsync(pet);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Console.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    System.Console.WriteLine(ex.Message);
-                }
+                return Result.Ok().WithSuccess(new SucessWithPets(listaDePet, "Importação realizada com sucesso."));
+
             }
-            System.Console.WriteLine("Importação concluída!");
+            catch (Exception e)
+            {
+                return Result.Fail(new Error(e.Message).CausedBy(e));
+            }
         }
     }
 }
