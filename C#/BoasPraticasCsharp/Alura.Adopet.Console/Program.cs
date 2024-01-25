@@ -2,14 +2,10 @@
 using Alura.Adopet.Console.UI;
 using FluentResults;
 
-ComandosDoSistema comandos = new ComandosDoSistema(caminhoDoArquivo: args[1]);
-
-
-string comando = args[0].Trim();
-IComando comandosDoSistema = comandos[comando];
+IComando comandosDoSistema = ComandoFactory.CriarComando(args);
 if (comandosDoSistema is not null)
 {
-    var resultado = await comandosDoSistema.ExecutarAsync(args);
+    var resultado = await comandosDoSistema.ExecutarAsync();
     ConsoleUI.ExibeResultado(resultado);
 }
 else

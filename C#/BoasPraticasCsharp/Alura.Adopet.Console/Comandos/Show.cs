@@ -1,5 +1,4 @@
-﻿using Alura.Adopet.Console.UI;
-using Alura.Adopet.Console.Util;
+﻿using Alura.Adopet.Console.Util;
 using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
@@ -15,12 +14,12 @@ namespace Alura.Adopet.Console.Comandos
             this.leitor = leitor;
         }
 
-        public Task<Result> ExecutarAsync(string[] args)
+        public Task<Result> ExecutarAsync()
         {
-            return MostrarPetsASerImportado(caminhoDoArquivoASerExibido: args[1]);
+            return MostrarPetsASerImportado();
         }
 
-        private Task<Result> MostrarPetsASerImportado(string caminhoDoArquivoASerExibido)
+        private Task<Result> MostrarPetsASerImportado( )
         {
             var listaDePets = leitor.RealizaLeitura();
             return Task.FromResult(Result.Ok().WithSuccess(new SucessWithPets(listaDePets, "Leitura realizada com sucesso.")));

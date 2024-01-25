@@ -43,7 +43,6 @@ namespace Alura.Adopet.Console.UI
 
         private static void ExibeDocumentacao(SucessWithDocs documentacaoComando)
         {
-            System.Console.WriteLine("Comando possíveis: ");
             foreach (var doc in documentacaoComando.Documentacao)
             {
                 System.Console.WriteLine(doc);

@@ -5,6 +5,7 @@ namespace Alura.Adopet.Console.Util
     public class LeitorDeArquivo
     {
         private string caminhoArquivo;
+        private char v;
 
         public LeitorDeArquivo(string? caminhoArquivo)
         {

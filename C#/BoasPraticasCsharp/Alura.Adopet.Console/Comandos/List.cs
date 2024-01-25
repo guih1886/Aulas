@@ -4,8 +4,10 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
 {
-
-    public class List : IComando
+    [DocComando(instrucao: "list",
+        documentacao: "adopet list <arquivo> " + 
+                      "comando que lista os pets no arquivo.")]
+    public class List : IComando 
     {
         private readonly HttpClientPet clientPet;
 
@@ -14,7 +16,7 @@ namespace Alura.Adopet.Console.Comandos
             this.clientPet = clientPet;
         }
 
-        public async Task<Result> ExecutarAsync(string[] args)
+        public async Task<Result> ExecutarAsync()
         {
             return await ListarPetsAsync();
         }

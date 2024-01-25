@@ -11,30 +11,25 @@ namespace Alura.Adopet.Console.Comandos
     public class Help : IComando
     {
         private Dictionary<string, DocComando> docs;
+        public string? Comando { get; }
 
-        public Help()
+        public Help(string comando)
         {
             docs = DocumentacaoDoSistema.ToDictionary(Assembly.GetExecutingAssembly());
+            Comando = comando;
         }
 
-        public Task<Result> ExecutarAsync(string[] args)
+        public Task<Result> ExecutarAsync()
         {
-            var resultado = GerarDocumentacao(args);
+            var resultado = GerarDocumentacao();
             return Task.FromResult(Result.Ok().WithSuccess(new SucessWithDocs(resultado)));
         }
 
-        private IEnumerable<string> GerarDocumentacao(string[] comandosHelp)
+        private IEnumerable<string> GerarDocumentacao()
         {
             List<string> resultado = new List<string>();
             // se não passou mais nenhum argumento mostra help de todos os comandos
-            if (comandosHelp == null)
-            {
-                foreach (var doc in docs.Values)
-                {
-                    resultado.Add(doc.Documentacao);
-                }
-            }
-            if (comandosHelp.Length == 1)
+            if (Comando == null)
             {
                 foreach (var doc in docs.Values)
                 {
@@ -42,19 +37,18 @@ namespace Alura.Adopet.Console.Comandos
                 }
             }
             // exibe o help daquele comando específico
-            else if (comandosHelp.Length == 2)
+            else
             {
-                string comandoASerExibido = comandosHelp[1];
-                if (docs.ContainsKey(comandoASerExibido))
+                if (docs.ContainsKey(Comando))
                 {
-                    var comando = docs[comandoASerExibido];
+                    var comando = docs[Comando];
                     resultado.Add(comando.Documentacao);
                 }
                 else
                 {
                     resultado.Add("Comando não encontrado.");
+                    throw new ArgumentException("Comando não encontrado.");
                 }
-
             }
             return resultado;
         }
