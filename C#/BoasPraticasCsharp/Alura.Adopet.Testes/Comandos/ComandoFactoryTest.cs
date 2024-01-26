@@ -1,7 +1,7 @@
 ﻿using Alura.Adopet.Console.Comandos;
 using Xunit;
 
-namespace Alura.Adopet.Testes
+namespace Alura.Adopet.Testes.Comandos
 {
     public class ComandoFactoryTest
     {

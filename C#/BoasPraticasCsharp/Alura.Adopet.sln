@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.Adopet.API", "Alura.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.Adopet.Console", "Alura.Adopet.Console\Alura.Adopet.Console.csproj", "{CDC4860C-35AD-4396-B20F-547C44F680CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.Adopet.Testes", "Alura.Adopet.Testes\Alura.Adopet.Testes.csproj", "{18AAF063-C635-41F5-ADCC-06BF7810E07A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.Adopet.Testes", "Alura.Adopet.Testes\Alura.Adopet.Testes.csproj", "{18AAF063-C635-41F5-ADCC-06BF7810E07A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6665F082-E439-4525-BF02-EA9464B46D2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F3CE19DD-DA12-459F-A1B2-D635C78DA716}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.Adopet.IntetgrationTests", "Alura.Adopet.IntetgrationTests\Alura.Adopet.IntetgrationTests.csproj", "{3EA9A931-272C-49F2-A6EC-72095BDFEF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,19 @@ Global
 		{18AAF063-C635-41F5-ADCC-06BF7810E07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18AAF063-C635-41F5-ADCC-06BF7810E07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18AAF063-C635-41F5-ADCC-06BF7810E07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA9A931-272C-49F2-A6EC-72095BDFEF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA9A931-272C-49F2-A6EC-72095BDFEF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA9A931-272C-49F2-A6EC-72095BDFEF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA9A931-272C-49F2-A6EC-72095BDFEF12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1EFD091A-90B3-42C9-90D0-1B73FA46C5C1} = {6665F082-E439-4525-BF02-EA9464B46D2B}
+		{CDC4860C-35AD-4396-B20F-547C44F680CC} = {6665F082-E439-4525-BF02-EA9464B46D2B}
+		{18AAF063-C635-41F5-ADCC-06BF7810E07A} = {F3CE19DD-DA12-459F-A1B2-D635C78DA716}
+		{3EA9A931-272C-49F2-A6EC-72095BDFEF12} = {F3CE19DD-DA12-459F-A1B2-D635C78DA716}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAEB95A1-EC72-45C6-AC85-ED67A380D7A0}

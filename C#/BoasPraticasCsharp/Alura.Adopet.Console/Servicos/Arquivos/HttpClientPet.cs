@@ -2,7 +2,7 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace Alura.Adopet.Console.Servicos
+namespace Alura.Adopet.Console.Servicos.Arquivos
 {
     public class HttpClientPet
     {

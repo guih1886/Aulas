@@ -1,8 +1,8 @@
 ﻿using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Util;
+using Alura.Adopet.Console.Servicos;
 using Xunit;
 
-namespace Alura.Adopet.Testes
+namespace Alura.Adopet.Testes.Util
 {
     public class LeitorDeArquivoTest : IDisposable
     {
@@ -20,7 +20,7 @@ namespace Alura.Adopet.Testes
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivo(caminhoArquivo).RealizaLeitura()!;
+            var listaDePets = new LeitorDeArquivoCsv(caminhoArquivo).RealizaLeitura()!;
             //Assert
             Assert.NotNull(listaDePets);
             Assert.Single(listaDePets);
@@ -32,7 +32,7 @@ namespace Alura.Adopet.Testes
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivo("").RealizaLeitura();
+            var listaDePets = new LeitorDeArquivoCsv("").RealizaLeitura();
             //Assert
             Assert.Null(listaDePets);
         }
@@ -42,7 +42,7 @@ namespace Alura.Adopet.Testes
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivo(null).RealizaLeitura();
+            var listaDePets = new LeitorDeArquivoCsv(null).RealizaLeitura();
             //Assert
             Assert.Null(listaDePets);
         }

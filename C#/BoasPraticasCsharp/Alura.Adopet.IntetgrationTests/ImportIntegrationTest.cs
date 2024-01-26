@@ -1,6 +1,6 @@
 ﻿using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Servicos.Arquivos;
 using Alura.Adopet.Testes.Builder;
 using Xunit;
 

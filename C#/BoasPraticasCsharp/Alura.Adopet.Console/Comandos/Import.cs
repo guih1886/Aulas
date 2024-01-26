@@ -1,5 +1,7 @@
 ﻿using Alura.Adopet.Console.Modelos;
 using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Servicos.Abstracoes;
+using Alura.Adopet.Console.Servicos.Arquivos;
 using Alura.Adopet.Console.Util;
 using FluentResults;
 
@@ -10,9 +12,9 @@ namespace Alura.Adopet.Console.Comandos
     public class Import : IComando
     {
         private readonly HttpClientPet clientPet;
-        private readonly LeitorDeArquivo leitor;
+        private readonly ILeitorDeArquivos leitor;
 
-        public Import(HttpClientPet clientPet, LeitorDeArquivo leitor)
+        public Import(HttpClientPet clientPet, ILeitorDeArquivos leitor)
         {
             this.clientPet = clientPet;
             this.leitor = leitor;
@@ -27,7 +29,7 @@ namespace Alura.Adopet.Console.Comandos
         {
             try
             {
-                List<Pet> listaDePet = leitor.RealizaLeitura();
+                IEnumerable<Pet> listaDePet = leitor.RealizaLeitura();
                 foreach (var pet in listaDePet)
                 {
                     try

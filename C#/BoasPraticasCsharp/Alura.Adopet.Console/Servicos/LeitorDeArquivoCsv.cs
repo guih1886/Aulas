@@ -1,25 +1,25 @@
 ﻿using Alura.Adopet.Console.Modelos;
+using Alura.Adopet.Console.Servicos.Abstracoes;
 
-namespace Alura.Adopet.Console.Util
+namespace Alura.Adopet.Console.Servicos
 {
-    public class LeitorDeArquivo
+    public class LeitorDeArquivoCsv : ILeitorDeArquivos
     {
         private string caminhoArquivo;
-        private char v;
 
-        public LeitorDeArquivo(string? caminhoArquivo)
+        public LeitorDeArquivoCsv(string? caminhoArquivo)
         {
             this.caminhoArquivo = caminhoArquivo;
         }
 
-        public virtual List<Pet> RealizaLeitura()
+        public virtual IEnumerable<Pet> RealizaLeitura()
         {
             List<Pet> listaDePet = new List<Pet>();
-            if (string.IsNullOrEmpty(this.caminhoArquivo))
+            if (string.IsNullOrEmpty(caminhoArquivo))
             {
                 return null;
             }
-            using (StreamReader sr = new StreamReader(this.caminhoArquivo))
+            using (StreamReader sr = new StreamReader(caminhoArquivo))
             {
                 while (!sr.EndOfStream)
                 {

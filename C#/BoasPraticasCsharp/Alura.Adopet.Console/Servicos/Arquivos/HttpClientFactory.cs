@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System;
 
-namespace Alura.Adopet.Console.Servicos
+namespace Alura.Adopet.Console.Servicos.Arquivos
 {
     public class HttpClientFactory : IHttpClientFactory
     {

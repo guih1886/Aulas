@@ -2,7 +2,7 @@
 using System.Reflection;
 using Xunit;
 
-namespace Alura.Adopet.Testes
+namespace Alura.Adopet.Testes.Util
 {
     public class GeraDocumentacaoTest
     {

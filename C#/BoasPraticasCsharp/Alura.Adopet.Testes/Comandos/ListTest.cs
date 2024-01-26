@@ -1,6 +1,6 @@
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Servicos.Arquivos;
 using Alura.Adopet.Console.Util;
 using Alura.Adopet.Testes.Builder;
 using Moq;
@@ -8,7 +8,7 @@ using Moq.Protected;
 using System.Net.Sockets;
 using Xunit;
 
-namespace Alura.Adopet.Testes
+namespace Alura.Adopet.Testes.Comandos
 {
     public class ListTest
     {
@@ -25,7 +25,7 @@ namespace Alura.Adopet.Testes
             var retorno = await new List(httpClientMoq.Object).ExecutarAsync();
 
             //Assert
-            var resultado = (SucessWithPets) retorno.Successes[0];
+            var resultado = (SucessWithPets)retorno.Successes[0];
             Assert.Single(resultado.Data);
         }
 
