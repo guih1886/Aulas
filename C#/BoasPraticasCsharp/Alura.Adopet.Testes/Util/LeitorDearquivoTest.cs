@@ -1,5 +1,5 @@
 ﻿using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Servicos.Arquivos;
 using Xunit;
 
 namespace Alura.Adopet.Testes.Util
@@ -20,7 +20,7 @@ namespace Alura.Adopet.Testes.Util
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivoCsv(caminhoArquivo).RealizaLeitura()!;
+            var listaDePets = new PetDoCsv(caminhoArquivo).RealizaLeitura()!;
             //Assert
             Assert.NotNull(listaDePets);
             Assert.Single(listaDePets);
@@ -32,7 +32,7 @@ namespace Alura.Adopet.Testes.Util
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivoCsv("").RealizaLeitura();
+            var listaDePets = new PetDoCsv("").RealizaLeitura();
             //Assert
             Assert.Null(listaDePets);
         }
@@ -42,7 +42,7 @@ namespace Alura.Adopet.Testes.Util
         {
             //Arrange            
             //Act
-            var listaDePets = new LeitorDeArquivoCsv(null).RealizaLeitura();
+            var listaDePets = new PetDoCsv(null).RealizaLeitura();
             //Assert
             Assert.Null(listaDePets);
         }

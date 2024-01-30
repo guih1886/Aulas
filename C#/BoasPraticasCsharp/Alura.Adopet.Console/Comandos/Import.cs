@@ -1,8 +1,6 @@
 ﻿using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos;
 using Alura.Adopet.Console.Servicos.Abstracoes;
-using Alura.Adopet.Console.Servicos.Arquivos;
-using Alura.Adopet.Console.Util;
+using Alura.Adopet.Console.Results;
 using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
@@ -11,10 +9,10 @@ namespace Alura.Adopet.Console.Comandos
         documentacao: "adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
     public class Import : IComando
     {
-        private readonly HttpClientPet clientPet;
-        private readonly ILeitorDeArquivos leitor;
+        private readonly IApiService<Pet> clientPet;
+        private readonly ILeitorDeArquivos<Pet> leitor;
 
-        public Import(HttpClientPet clientPet, ILeitorDeArquivos leitor)
+        public Import(IApiService<Pet> clientPet, ILeitorDeArquivos<Pet> leitor)
         {
             this.clientPet = clientPet;
             this.leitor = leitor;
@@ -34,7 +32,7 @@ namespace Alura.Adopet.Console.Comandos
                 {
                     try
                     {
-                        await clientPet.CreatePetAsync(pet);
+                        await clientPet.CreateAsync(pet);
                     }
                     catch (Exception ex)
                     {

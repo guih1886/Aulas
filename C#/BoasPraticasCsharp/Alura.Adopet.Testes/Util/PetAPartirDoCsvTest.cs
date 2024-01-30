@@ -23,7 +23,7 @@ namespace Alura.Adopet.Testes.Util
             string? linha = null;
             //Act
             //Assert
-            Assert.Throws<ArgumentNullException>(() => linha.ConverteDoTexto());
+            Assert.Throws<ArgumentNullException>(() => linha!.ConverteDoTexto());
         }
 
         [Fact]

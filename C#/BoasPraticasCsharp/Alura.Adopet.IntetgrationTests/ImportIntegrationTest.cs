@@ -1,6 +1,6 @@
 ﻿using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos.Arquivos;
+using Alura.Adopet.Console.Servicos.Http;
 using Alura.Adopet.Testes.Builder;
 using Xunit;
 
@@ -15,14 +15,14 @@ namespace Alura.Adopet.Testes
             var listaDePet = new List<Pet>();
             var leitorDeArquivo = LeitorDeArquivosMockBuilder.CriaMock(listaDePet);
 
-            var httpClientPet = new HttpClientPet(new HttpClientFactory().CreateClient());
+            var httpClientPet = new PetService(new HttpClientFactory().CreateClient());
             var import = new Import(httpClientPet, leitorDeArquivo.Object);
 
             string[] args = { "import", "lista.csv" };
             //Act
             await import.ExecutarAsync();
             //Assert
-            var listaPet = await httpClientPet.ListPetsAsync();
+            var listaPet = await httpClientPet.ListAsync();
             Assert.NotNull(listaPet);
             Assert.NotEmpty(listaPet);
         }

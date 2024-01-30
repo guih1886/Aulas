@@ -1,7 +1,7 @@
 ﻿using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos.Arquivos;
-using Alura.Adopet.Console.Util;
+using Alura.Adopet.Console.Results;
+using Alura.Adopet.Console.Servicos.Http;
 using Alura.Adopet.Testes.Builder;
 using Moq;
 using Xunit;
@@ -17,14 +17,14 @@ namespace Alura.Adopet.Testes.Comandos
             var listaDePet = new List<Pet>();
             var leitorDeArquivo = LeitorDeArquivosMockBuilder.CriaMock(listaDePet);
 
-            var httpClientPet = new Mock<HttpClientPet>(MockBehavior.Default, It.IsAny<HttpClient>());
+            var httpClientPet = new Mock<PetService>(MockBehavior.Default, It.IsAny<HttpClient>());
             var import = new Import(httpClientPet.Object, leitorDeArquivo.Object);
             string[] args = { "import", "lista.csv" };
             //Act
             await import.ExecutarAsync();
 
             //Assert
-            httpClientPet.Verify(_ => _.CreatePetAsync(It.IsAny<Pet>()), Times.Never());
+            httpClientPet.Verify(_ => _.CreateAsync(It.IsAny<Pet>()), Times.Never());
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Alura.Adopet.Testes.Comandos
             var leitor = LeitorDeArquivosMockBuilder.CriaMock(listaPet);
             leitor.Setup(_ => _.RealizaLeitura()).Throws<FileNotFoundException>();
 
-            var httpClientPet = HttpClientPetMockBuilder.GetMock();
+            var httpClientPet = ApiServiceMockBuilder.GetMock();
             string[] args = { "import", "lista.csv" };
 
             var import = new Import(httpClientPet.Object, leitor.Object);
@@ -56,7 +56,7 @@ namespace Alura.Adopet.Testes.Comandos
             listaPet.Add(pet);
 
             var leitorArquivo = LeitorDeArquivosMockBuilder.CriaMock(listaPet);
-            var httpClientPet = HttpClientPetMockBuilder.GetMock();
+            var httpClientPet = ApiServiceMockBuilder.GetMock();
 
             var import = new Import(clientPet: httpClientPet.Object, leitor: leitorArquivo.Object);
             string[] args = { "import", "lista.csv" };

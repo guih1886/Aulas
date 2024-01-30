@@ -12,7 +12,7 @@ namespace Alura.Adopet.Testes.Util
             //Arrange
             var assemblyComODocComando = Assembly.GetAssembly(typeof(DocComando));
             //Act
-            Dictionary<string, DocComando> dicionario = DocumentacaoDoSistema.ToDictionary(assemblyComODocComando);
+            Dictionary<string, DocComando> dicionario = DocumentacaoDoSistema.ToDictionary(assemblyComODocComando!);
             //Assert
             Assert.NotNull(dicionario);
             Assert.NotEmpty(dicionario);

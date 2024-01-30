@@ -2,7 +2,7 @@
 using Alura.Adopet.Console.UI;
 using FluentResults;
 
-IComando comandosDoSistema = ComandoFactory.CriarComando(args);
+IComando? comandosDoSistema = ComandoFactory.CriarComando(args);
 if (comandosDoSistema is not null)
 {
     var resultado = await comandosDoSistema.ExecutarAsync();

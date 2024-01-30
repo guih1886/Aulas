@@ -5,7 +5,7 @@ namespace Alura.Adopet.Testes
 {
     public class DocumentacaoDoSistema
     {
-        public static Dictionary<string, DocComando> ToDictionary(Assembly? assemblyComODocComando)
+        public static Dictionary<string, DocComando> ToDictionary(Assembly assemblyComODocComando)
         {
             return assemblyComODocComando.GetTypes()
                 .Where(t => t.GetCustomAttributes<DocComando>().Any())

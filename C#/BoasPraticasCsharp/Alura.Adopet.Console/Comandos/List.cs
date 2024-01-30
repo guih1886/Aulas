@@ -1,5 +1,7 @@
-﻿using Alura.Adopet.Console.Servicos.Arquivos;
-using Alura.Adopet.Console.Util;
+﻿using Alura.Adopet.Console.Modelos;
+using Alura.Adopet.Console.Servicos.Abstracoes;
+using Alura.Adopet.Console.Servicos.Arquivos;
+using Alura.Adopet.Console.Results;
 using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos
@@ -9,9 +11,9 @@ namespace Alura.Adopet.Console.Comandos
                       "comando que lista os pets no arquivo.")]
     public class List : IComando 
     {
-        private readonly HttpClientPet clientPet;
+        private readonly IApiService<Pet> clientPet;
 
-        public List(HttpClientPet clientPet)
+        public List(IApiService<Pet> clientPet)
         {
             this.clientPet = clientPet;
         }
@@ -23,8 +25,8 @@ namespace Alura.Adopet.Console.Comandos
 
         private async Task<Result> ListarPetsAsync()
         {
-            var pets = await clientPet.ListPetsAsync();
-            return Result.Ok().WithSuccess(new SucessWithPets(pets, "Listagem executada com sucesso."));
+            IEnumerable<Pet>? pets = await clientPet.ListAsync();
+            return Result.Ok().WithSuccess(new SucessWithPets(pets!, "Listagem executada com sucesso."));
         }
     }
 }

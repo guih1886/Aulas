@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 
-namespace Alura.Adopet.Console.Util
+namespace Alura.Adopet.Console.Results
 {
     public class SucessWithDocs : Success
     {

@@ -1,7 +1,7 @@
 using Alura.Adopet.Console.Comandos;
 using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos.Arquivos;
-using Alura.Adopet.Console.Util;
+using Alura.Adopet.Console.Results;
+using Alura.Adopet.Console.Servicos.Http;
 using Alura.Adopet.Testes.Builder;
 using Moq;
 using Moq.Protected;
@@ -19,7 +19,7 @@ namespace Alura.Adopet.Testes.Comandos
             List<Pet> listaDePet = new List<Pet>();
             Pet pet = new Pet(new Guid(), "Adolfo", TipoPet.Gato);
             listaDePet.Add(pet);
-            var httpClientMoq = HttpClientPetMockBuilder.GetMockList(listaDePet);
+            var httpClientMoq = ApiServiceMockBuilder.GetMockList(listaDePet);
 
             //Act
             var retorno = await new List(httpClientMoq.Object).ExecutarAsync();
@@ -39,10 +39,10 @@ namespace Alura.Adopet.Testes.Comandos
                 ItExpr.IsAny<CancellationToken>())
                 .ThrowsAsync(new SocketException());
             var httpClientMoq = new Mock<HttpClient>(MockBehavior.Default);
-            var clientePet = new HttpClientPet(httpClientMoq.Object);
+            var clientePet = new PetService(httpClientMoq.Object);
             //Act
             //Assert
-            await Assert.ThrowsAnyAsync<Exception>(() => clientePet.ListPetsAsync());
+            await Assert.ThrowsAnyAsync<Exception>(() => clientePet.ListAsync());
         }
     }
 }
