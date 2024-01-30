@@ -16,7 +16,7 @@ namespace Alura.Adopet.Testes.Util
             //Assert
             Assert.NotNull(dicionario);
             Assert.NotEmpty(dicionario);
-            Assert.Equal(4, dicionario.Count);
+            Assert.Equal(5, dicionario.Count);
         }
     }
 }

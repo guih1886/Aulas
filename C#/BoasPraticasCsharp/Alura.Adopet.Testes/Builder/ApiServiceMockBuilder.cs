@@ -1,24 +1,20 @@
-﻿using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Servicos.Http;
+﻿using Alura.Adopet.Console.Servicos.Abstracoes;
 using Moq;
 
-namespace Alura.Adopet.Testes.Builder
-{
-    public static class ApiServiceMockBuilder
-    {
-        public static Mock<PetService> GetMock()
-        {
-            var httpClientPet = new Mock<PetService>(MockBehavior.Default,
-                It.IsAny<HttpClient>());
-            return httpClientPet;
-        }
+namespace Alura.Adopet.Testes.Builder;
 
-        public static Mock<PetService> GetMockList(List<Pet> lista)
-        {
-            var httpClientPet = new Mock<PetService>(MockBehavior.Default,
-                It.IsAny<HttpClient>());
-            httpClientPet.Setup(_ => _.ListAsync()).ReturnsAsync(lista);
-            return httpClientPet;
-        }
+public static class ApiServiceMockBuilder
+{
+    public static Mock<IApiService<T>> GetMock<T>()
+    {
+        return new Mock<IApiService<T>>(MockBehavior.Default);
     }
+
+    public static Mock<IApiService<T>> GetMockList<T>(List<T> lista)
+    {
+        var service = new Mock<IApiService<T>>(MockBehavior.Default);
+        service.Setup(_ => _.ListAsync()).ReturnsAsync(lista);
+        return service;
+    }
+
 }

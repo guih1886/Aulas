@@ -5,6 +5,8 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos;
 
+[DocComando(instrucao: "import-clientes",
+        documentacao: "adopet import-clientes <arquivo> comando que realiza a importação do arquivo de clientes.")]
 public class ImportClientes : IComando
 {
     private IApiService<Cliente> apiService;
@@ -13,7 +15,7 @@ public class ImportClientes : IComando
     public ImportClientes(IApiService<Cliente> apiService, ILeitorDeArquivos<Cliente> leitor)
     {
         this.apiService = apiService;
-        this.leitorDeArquivo = leitor;
+        leitorDeArquivo = leitor;
     }
 
     public async Task<Result> ExecutarAsync()

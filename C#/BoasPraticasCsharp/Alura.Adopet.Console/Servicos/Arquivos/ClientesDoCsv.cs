@@ -15,7 +15,8 @@ namespace Alura.Adopet.Console.Servicos.Arquivos
             return new Cliente(
                 id: Guid.Parse(propriedades[0]),
                 nome: propriedades[1],
-                email: propriedades[2]
+                email: propriedades[2],
+                Cpf: propriedades[3]
                 );
         }
     }
