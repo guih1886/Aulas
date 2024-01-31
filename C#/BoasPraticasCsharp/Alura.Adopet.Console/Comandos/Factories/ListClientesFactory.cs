@@ -1,4 +1,5 @@
 ﻿using Alura.Adopet.Console.Servicos.Http;
+using Alura.Adopet.Console.Settings;
 
 namespace Alura.Adopet.Console.Comandos.Factories
 {
@@ -11,7 +12,7 @@ namespace Alura.Adopet.Console.Comandos.Factories
 
         public IComando? CriarComando(string[] args)
         {
-            var clienteService = new ClienteService(new HttpClientFactory().CreateClient());
+            var clienteService = new ClienteService(new HttpClientFactory(Configurations.ApiSetting.Uri).CreateClient());
             return new ListClientes(clienteService);
         }
     }

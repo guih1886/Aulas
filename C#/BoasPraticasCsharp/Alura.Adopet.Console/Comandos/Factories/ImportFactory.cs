@@ -2,6 +2,7 @@
 using Alura.Adopet.Console.Servicos.Abstracoes;
 using Alura.Adopet.Console.Servicos.Arquivos;
 using Alura.Adopet.Console.Servicos.Http;
+using Alura.Adopet.Console.Settings;
 
 namespace Alura.Adopet.Console.Comandos.Factories
 {
@@ -14,7 +15,7 @@ namespace Alura.Adopet.Console.Comandos.Factories
 
         public IComando? CriarComando(string[] args)
         {
-            var httpClientPet = new PetService(new HttpClientFactory().CreateClient());
+            var httpClientPet = new PetService(new HttpClientFactory(Configurations.ApiSetting.Uri).CreateClient());
             ILeitorDeArquivos<Pet>? leitorDeArquivos = LeitorDeArquivosFactory.CreatePetFrom(args[1]);
             if (leitorDeArquivos is null) return null;
             return new Import(httpClientPet, leitorDeArquivos);
