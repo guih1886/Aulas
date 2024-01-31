@@ -25,7 +25,7 @@ namespace Alura.Adopet.Testes.Comandos
             var retorno = await new List(httpClientMoq.Object).ExecutarAsync();
 
             //Assert
-            var resultado = (SucessWithPets)retorno.Successes[0];
+            var resultado = (SuccessWithPets)retorno.Successes[0];
             Assert.Single(resultado.Data);
         }
 

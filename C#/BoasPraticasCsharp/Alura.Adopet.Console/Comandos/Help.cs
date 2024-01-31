@@ -22,7 +22,7 @@ namespace Alura.Adopet.Console.Comandos
         public Task<Result> ExecutarAsync()
         {
             var resultado = GerarDocumentacao();
-            return Task.FromResult(Result.Ok().WithSuccess(new SucessWithDocs(resultado)));
+            return Task.FromResult(Result.Ok().WithSuccess(new SuccessWithDocs(resultado)));
         }
 
         private IEnumerable<string> GerarDocumentacao()

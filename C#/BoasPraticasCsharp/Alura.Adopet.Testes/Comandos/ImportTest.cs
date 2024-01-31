@@ -64,7 +64,7 @@ namespace Alura.Adopet.Testes.Comandos
             var resultado = import.ExecutarAsync();
             //Assert
             Assert.True(resultado.IsCompletedSuccessfully);
-            var sucesso = (SucessWithPets)resultado.Result.Successes[0];
+            var sucesso = (SuccessWithPets)resultado.Result.Successes[0];
             Assert.Equal("Adalberto", sucesso.Data.First().Nome);
         }
     }

@@ -19,7 +19,7 @@ namespace Alura.Adopet.Testes.Comandos
             leitor.Setup(_ => _.RealizaLeitura());
             //Act
             var resultado = await new Show(leitor.Object).ExecutarAsync();
-            var sucesso = (SucessWithPets)resultado.Successes[0];
+            var sucesso = (SuccessWithPets)resultado.Successes[0];
             //Assert
             Assert.NotNull(resultado);
             Assert.Equal("Leitura realizada com sucesso.", sucesso.Mensagem);

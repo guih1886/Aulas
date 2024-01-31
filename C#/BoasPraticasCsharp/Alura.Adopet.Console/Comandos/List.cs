@@ -26,7 +26,7 @@ namespace Alura.Adopet.Console.Comandos
         private async Task<Result> ListarPetsAsync()
         {
             IEnumerable<Pet>? pets = await clientPet.ListAsync();
-            return Result.Ok().WithSuccess(new SucessWithPets(pets!, "Listagem executada com sucesso."));
+            return Result.Ok().WithSuccess(new SuccessWithPets(pets!, "Listagem executada com sucesso."));
         }
     }
 }

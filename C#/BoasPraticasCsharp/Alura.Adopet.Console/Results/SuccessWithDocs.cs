@@ -2,11 +2,11 @@
 
 namespace Alura.Adopet.Console.Results
 {
-    public class SucessWithDocs : Success
+    public class SuccessWithDocs : Success
     {
         public IEnumerable<string> Documentacao { get; }
 
-        public SucessWithDocs(IEnumerable<string> documentacao)
+        public SuccessWithDocs(IEnumerable<string> documentacao)
         {
             Documentacao = documentacao;
         }

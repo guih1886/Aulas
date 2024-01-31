@@ -32,10 +32,10 @@ namespace Alura.Adopet.Console.UI
             var sucesso = resultado.Successes.First();
             switch (sucesso)
             {
-                case SucessWithPets s:
+                case SuccessWithPets s:
                     ExibirPets(s);
                     break;
-                case SucessWithDocs d:
+                case SuccessWithDocs d:
                     ExibeDocumentacao(d);
                     break;
                 case SuccessWithClientes c:
@@ -53,7 +53,7 @@ namespace Alura.Adopet.Console.UI
             System.Console.WriteLine(clientes.Message);
         }
 
-        private static void ExibeDocumentacao(SucessWithDocs documentacaoComando)
+        private static void ExibeDocumentacao(SuccessWithDocs documentacaoComando)
         {
             foreach (var doc in documentacaoComando.Documentacao)
             {
@@ -62,7 +62,7 @@ namespace Alura.Adopet.Console.UI
 
         }
 
-        private static void ExibirPets(SucessWithPets sucesso)
+        private static void ExibirPets(SuccessWithPets sucesso)
         {
             foreach (var pet in sucesso.Data)
             {

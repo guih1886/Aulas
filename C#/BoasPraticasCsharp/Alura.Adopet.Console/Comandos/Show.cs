@@ -24,7 +24,7 @@ namespace Alura.Adopet.Console.Comandos
         private Task<Result> MostrarPetsASerImportado()
         {
             var listaDePets = leitor.RealizaLeitura();
-            return Task.FromResult(Result.Ok().WithSuccess(new SucessWithPets(listaDePets, "Leitura realizada com sucesso.")));
+            return Task.FromResult(Result.Ok().WithSuccess(new SuccessWithPets(listaDePets, "Leitura realizada com sucesso.")));
         }
     }
 }
