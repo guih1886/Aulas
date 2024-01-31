@@ -1,4 +1,5 @@
 ﻿using Alura.Adopet.Console.Comandos;
+using Alura.Adopet.Console.Comandos.Factories;
 using Xunit;
 
 namespace Alura.Adopet.Testes.Comandos
@@ -57,6 +58,22 @@ namespace Alura.Adopet.Testes.Comandos
             var comando = ComandoFactory.CriarComando(args);
             //Assert
             Assert.IsType<List>(comando);
+        }
+
+        [Theory]
+        [InlineData("import")]
+        [InlineData("import-clientes")]
+        [InlineData("show")]
+        [InlineData("list")]
+        [InlineData("help")]
+        public void DadoParametroDeComandoDeveRetornarTipoIComando(string instrucao)
+        {
+            //Arrange
+            string[] args = new[] { instrucao, "lista.csv" };
+            //Act
+            var resultado = ComandoFactory.CriarComando(args);
+            //Assert
+            Assert.IsAssignableFrom<IComando>(resultado);
         }
     }
 }
