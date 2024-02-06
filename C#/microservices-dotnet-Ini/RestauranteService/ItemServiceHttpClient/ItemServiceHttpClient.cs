@@ -22,7 +22,7 @@ namespace RestauranteService.ItemServiceHttpClient
                     Encoding.UTF8,
                     "application/json"
                 );
-            await client.PostAsync("http://localhost:5000/api/item/Restaurante", conteudoHttp);
+            await client.PostAsync(_configuration["ItemService"], conteudoHttp);
         }
     }
 }
