@@ -48,6 +48,14 @@ public class RestauranteController : ControllerBase
         return NotFound();
     }
 
+    [HttpDelete("{id}", Name = "DeleteRestauranteById")]
+    public ActionResult<RestauranteReadDto> DeleteRestauranteById(int id)
+    {
+        Restaurante restaurante = _repository.GetRestauranteById(id);
+        _repository.DeleteRestauranteById(restaurante);
+        return NoContent();
+    }
+
     [HttpPost]
     public async Task<ActionResult<RestauranteReadDto>> CreateRestaurante(RestauranteCreateDto restauranteCreateDto)
     {
@@ -60,7 +68,6 @@ public class RestauranteController : ControllerBase
         //_itemServiceHttpClient.EnviaRestauranteParaItemService(restauranteReadDto);
 
         _rabbitMqClient.PublicaRestaurante(restauranteReadDto);
-
 
         return CreatedAtRoute(nameof(GetRestauranteById), new { restauranteReadDto.Id }, restauranteReadDto);
     }

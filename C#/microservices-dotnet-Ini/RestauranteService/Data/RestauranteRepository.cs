@@ -24,6 +24,12 @@ namespace RestauranteService.Data
             _context.Restaurantes.Add(restaurante);
         }
 
+        public void DeleteRestauranteById(Restaurante restaurante)
+        {
+            _context.Restaurantes.Remove(restaurante);
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Restaurante> GetAllRestaurantes()
         {
             return _context.Restaurantes.ToList();

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestauranteService", "RestauranteService\RestauranteService.csproj", "{A099A8F2-0C69-47EC-835E-C0F2C1990877}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemService", "ItemService\ItemService.csproj", "{1F7C0D9E-8348-4625-A6AF-9C5A15C3C180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemService", "..\..\..\..\..\Downloads\ItemService\ItemService.csproj", "{33E4D939-E090-427A-9591-20AC250B46BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A099A8F2-0C69-47EC-835E-C0F2C1990877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A099A8F2-0C69-47EC-835E-C0F2C1990877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A099A8F2-0C69-47EC-835E-C0F2C1990877}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F7C0D9E-8348-4625-A6AF-9C5A15C3C180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F7C0D9E-8348-4625-A6AF-9C5A15C3C180}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F7C0D9E-8348-4625-A6AF-9C5A15C3C180}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F7C0D9E-8348-4625-A6AF-9C5A15C3C180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E4D939-E090-427A-9591-20AC250B46BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E4D939-E090-427A-9591-20AC250B46BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E4D939-E090-427A-9591-20AC250B46BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E4D939-E090-427A-9591-20AC250B46BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
