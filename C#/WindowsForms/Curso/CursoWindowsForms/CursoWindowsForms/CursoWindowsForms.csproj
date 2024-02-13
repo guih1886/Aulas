@@ -50,33 +50,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChecaForcaSenha.cs" />
-    <Compile Include="Form_ValidaSenha.cs">
+    <Compile Include="Forms\Form_Mascara.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ValidaSenha.Designer.cs">
+    <Compile Include="Forms\Form_Mascara.Designer.cs">
+      <DependentUpon>Form_Mascara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_ValidaCPF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_ValidaCPF.Designer.cs">
+      <DependentUpon>Form_ValidaCPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_ValidaSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_ValidaSenha.Designer.cs">
       <DependentUpon>Form_ValidaSenha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_DesmostracaoKey.cs">
+    <Compile Include="Forms\Form_DesmostracaoKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_DesmostracaoKey.Designer.cs">
+    <Compile Include="Forms\Form_DesmostracaoKey.Designer.cs">
       <DependentUpon>Form_DesmostracaoKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_HelloWorld.cs">
+    <Compile Include="Forms\Form_ValidaCPF2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_HelloWorld.Designer.cs">
-      <DependentUpon>Form_HelloWorld.cs</DependentUpon>
+    <Compile Include="Forms\Form_ValidaCPF2.Designer.cs">
+      <DependentUpon>Form_ValidaCPF2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Inicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Inicial.Designer.cs">
+      <DependentUpon>Form_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_HelloWorld.resx">
-      <DependentUpon>Form_HelloWorld.cs</DependentUpon>
+    <Compile Include="ValidaCPF.cs" />
+    <EmbeddedResource Include="Form_Inicial.resx">
+      <DependentUpon>Form_Inicial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_DesmostracaoKey.resx">
+    <EmbeddedResource Include="Forms\Form_DesmostracaoKey.resx">
       <DependentUpon>Form_DesmostracaoKey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ValidaSenha.resx">
+    <EmbeddedResource Include="Forms\Form_Mascara.dje-NE.resx">
+      <DependentUpon>Form_Mascara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Mascara.resx">
+      <DependentUpon>Form_Mascara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_ValidaCPF.resx">
+      <DependentUpon>Form_ValidaCPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_ValidaSenha.resx">
       <DependentUpon>Form_ValidaSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

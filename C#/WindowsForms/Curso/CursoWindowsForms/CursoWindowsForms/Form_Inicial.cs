@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace CursoWindowsForms
 {
-    public partial class Form_HelloWorld : Form
+    public partial class Form_Inicial : Form
     {
-        public Form_HelloWorld()
+        public Form_Inicial()
         {
             InitializeComponent();
         }
@@ -33,6 +33,19 @@ namespace CursoWindowsForms
         {
             Form form = new Form_ValidaSenha();
             form.Show();
+        }
+
+        private void Btn_Mascara_Click(object sender, EventArgs e)
+        {
+            Form form = new Form_Mascara();
+            form.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form form = new Form_ValidaCPF();
+            form.Show();
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CursoWindowsForms
 {
-    partial class Form_HelloWorld
+    partial class Form_Inicial
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -34,6 +34,8 @@
             this.Txt_ConteudoLabel = new System.Windows.Forms.TextBox();
             this.Btn_AbrirKey = new System.Windows.Forms.Button();
             this.Btn_Senha = new System.Windows.Forms.Button();
+            this.Btn_Mascara = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_Titulo
@@ -95,12 +97,34 @@
             this.Btn_Senha.UseVisualStyleBackColor = true;
             this.Btn_Senha.Click += new System.EventHandler(this.Btn_Senha_Click);
             // 
-            // Form_HelloWorld
+            // Btn_Mascara
+            // 
+            this.Btn_Mascara.Location = new System.Drawing.Point(13, 199);
+            this.Btn_Mascara.Name = "Btn_Mascara";
+            this.Btn_Mascara.Size = new System.Drawing.Size(209, 23);
+            this.Btn_Mascara.TabIndex = 6;
+            this.Btn_Mascara.Text = "Mascara";
+            this.Btn_Mascara.UseVisualStyleBackColor = true;
+            this.Btn_Mascara.Click += new System.EventHandler(this.Btn_Mascara_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(209, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Validador CPF";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Form_Inicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_Mascara);
             this.Controls.Add(this.Btn_Senha);
             this.Controls.Add(this.Btn_AbrirKey);
             this.Controls.Add(this.Txt_ConteudoLabel);
@@ -109,7 +133,7 @@
             this.Controls.Add(this.lbl_Titulo);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form_HelloWorld";
+            this.Name = "Form_Inicial";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hello World";
@@ -126,6 +150,8 @@
         private System.Windows.Forms.TextBox Txt_ConteudoLabel;
         private System.Windows.Forms.Button Btn_AbrirKey;
         private System.Windows.Forms.Button Btn_Senha;
+        private System.Windows.Forms.Button Btn_Mascara;
+        private System.Windows.Forms.Button button1;
     }
 }
 
