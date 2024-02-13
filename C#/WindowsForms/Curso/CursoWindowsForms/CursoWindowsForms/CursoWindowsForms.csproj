@@ -89,6 +89,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidaCPF.cs" />
+    <EmbeddedResource Include="Forms\Form_ValidaCPF2.resx">
+      <DependentUpon>Form_ValidaCPF2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Inicial.resx">
       <DependentUpon>Form_Inicial.cs</DependentUpon>
     </EmbeddedResource>

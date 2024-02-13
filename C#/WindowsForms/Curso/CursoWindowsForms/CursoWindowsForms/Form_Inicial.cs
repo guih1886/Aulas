@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsForms.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms
@@ -43,7 +44,7 @@ namespace CursoWindowsForms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form form = new Form_ValidaCPF();
+            Form form = new Form_ValidaCPF2();
             form.Show();
 
         }
