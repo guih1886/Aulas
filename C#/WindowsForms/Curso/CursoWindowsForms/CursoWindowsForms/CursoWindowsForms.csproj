@@ -58,6 +58,12 @@
     <Compile Include="Forms\Form_Mascara.Designer.cs">
       <DependentUpon>Form_Mascara.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Sobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Sobre.Designer.cs">
+      <DependentUpon>Form_Sobre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_ValidaCPF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Form_Sobre.resx">
+      <DependentUpon>Form_Sobre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_ValidaCPF2.resx">
       <DependentUpon>Form_ValidaCPF2.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +169,8 @@
     <Content Include="Images\Frm_ValidaCPF2.png" />
     <Content Include="Images\Frm_ValidaSenha.ico" />
     <Content Include="Images\Frm_ValidaSenha.png" />
+    <Content Include="Images\linkedin.png" />
+    <Content Include="Images\site.png" />
     <None Include="Images\senha.png" />
   </ItemGroup>
   <ItemGroup>
