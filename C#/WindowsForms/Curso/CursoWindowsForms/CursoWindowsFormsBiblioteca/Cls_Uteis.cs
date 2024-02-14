@@ -92,7 +92,7 @@ namespace CursoWindowsFormsBiblioteca
 
         private int GetPontoPorRepeticao(string senha)
         {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"(\w)*.*\1");
+            Regex regex = new Regex(@"(\w)*.*\1");
             bool repete = regex.IsMatch(senha);
             if (repete)
             {

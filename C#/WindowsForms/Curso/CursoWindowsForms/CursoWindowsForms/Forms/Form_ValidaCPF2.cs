@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using CursoWindowsFormsBiblioteca;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms.Forms
@@ -31,7 +32,7 @@ namespace CursoWindowsForms.Forms
             {
                 Msk_CPF.Focus();
                 bool validaCPF = false;
-                validaCPF = ValidaCPF.Validar(Msk_CPF.Text);
+                validaCPF = Cls_Uteis.Validar(Msk_CPF.Text);
                 if (validaCPF)
                 {
                     MessageBox.Show("CPF válido.", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);

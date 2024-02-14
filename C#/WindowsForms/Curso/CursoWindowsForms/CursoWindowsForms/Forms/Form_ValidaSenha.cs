@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsFormsBiblioteca;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,11 +7,11 @@ namespace CursoWindowsForms
 {
     public partial class Form_ValidaSenha : Form
     {
-        public ChecaForcaSenha Senha { get; set; }
+        public Cls_Uteis Senha { get; set; }
         public Form_ValidaSenha()
         {
             InitializeComponent();
-            Senha = new ChecaForcaSenha();
+            Senha = new Cls_Uteis();
         }
 
         private void Btn_Reset_Click(object sender, EventArgs e)

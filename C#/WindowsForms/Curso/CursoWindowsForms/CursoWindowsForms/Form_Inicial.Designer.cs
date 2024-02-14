@@ -80,13 +80,13 @@
             // 
             // Btn_Senha
             // 
-            this.Btn_Senha.Image = global::CursoWindowsForms.Properties.Resources.senha__1_;
+            this.Btn_Senha.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Senha.Image")));
             this.Btn_Senha.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Senha.Location = new System.Drawing.Point(228, 112);
             this.Btn_Senha.Name = "Btn_Senha";
             this.Btn_Senha.Size = new System.Drawing.Size(179, 68);
             this.Btn_Senha.TabIndex = 5;
-            this.Btn_Senha.Text = "Verificador De Senha";
+            this.Btn_Senha.Text = "Verificador De Senha      ";
             this.Btn_Senha.UseVisualStyleBackColor = true;
             this.Btn_Senha.Click += new System.EventHandler(this.Btn_Senha_Click);
             // 
