@@ -35,6 +35,9 @@
   <PropertyGroup>
     <StartupObject>CursoWindowsForms.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Frm_Principal.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -135,6 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\senha %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frm_Principal.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
