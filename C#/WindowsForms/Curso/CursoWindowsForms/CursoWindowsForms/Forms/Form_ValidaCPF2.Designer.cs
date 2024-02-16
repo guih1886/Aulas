@@ -44,6 +44,7 @@
             // 
             // Btn_Reset
             // 
+            this.Btn_Reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Reset.Location = new System.Drawing.Point(245, 42);
             this.Btn_Reset.Name = "Btn_Reset";
             this.Btn_Reset.Size = new System.Drawing.Size(111, 23);
@@ -54,6 +55,7 @@
             // 
             // Btn_Valida
             // 
+            this.Btn_Valida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Valida.Location = new System.Drawing.Point(245, 71);
             this.Btn_Valida.Name = "Btn_Valida";
             this.Btn_Valida.Size = new System.Drawing.Size(111, 23);
@@ -66,10 +68,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 154);
+            this.ClientSize = new System.Drawing.Size(368, 142);
             this.Controls.Add(this.Btn_Valida);
             this.Controls.Add(this.Btn_Reset);
             this.Controls.Add(this.Msk_CPF);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form_ValidaCPF2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validação de CPF";

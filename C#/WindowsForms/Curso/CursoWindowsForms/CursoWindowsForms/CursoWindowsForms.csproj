@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Form_DesmonstracaoKey_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_DesmonstracaoKey_UC.Designer.cs">
+      <DependentUpon>Form_DesmonstracaoKey_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Mascara.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,8 +106,17 @@
     <Compile Include="Form_Menu.Designer.cs">
       <DependentUpon>Form_Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Menu_UC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Menu_UC.Designer.cs">
+      <DependentUpon>Form_Menu_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Form_DesmonstracaoKey_UC.resx">
+      <DependentUpon>Form_DesmonstracaoKey_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Sobre.resx">
       <DependentUpon>Form_Sobre.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Menu.resx">
       <DependentUpon>Form_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Menu_UC.resx">
+      <DependentUpon>Form_Menu_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

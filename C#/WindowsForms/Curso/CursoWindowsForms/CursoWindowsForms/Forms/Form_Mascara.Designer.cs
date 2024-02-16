@@ -120,6 +120,9 @@
             this.Controls.Add(this.Lbl_MmascaraAtiva);
             this.Controls.Add(this.Lbl_Conteudo);
             this.Controls.Add(this.Msk_TextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Mascara";
             this.ResumeLayout(false);
             this.PerformLayout();
