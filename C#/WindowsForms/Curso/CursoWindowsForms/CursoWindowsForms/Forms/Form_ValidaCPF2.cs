@@ -26,8 +26,8 @@ namespace CursoWindowsForms.Forms
                 Msk_CPF.Focus();
                 return;
             }
-            
-            var result = MessageBox.Show("Deseja validar o cpf?", "Confirmação de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            DialogResult result = new Frm_Questao("question", "Confirmação de Validação", "Deseja validar o CPF?").ShowDialog();
             if (result == DialogResult.Yes)
             {
                 Msk_CPF.Focus();

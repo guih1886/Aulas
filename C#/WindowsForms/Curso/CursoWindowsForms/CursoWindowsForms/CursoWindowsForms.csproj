@@ -52,11 +52,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Form_DesmonstracaoKey_UC.cs">
+    <Compile Include="Forms\Forms_UserControl\Form_DesmonstracaoKey_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Form_DesmonstracaoKey_UC.Designer.cs">
+    <Compile Include="Forms\Forms_UserControl\Form_DesmonstracaoKey_UC.Designer.cs">
       <DependentUpon>Form_DesmonstracaoKey_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_Mascara_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_Mascara_UC.Designer.cs">
+      <DependentUpon>Form_Mascara_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaSenha_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaSenha_UC.Designer.cs">
+      <DependentUpon>Form_ValidaSenha_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaCPF2_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaCPF2_UC.Designer.cs">
+      <DependentUpon>Form_ValidaCPF2_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaCPF_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_ValidaCPF_UC.Designer.cs">
+      <DependentUpon>Form_ValidaCPF_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Frm_ArquivoImagem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Frm_ArquivoImagem.Designer.cs">
+      <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_Mascara.cs">
       <SubType>Form</SubType>
@@ -94,6 +124,12 @@
     <Compile Include="Forms\Form_ValidaCPF2.Designer.cs">
       <DependentUpon>Form_ValidaCPF2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_Questao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Questao.Designer.cs">
+      <DependentUpon>Frm_Questao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,14 +150,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Form_DesmonstracaoKey_UC.resx">
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_DesmonstracaoKey_UC.resx">
       <DependentUpon>Form_DesmonstracaoKey_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_Mascara_UC.resx">
+      <DependentUpon>Form_Mascara_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_ValidaSenha_UC.resx">
+      <DependentUpon>Form_ValidaSenha_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_ValidaCPF2_UC.resx">
+      <DependentUpon>Form_ValidaCPF2_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_ValidaCPF_UC.resx">
+      <DependentUpon>Form_ValidaCPF_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_UserControl\Frm_ArquivoImagem.resx">
+      <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Sobre.resx">
       <DependentUpon>Form_Sobre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_ValidaCPF2.resx">
       <DependentUpon>Form_ValidaCPF2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Questao.resx">
+      <DependentUpon>Frm_Questao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Inicial.resx">
       <DependentUpon>Form_Inicial.cs</DependentUpon>
@@ -188,6 +242,7 @@
     <Content Include="Images\Frm_ValidaSenha.ico" />
     <Content Include="Images\Frm_ValidaSenha.png" />
     <Content Include="Images\linkedin.png" />
+    <Content Include="Images\question.png" />
     <Content Include="Images\site.png" />
     <None Include="Images\senha.png" />
   </ItemGroup>
