@@ -39,6 +39,8 @@
             this.validaCPF2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validaSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.açõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirImagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,8 +49,6 @@
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tuc_Aplicacao = new System.Windows.Forms.TabControl();
             this.Iml_Imagens = new System.Windows.Forms.ImageList(this.components);
-            this.açõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirImagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,7 @@
             // 
             // novoToolStripMenuItem1
             // 
+            this.novoToolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.novoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.demonstraçãoKeyToolStripMenuItem,
             this.máscaraToolStripMenuItem,
@@ -83,7 +84,7 @@
             this.validaCPF2ToolStripMenuItem,
             this.validaSenhaToolStripMenuItem});
             this.novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
-            this.novoToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.novoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem1.Text = "Novo";
             // 
             // demonstraçãoKeyToolStripMenuItem
@@ -133,9 +134,24 @@
             // sairToolStripMenuItem1
             // 
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem1.Text = "Sair";
             this.sairToolStripMenuItem1.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
+            // 
+            // açõesToolStripMenuItem
+            // 
+            this.açõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirImagemToolStripMenuItem});
+            this.açõesToolStripMenuItem.Name = "açõesToolStripMenuItem";
+            this.açõesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.açõesToolStripMenuItem.Text = "Ações";
+            // 
+            // abrirImagemToolStripMenuItem
+            // 
+            this.abrirImagemToolStripMenuItem.Name = "abrirImagemToolStripMenuItem";
+            this.abrirImagemToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.abrirImagemToolStripMenuItem.Text = "Abrir Imagem";
+            this.abrirImagemToolStripMenuItem.Click += new System.EventHandler(this.abrirImagemToolStripMenuItem_Click);
             // 
             // windowsToolStripMenuItem
             // 
@@ -215,21 +231,6 @@
             this.Iml_Imagens.Images.SetKeyName(13, "linkedin.png");
             this.Iml_Imagens.Images.SetKeyName(14, "senha.png");
             this.Iml_Imagens.Images.SetKeyName(15, "site.png");
-            // 
-            // açõesToolStripMenuItem
-            // 
-            this.açõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirImagemToolStripMenuItem});
-            this.açõesToolStripMenuItem.Name = "açõesToolStripMenuItem";
-            this.açõesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.açõesToolStripMenuItem.Text = "Ações";
-            // 
-            // abrirImagemToolStripMenuItem
-            // 
-            this.abrirImagemToolStripMenuItem.Name = "abrirImagemToolStripMenuItem";
-            this.abrirImagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.abrirImagemToolStripMenuItem.Text = "Abrir Imagem";
-            this.abrirImagemToolStripMenuItem.Click += new System.EventHandler(this.abrirImagemToolStripMenuItem_Click);
             // 
             // Form_Menu_UC
             // 

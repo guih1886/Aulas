@@ -136,6 +136,12 @@
     <Compile Include="Form_Inicial.Designer.cs">
       <DependentUpon>Form_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     <EmbeddedResource Include="Forms\Form_ValidaSenha.resx">
       <DependentUpon>Form_ValidaSenha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Menu.resx">
       <DependentUpon>Form_Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +237,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\chave.png" />
     <Content Include="Images\Frm_DemonstracaoKey.ico" />
     <Content Include="Images\Frm_DemonstracaoKey.png" />
     <Content Include="Images\Frm_HelloWorld.ico" />

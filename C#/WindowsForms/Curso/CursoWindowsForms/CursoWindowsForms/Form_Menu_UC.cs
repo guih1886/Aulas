@@ -124,16 +124,21 @@ namespace CursoWindowsForms
         private void abrirImagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog db = new OpenFileDialog();
+            db.Filter = "PNG|*.PNG";
+            db.Title = "Escolha a imagem";
 
-
-            controleArquivoImagem++;
-            Frm_ArquivoImagem u = new Frm_ArquivoImagem();
-            u.Dock = DockStyle.Fill;
-            TabPage tb = new TabPage();
-            tb.Name = "Arquivo Imagem" + controleArquivoImagem;
-            tb.Text = $"Arquivo Imagem ({controleArquivoImagem})";
-            tb.Controls.Add(u);
-            Tuc_Aplicacao.TabPages.Add(tb);
+            if (db.ShowDialog() == DialogResult.OK)
+            {
+                string nomeArquivoImagem = db.FileName;
+                controleArquivoImagem++;
+                Frm_ArquivoImagem u = new Frm_ArquivoImagem(nomeArquivoImagem);
+                u.Dock = DockStyle.Fill;
+                TabPage tb = new TabPage();
+                tb.Name = "Arquivo Imagem" + controleArquivoImagem;
+                tb.Text = $"Arquivo Imagem ({controleArquivoImagem})";
+                tb.Controls.Add(u);
+                Tuc_Aplicacao.TabPages.Add(tb);
+            }
         }
     }
 }
