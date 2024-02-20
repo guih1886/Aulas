@@ -94,6 +94,24 @@
     <Compile Include="Forms\Form_Mascara.Designer.cs">
       <DependentUpon>Form_Mascara.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Menu_Flutuante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Menu_Flutuante.Designer.cs">
+      <DependentUpon>Form_Menu_Flutuante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_MouseCursor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_MouseCursor.Designer.cs">
+      <DependentUpon>Form_MouseCursor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_MouseEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_MouseEventos.Designer.cs">
+      <DependentUpon>Form_MouseEventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Sobre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +191,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_UserControl\Frm_ArquivoImagem.resx">
       <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Menu_Flutuante.resx">
+      <DependentUpon>Form_Menu_Flutuante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_MouseCursor.resx">
+      <DependentUpon>Form_MouseCursor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_MouseEventos.resx">
+      <DependentUpon>Form_MouseEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Sobre.resx">
       <DependentUpon>Form_Sobre.cs</DependentUpon>

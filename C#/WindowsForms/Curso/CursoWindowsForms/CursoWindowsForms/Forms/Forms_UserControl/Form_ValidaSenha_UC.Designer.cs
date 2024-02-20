@@ -69,6 +69,7 @@
             this.Txt_Senha.PasswordChar = '*';
             this.Txt_Senha.Size = new System.Drawing.Size(218, 20);
             this.Txt_Senha.TabIndex = 4;
+            this.Txt_Senha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Senha_KeyDown);
             // 
             // Form_ValidaSenha_UC
             // 

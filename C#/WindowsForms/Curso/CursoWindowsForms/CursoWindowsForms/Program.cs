@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsForms.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms
@@ -13,7 +14,7 @@ namespace CursoWindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Login());
+            Application.Run(new Form_Menu_Flutuante());
         }
     }
 }
