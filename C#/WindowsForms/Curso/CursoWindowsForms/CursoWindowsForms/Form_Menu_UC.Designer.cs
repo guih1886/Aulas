@@ -45,10 +45,12 @@
             this.cascataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fecharAbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tuc_Aplicacao = new System.Windows.Forms.TabControl();
             this.Iml_Imagens = new System.Windows.Forms.ImageList(this.components);
+            this.byteBankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +58,7 @@
             // 
             this.Mnu_Principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
+            this.byteBankToolStripMenuItem,
             this.açõesToolStripMenuItem,
             this.windowsToolStripMenuItem,
             this.sobreToolStripMenuItem});
@@ -158,8 +161,7 @@
             this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cascataToolStripMenuItem,
             this.horizontalToolStripMenuItem,
-            this.verticalToolStripMenuItem,
-            this.fecharAbaToolStripMenuItem});
+            this.verticalToolStripMenuItem});
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
             this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsToolStripMenuItem.Text = "Windows";
@@ -167,31 +169,23 @@
             // cascataToolStripMenuItem
             // 
             this.cascataToolStripMenuItem.Name = "cascataToolStripMenuItem";
-            this.cascataToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.cascataToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.cascataToolStripMenuItem.Text = "Cascata";
             this.cascataToolStripMenuItem.Click += new System.EventHandler(this.cascataToolStripMenuItem_Click);
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.horizontalToolStripMenuItem.Text = "Horizontal";
             this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.verticalToolStripMenuItem.Text = "Vertical";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
-            // 
-            // fecharAbaToolStripMenuItem
-            // 
-            this.fecharAbaToolStripMenuItem.Name = "fecharAbaToolStripMenuItem";
-            this.fecharAbaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.fecharAbaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.fecharAbaToolStripMenuItem.Text = "Fechar Aba";
-            this.fecharAbaToolStripMenuItem.Click += new System.EventHandler(this.fecharAbaToolStripMenuItem_Click);
             // 
             // sobreToolStripMenuItem
             // 
@@ -210,6 +204,7 @@
             this.Tuc_Aplicacao.SelectedIndex = 0;
             this.Tuc_Aplicacao.Size = new System.Drawing.Size(800, 426);
             this.Tuc_Aplicacao.TabIndex = 2;
+            this.Tuc_Aplicacao.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tuc_Aplicacao_MouseDown);
             // 
             // Iml_Imagens
             // 
@@ -231,6 +226,33 @@
             this.Iml_Imagens.Images.SetKeyName(13, "linkedin.png");
             this.Iml_Imagens.Images.SetKeyName(14, "senha.png");
             this.Iml_Imagens.Images.SetKeyName(15, "site.png");
+            this.Iml_Imagens.Images.SetKeyName(16, "user.png");
+            // 
+            // byteBankToolStripMenuItem
+            // 
+            this.byteBankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrosToolStripMenuItem});
+            this.byteBankToolStripMenuItem.Image = global::CursoWindowsForms.Properties.Resources.money;
+            this.byteBankToolStripMenuItem.Name = "byteBankToolStripMenuItem";
+            this.byteBankToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.byteBankToolStripMenuItem.Text = "ByteBank";
+            // 
+            // cadastrosToolStripMenuItem
+            // 
+            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem});
+            this.cadastrosToolStripMenuItem.Image = global::CursoWindowsForms.Properties.Resources.Cadastros;
+            this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Image = global::CursoWindowsForms.Properties.Resources.user;
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // Form_Menu_UC
             // 
@@ -272,8 +294,10 @@
         private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
         private System.Windows.Forms.TabControl Tuc_Aplicacao;
         private System.Windows.Forms.ImageList Iml_Imagens;
-        private System.Windows.Forms.ToolStripMenuItem fecharAbaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem açõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirImagemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem byteBankToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
     }
 }
