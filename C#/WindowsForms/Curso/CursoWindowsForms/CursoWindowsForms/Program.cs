@@ -14,7 +14,7 @@ namespace CursoWindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Menu_Flutuante());
+            Application.Run(new Form_Menu_UC());
         }
     }
 }

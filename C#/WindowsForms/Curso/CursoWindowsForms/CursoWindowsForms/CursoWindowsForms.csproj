@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Forms_UserControl\Form_CadastroCliente_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_UserControl\Form_CadastroCliente_UC.Designer.cs">
+      <DependentUpon>Form_CadastroCliente_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_UserControl\Form_DesmonstracaoKey_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Forms_UserControl\Form_CadastroCliente_UC.resx">
+      <DependentUpon>Form_CadastroCliente_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_UserControl\Form_DesmonstracaoKey_UC.resx">
       <DependentUpon>Form_DesmonstracaoKey_UC.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,7 +273,12 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Cadastros.png" />
     <Content Include="Images\chave.png" />
+    <Content Include="Images\DeleteAll.png" />
+    <Content Include="Images\DeleteLeft.png" />
+    <Content Include="Images\DeleteRight.png" />
+    <Content Include="Images\DeleteTab.png" />
     <Content Include="Images\Frm_DemonstracaoKey.ico" />
     <Content Include="Images\Frm_DemonstracaoKey.png" />
     <Content Include="Images\Frm_HelloWorld.ico" />
@@ -279,8 +293,10 @@
     <Content Include="Images\Frm_ValidaSenha.ico" />
     <Content Include="Images\Frm_ValidaSenha.png" />
     <Content Include="Images\linkedin.png" />
+    <Content Include="Images\money.png" />
     <Content Include="Images\question.png" />
     <Content Include="Images\site.png" />
+    <Content Include="Images\user.png" />
     <None Include="Images\senha.png" />
   </ItemGroup>
   <ItemGroup>
