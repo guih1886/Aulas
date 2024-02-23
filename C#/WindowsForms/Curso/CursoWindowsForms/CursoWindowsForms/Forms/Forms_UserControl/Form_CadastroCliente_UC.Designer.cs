@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_CadastroCliente_UC));
             this.Lbl_CPF = new System.Windows.Forms.Label();
-            this.Txt_CPF = new System.Windows.Forms.TextBox();
             this.Lbl_NomeCliente = new System.Windows.Forms.Label();
             this.Txt_NomeCliente = new System.Windows.Forms.TextBox();
             this.Lbl_NomePai = new System.Windows.Forms.Label();
             this.Txt_NomePai = new System.Windows.Forms.TextBox();
             this.Txt_NomeMae = new System.Windows.Forms.TextBox();
             this.Lbl_NomeMae = new System.Windows.Forms.Label();
-            this.Lbl_Genero = new System.Windows.Forms.Label();
-            this.Txt_Genero = new System.Windows.Forms.TextBox();
             this.Lbl_CEP = new System.Windows.Forms.Label();
             this.Txt_CEP = new System.Windows.Forms.TextBox();
             this.Lbl_Logradouro = new System.Windows.Forms.Label();
@@ -47,7 +45,6 @@
             this.Lbl_Bairro = new System.Windows.Forms.Label();
             this.Txt_Bairro = new System.Windows.Forms.TextBox();
             this.Lbl_Estado = new System.Windows.Forms.Label();
-            this.Txt_Estado = new System.Windows.Forms.TextBox();
             this.Lbl_Telefone = new System.Windows.Forms.Label();
             this.Txt_Telefone = new System.Windows.Forms.TextBox();
             this.Lbl_Profissao = new System.Windows.Forms.Label();
@@ -57,34 +54,42 @@
             this.Txt_NumeroClientet = new System.Windows.Forms.TextBox();
             this.Grp_Codigo = new System.Windows.Forms.GroupBox();
             this.Grp_DadosPessoais = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.Grp_Genero = new System.Windows.Forms.GroupBox();
+            this.Ckb_TemPai = new System.Windows.Forms.CheckBox();
+            this.Rdb_Indefinido = new System.Windows.Forms.RadioButton();
+            this.Rdb_Feminino = new System.Windows.Forms.RadioButton();
+            this.Rdb_Masculino = new System.Windows.Forms.RadioButton();
             this.Grp_Endereco = new System.Windows.Forms.GroupBox();
+            this.Cmb_Estados = new System.Windows.Forms.ComboBox();
             this.Grp_Outros = new System.Windows.Forms.GroupBox();
+            this.Tls_Principal = new System.Windows.Forms.ToolStrip();
+            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.abrirToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.apagaToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
+            this.Grp_Genero.SuspendLayout();
             this.Grp_Endereco.SuspendLayout();
             this.Grp_Outros.SuspendLayout();
+            this.Tls_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
             // Lbl_CPF
             // 
             this.Lbl_CPF.AutoSize = true;
-            this.Lbl_CPF.Location = new System.Drawing.Point(281, 139);
+            this.Lbl_CPF.Location = new System.Drawing.Point(4, 18);
             this.Lbl_CPF.Name = "Lbl_CPF";
             this.Lbl_CPF.Size = new System.Drawing.Size(35, 13);
             this.Lbl_CPF.TabIndex = 0;
             this.Lbl_CPF.Text = "label1";
             // 
-            // Txt_CPF
-            // 
-            this.Txt_CPF.Location = new System.Drawing.Point(283, 155);
-            this.Txt_CPF.Name = "Txt_CPF";
-            this.Txt_CPF.Size = new System.Drawing.Size(278, 20);
-            this.Txt_CPF.TabIndex = 1;
-            // 
             // Lbl_NomeCliente
             // 
             this.Lbl_NomeCliente.AutoSize = true;
-            this.Lbl_NomeCliente.Location = new System.Drawing.Point(6, 19);
+            this.Lbl_NomeCliente.Location = new System.Drawing.Point(117, 19);
             this.Lbl_NomeCliente.Name = "Lbl_NomeCliente";
             this.Lbl_NomeCliente.Size = new System.Drawing.Size(35, 13);
             this.Lbl_NomeCliente.TabIndex = 2;
@@ -94,15 +99,16 @@
             // 
             this.Txt_NomeCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txt_NomeCliente.Location = new System.Drawing.Point(6, 35);
+            this.Txt_NomeCliente.Location = new System.Drawing.Point(117, 35);
+            this.Txt_NomeCliente.MaxLength = 3;
             this.Txt_NomeCliente.Name = "Txt_NomeCliente";
-            this.Txt_NomeCliente.Size = new System.Drawing.Size(786, 20);
+            this.Txt_NomeCliente.Size = new System.Drawing.Size(675, 20);
             this.Txt_NomeCliente.TabIndex = 3;
             // 
             // Lbl_NomePai
             // 
             this.Lbl_NomePai.AutoSize = true;
-            this.Lbl_NomePai.Location = new System.Drawing.Point(6, 59);
+            this.Lbl_NomePai.Location = new System.Drawing.Point(6, 100);
             this.Lbl_NomePai.Name = "Lbl_NomePai";
             this.Lbl_NomePai.Size = new System.Drawing.Size(35, 13);
             this.Lbl_NomePai.TabIndex = 4;
@@ -112,44 +118,28 @@
             // 
             this.Txt_NomePai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txt_NomePai.Location = new System.Drawing.Point(6, 75);
+            this.Txt_NomePai.Location = new System.Drawing.Point(6, 116);
             this.Txt_NomePai.Name = "Txt_NomePai";
-            this.Txt_NomePai.Size = new System.Drawing.Size(786, 20);
+            this.Txt_NomePai.Size = new System.Drawing.Size(591, 20);
             this.Txt_NomePai.TabIndex = 5;
             // 
             // Txt_NomeMae
             // 
             this.Txt_NomeMae.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txt_NomeMae.Location = new System.Drawing.Point(6, 115);
+            this.Txt_NomeMae.Location = new System.Drawing.Point(6, 77);
             this.Txt_NomeMae.Name = "Txt_NomeMae";
-            this.Txt_NomeMae.Size = new System.Drawing.Size(786, 20);
-            this.Txt_NomeMae.TabIndex = 6;
+            this.Txt_NomeMae.Size = new System.Drawing.Size(591, 20);
+            this.Txt_NomeMae.TabIndex = 4;
             // 
             // Lbl_NomeMae
             // 
             this.Lbl_NomeMae.AutoSize = true;
-            this.Lbl_NomeMae.Location = new System.Drawing.Point(6, 99);
+            this.Lbl_NomeMae.Location = new System.Drawing.Point(6, 61);
             this.Lbl_NomeMae.Name = "Lbl_NomeMae";
             this.Lbl_NomeMae.Size = new System.Drawing.Size(35, 13);
             this.Lbl_NomeMae.TabIndex = 7;
             this.Lbl_NomeMae.Text = "label1";
-            // 
-            // Lbl_Genero
-            // 
-            this.Lbl_Genero.AutoSize = true;
-            this.Lbl_Genero.Location = new System.Drawing.Point(6, 139);
-            this.Lbl_Genero.Name = "Lbl_Genero";
-            this.Lbl_Genero.Size = new System.Drawing.Size(35, 13);
-            this.Lbl_Genero.TabIndex = 8;
-            this.Lbl_Genero.Text = "label1";
-            // 
-            // Txt_Genero
-            // 
-            this.Txt_Genero.Location = new System.Drawing.Point(6, 155);
-            this.Txt_Genero.Name = "Txt_Genero";
-            this.Txt_Genero.Size = new System.Drawing.Size(271, 20);
-            this.Txt_Genero.TabIndex = 9;
             // 
             // Lbl_CEP
             // 
@@ -165,7 +155,7 @@
             this.Txt_CEP.Location = new System.Drawing.Point(6, 33);
             this.Txt_CEP.Name = "Txt_CEP";
             this.Txt_CEP.Size = new System.Drawing.Size(203, 20);
-            this.Txt_CEP.TabIndex = 11;
+            this.Txt_CEP.TabIndex = 7;
             // 
             // Lbl_Logradouro
             // 
@@ -183,7 +173,7 @@
             this.Txt_Logradouro.Location = new System.Drawing.Point(215, 33);
             this.Txt_Logradouro.Name = "Txt_Logradouro";
             this.Txt_Logradouro.Size = new System.Drawing.Size(577, 20);
-            this.Txt_Logradouro.TabIndex = 13;
+            this.Txt_Logradouro.TabIndex = 8;
             // 
             // Lbl_Complemento
             // 
@@ -199,7 +189,7 @@
             this.Txt_Complemento.Location = new System.Drawing.Point(326, 73);
             this.Txt_Complemento.Name = "Txt_Complemento";
             this.Txt_Complemento.Size = new System.Drawing.Size(328, 20);
-            this.Txt_Complemento.TabIndex = 15;
+            this.Txt_Complemento.TabIndex = 10;
             // 
             // Lbl_Bairro
             // 
@@ -215,7 +205,7 @@
             this.Txt_Bairro.Location = new System.Drawing.Point(9, 73);
             this.Txt_Bairro.Name = "Txt_Bairro";
             this.Txt_Bairro.Size = new System.Drawing.Size(311, 20);
-            this.Txt_Bairro.TabIndex = 17;
+            this.Txt_Bairro.TabIndex = 9;
             // 
             // Lbl_Estado
             // 
@@ -225,13 +215,6 @@
             this.Lbl_Estado.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Estado.TabIndex = 18;
             this.Lbl_Estado.Text = "label1";
-            // 
-            // Txt_Estado
-            // 
-            this.Txt_Estado.Location = new System.Drawing.Point(660, 73);
-            this.Txt_Estado.Name = "Txt_Estado";
-            this.Txt_Estado.Size = new System.Drawing.Size(132, 20);
-            this.Txt_Estado.TabIndex = 19;
             // 
             // Lbl_Telefone
             // 
@@ -247,7 +230,7 @@
             this.Txt_Telefone.Location = new System.Drawing.Point(6, 35);
             this.Txt_Telefone.Name = "Txt_Telefone";
             this.Txt_Telefone.Size = new System.Drawing.Size(328, 20);
-            this.Txt_Telefone.TabIndex = 21;
+            this.Txt_Telefone.TabIndex = 12;
             // 
             // Lbl_Profissao
             // 
@@ -265,7 +248,7 @@
             this.Txt_Profissao.Location = new System.Drawing.Point(341, 35);
             this.Txt_Profissao.Name = "Txt_Profissao";
             this.Txt_Profissao.Size = new System.Drawing.Size(451, 20);
-            this.Txt_Profissao.TabIndex = 23;
+            this.Txt_Profissao.TabIndex = 13;
             // 
             // Lbl_RendaFamiliar
             // 
@@ -281,46 +264,111 @@
             this.Txt_RendaFamiliar.Location = new System.Drawing.Point(6, 75);
             this.Txt_RendaFamiliar.Name = "Txt_RendaFamiliar";
             this.Txt_RendaFamiliar.Size = new System.Drawing.Size(328, 20);
-            this.Txt_RendaFamiliar.TabIndex = 25;
+            this.Txt_RendaFamiliar.TabIndex = 14;
             // 
             // Txt_NumeroClientet
             // 
+            this.Txt_NumeroClientet.Enabled = false;
             this.Txt_NumeroClientet.Location = new System.Drawing.Point(6, 19);
             this.Txt_NumeroClientet.Name = "Txt_NumeroClientet";
             this.Txt_NumeroClientet.Size = new System.Drawing.Size(188, 20);
-            this.Txt_NumeroClientet.TabIndex = 27;
+            this.Txt_NumeroClientet.TabIndex = 1;
+            this.Txt_NumeroClientet.Text = "um id de cliente aqui";
             // 
             // Grp_Codigo
             // 
             this.Grp_Codigo.Controls.Add(this.Txt_NumeroClientet);
-            this.Grp_Codigo.Location = new System.Drawing.Point(12, 3);
+            this.Grp_Codigo.Location = new System.Drawing.Point(12, 38);
             this.Grp_Codigo.Name = "Grp_Codigo";
             this.Grp_Codigo.Size = new System.Drawing.Size(200, 48);
-            this.Grp_Codigo.TabIndex = 28;
+            this.Grp_Codigo.TabIndex = 1;
             this.Grp_Codigo.TabStop = false;
             this.Grp_Codigo.Text = "groupBox1";
             // 
             // Grp_DadosPessoais
             // 
-            this.Grp_DadosPessoais.Controls.Add(this.Txt_Genero);
+            this.Grp_DadosPessoais.Controls.Add(this.Ckb_TemPai);
+            this.Grp_DadosPessoais.Controls.Add(this.maskedTextBox1);
+            this.Grp_DadosPessoais.Controls.Add(this.Grp_Genero);
             this.Grp_DadosPessoais.Controls.Add(this.Lbl_CPF);
-            this.Grp_DadosPessoais.Controls.Add(this.Txt_CPF);
             this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomeCliente);
             this.Grp_DadosPessoais.Controls.Add(this.Txt_NomeCliente);
             this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomePai);
             this.Grp_DadosPessoais.Controls.Add(this.Txt_NomePai);
             this.Grp_DadosPessoais.Controls.Add(this.Txt_NomeMae);
             this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomeMae);
-            this.Grp_DadosPessoais.Controls.Add(this.Lbl_Genero);
-            this.Grp_DadosPessoais.Location = new System.Drawing.Point(12, 57);
+            this.Grp_DadosPessoais.Location = new System.Drawing.Point(12, 92);
             this.Grp_DadosPessoais.Name = "Grp_DadosPessoais";
-            this.Grp_DadosPessoais.Size = new System.Drawing.Size(798, 188);
-            this.Grp_DadosPessoais.TabIndex = 29;
+            this.Grp_DadosPessoais.Size = new System.Drawing.Size(798, 168);
+            this.Grp_DadosPessoais.TabIndex = 2;
             this.Grp_DadosPessoais.TabStop = false;
             this.Grp_DadosPessoais.Text = "groupBox1";
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(6, 35);
+            this.maskedTextBox1.Mask = "000.000.000-00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(105, 20);
+            this.maskedTextBox1.TabIndex = 2;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Grp_Genero
+            // 
+            this.Grp_Genero.Controls.Add(this.Rdb_Indefinido);
+            this.Grp_Genero.Controls.Add(this.Rdb_Feminino);
+            this.Grp_Genero.Controls.Add(this.Rdb_Masculino);
+            this.Grp_Genero.Location = new System.Drawing.Point(603, 61);
+            this.Grp_Genero.Name = "Grp_Genero";
+            this.Grp_Genero.Size = new System.Drawing.Size(189, 75);
+            this.Grp_Genero.TabIndex = 0;
+            this.Grp_Genero.TabStop = false;
+            // 
+            // Ckb_TemPai
+            // 
+            this.Ckb_TemPai.AutoSize = true;
+            this.Ckb_TemPai.Location = new System.Drawing.Point(6, 142);
+            this.Ckb_TemPai.Name = "Ckb_TemPai";
+            this.Ckb_TemPai.Size = new System.Drawing.Size(80, 17);
+            this.Ckb_TemPai.TabIndex = 0;
+            this.Ckb_TemPai.TabStop = false;
+            this.Ckb_TemPai.Text = "checkBox1";
+            this.Ckb_TemPai.UseVisualStyleBackColor = true;
+            this.Ckb_TemPai.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // Rdb_Indefinido
+            // 
+            this.Rdb_Indefinido.AutoSize = true;
+            this.Rdb_Indefinido.Location = new System.Drawing.Point(53, 31);
+            this.Rdb_Indefinido.Name = "Rdb_Indefinido";
+            this.Rdb_Indefinido.Size = new System.Drawing.Size(85, 17);
+            this.Rdb_Indefinido.TabIndex = 2;
+            this.Rdb_Indefinido.Text = "radioButton3";
+            this.Rdb_Indefinido.UseVisualStyleBackColor = true;
+            // 
+            // Rdb_Feminino
+            // 
+            this.Rdb_Feminino.AutoSize = true;
+            this.Rdb_Feminino.Location = new System.Drawing.Point(98, 13);
+            this.Rdb_Feminino.Name = "Rdb_Feminino";
+            this.Rdb_Feminino.Size = new System.Drawing.Size(85, 17);
+            this.Rdb_Feminino.TabIndex = 1;
+            this.Rdb_Feminino.Text = "radioButton2";
+            this.Rdb_Feminino.UseVisualStyleBackColor = true;
+            // 
+            // Rdb_Masculino
+            // 
+            this.Rdb_Masculino.AutoSize = true;
+            this.Rdb_Masculino.Location = new System.Drawing.Point(7, 13);
+            this.Rdb_Masculino.Name = "Rdb_Masculino";
+            this.Rdb_Masculino.Size = new System.Drawing.Size(85, 17);
+            this.Rdb_Masculino.TabIndex = 0;
+            this.Rdb_Masculino.Text = "radioButton1";
+            this.Rdb_Masculino.UseVisualStyleBackColor = true;
+            // 
             // Grp_Endereco
             // 
+            this.Grp_Endereco.Controls.Add(this.Cmb_Estados);
             this.Grp_Endereco.Controls.Add(this.Txt_Logradouro);
             this.Grp_Endereco.Controls.Add(this.Lbl_Logradouro);
             this.Grp_Endereco.Controls.Add(this.Lbl_Complemento);
@@ -330,13 +378,21 @@
             this.Grp_Endereco.Controls.Add(this.Txt_Bairro);
             this.Grp_Endereco.Controls.Add(this.Lbl_CEP);
             this.Grp_Endereco.Controls.Add(this.Lbl_Estado);
-            this.Grp_Endereco.Controls.Add(this.Txt_Estado);
-            this.Grp_Endereco.Location = new System.Drawing.Point(12, 251);
+            this.Grp_Endereco.Location = new System.Drawing.Point(12, 260);
             this.Grp_Endereco.Name = "Grp_Endereco";
             this.Grp_Endereco.Size = new System.Drawing.Size(798, 106);
-            this.Grp_Endereco.TabIndex = 30;
+            this.Grp_Endereco.TabIndex = 3;
             this.Grp_Endereco.TabStop = false;
             this.Grp_Endereco.Text = "groupBox1";
+            // 
+            // Cmb_Estados
+            // 
+            this.Cmb_Estados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb_Estados.FormattingEnabled = true;
+            this.Cmb_Estados.Location = new System.Drawing.Point(661, 71);
+            this.Cmb_Estados.Name = "Cmb_Estados";
+            this.Cmb_Estados.Size = new System.Drawing.Size(121, 21);
+            this.Cmb_Estados.TabIndex = 11;
             // 
             // Grp_Outros
             // 
@@ -346,47 +402,116 @@
             this.Grp_Outros.Controls.Add(this.Lbl_Profissao);
             this.Grp_Outros.Controls.Add(this.Txt_Profissao);
             this.Grp_Outros.Controls.Add(this.Lbl_RendaFamiliar);
-            this.Grp_Outros.Location = new System.Drawing.Point(12, 363);
+            this.Grp_Outros.Location = new System.Drawing.Point(12, 366);
             this.Grp_Outros.Name = "Grp_Outros";
             this.Grp_Outros.Size = new System.Drawing.Size(798, 106);
-            this.Grp_Outros.TabIndex = 31;
+            this.Grp_Outros.TabIndex = 4;
             this.Grp_Outros.TabStop = false;
             this.Grp_Outros.Text = "groupBox1";
+            // 
+            // Tls_Principal
+            // 
+            this.Tls_Principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripButton,
+            this.abrirToolStripButton,
+            this.salvarToolStripButton,
+            this.limparToolStripButton1,
+            this.apagaToolStripButton2});
+            this.Tls_Principal.Location = new System.Drawing.Point(0, 0);
+            this.Tls_Principal.Name = "Tls_Principal";
+            this.Tls_Principal.Size = new System.Drawing.Size(822, 25);
+            this.Tls_Principal.TabIndex = 5;
+            this.Tls_Principal.Text = "toolStrip1";
+            // 
+            // novoToolStripButton
+            // 
+            this.novoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.novoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton.Image")));
+            this.novoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.novoToolStripButton.Name = "novoToolStripButton";
+            this.novoToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.novoToolStripButton.Text = "&Novo";
+            this.novoToolStripButton.Click += new System.EventHandler(this.novoToolStripButton_Click);
+            // 
+            // abrirToolStripButton
+            // 
+            this.abrirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.abrirToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("abrirToolStripButton.Image")));
+            this.abrirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.abrirToolStripButton.Name = "abrirToolStripButton";
+            this.abrirToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.abrirToolStripButton.Text = "&Abrir";
+            this.abrirToolStripButton.Click += new System.EventHandler(this.abrirToolStripButton_Click);
+            // 
+            // salvarToolStripButton
+            // 
+            this.salvarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.salvarToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripButton.Image")));
+            this.salvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.salvarToolStripButton.Name = "salvarToolStripButton";
+            this.salvarToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.salvarToolStripButton.Text = "&Salvar";
+            this.salvarToolStripButton.Click += new System.EventHandler(this.salvarToolStripButton_Click);
+            // 
+            // limparToolStripButton1
+            // 
+            this.limparToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.limparToolStripButton1.Image = global::CursoWindowsForms.Properties.Resources.LimparBarra;
+            this.limparToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.limparToolStripButton1.Name = "limparToolStripButton1";
+            this.limparToolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.limparToolStripButton1.Text = "toolStripButton1";
+            this.limparToolStripButton1.ToolTipText = "Limpar";
+            this.limparToolStripButton1.Click += new System.EventHandler(this.limparToolStripButton1_Click);
+            // 
+            // apagaToolStripButton2
+            // 
+            this.apagaToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.apagaToolStripButton2.Image = global::CursoWindowsForms.Properties.Resources.ExcluirBarra;
+            this.apagaToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.apagaToolStripButton2.Name = "apagaToolStripButton2";
+            this.apagaToolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.apagaToolStripButton2.Text = "toolStripButton2";
+            this.apagaToolStripButton2.ToolTipText = "Excluir";
+            this.apagaToolStripButton2.Click += new System.EventHandler(this.apagaToolStripButton2_Click);
             // 
             // Form_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Tls_Principal);
             this.Controls.Add(this.Grp_Outros);
             this.Controls.Add(this.Grp_Endereco);
             this.Controls.Add(this.Grp_DadosPessoais);
             this.Controls.Add(this.Grp_Codigo);
             this.Name = "Form_CadastroCliente_UC";
-            this.Size = new System.Drawing.Size(822, 481);
+            this.Size = new System.Drawing.Size(822, 537);
             this.Grp_Codigo.ResumeLayout(false);
             this.Grp_Codigo.PerformLayout();
             this.Grp_DadosPessoais.ResumeLayout(false);
             this.Grp_DadosPessoais.PerformLayout();
+            this.Grp_Genero.ResumeLayout(false);
+            this.Grp_Genero.PerformLayout();
             this.Grp_Endereco.ResumeLayout(false);
             this.Grp_Endereco.PerformLayout();
             this.Grp_Outros.ResumeLayout(false);
             this.Grp_Outros.PerformLayout();
+            this.Tls_Principal.ResumeLayout(false);
+            this.Tls_Principal.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label Lbl_CPF;
-        private System.Windows.Forms.TextBox Txt_CPF;
         private System.Windows.Forms.Label Lbl_NomeCliente;
         private System.Windows.Forms.TextBox Txt_NomeCliente;
         private System.Windows.Forms.Label Lbl_NomePai;
         private System.Windows.Forms.TextBox Txt_NomePai;
         private System.Windows.Forms.TextBox Txt_NomeMae;
         private System.Windows.Forms.Label Lbl_NomeMae;
-        private System.Windows.Forms.Label Lbl_Genero;
-        private System.Windows.Forms.TextBox Txt_Genero;
         private System.Windows.Forms.Label Lbl_CEP;
         private System.Windows.Forms.TextBox Txt_CEP;
         private System.Windows.Forms.Label Lbl_Logradouro;
@@ -396,7 +521,6 @@
         private System.Windows.Forms.Label Lbl_Bairro;
         private System.Windows.Forms.TextBox Txt_Bairro;
         private System.Windows.Forms.Label Lbl_Estado;
-        private System.Windows.Forms.TextBox Txt_Estado;
         private System.Windows.Forms.Label Lbl_Telefone;
         private System.Windows.Forms.TextBox Txt_Telefone;
         private System.Windows.Forms.Label Lbl_Profissao;
@@ -408,5 +532,18 @@
         private System.Windows.Forms.GroupBox Grp_DadosPessoais;
         private System.Windows.Forms.GroupBox Grp_Endereco;
         private System.Windows.Forms.GroupBox Grp_Outros;
+        private System.Windows.Forms.CheckBox Ckb_TemPai;
+        private System.Windows.Forms.GroupBox Grp_Genero;
+        private System.Windows.Forms.RadioButton Rdb_Indefinido;
+        private System.Windows.Forms.RadioButton Rdb_Feminino;
+        private System.Windows.Forms.RadioButton Rdb_Masculino;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.ComboBox Cmb_Estados;
+        private System.Windows.Forms.ToolStrip Tls_Principal;
+        private System.Windows.Forms.ToolStripButton novoToolStripButton;
+        private System.Windows.Forms.ToolStripButton abrirToolStripButton;
+        private System.Windows.Forms.ToolStripButton salvarToolStripButton;
+        private System.Windows.Forms.ToolStripButton limparToolStripButton1;
+        private System.Windows.Forms.ToolStripButton apagaToolStripButton2;
     }
 }

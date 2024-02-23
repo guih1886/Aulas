@@ -269,9 +269,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Images\Cadastros.png" />
     <Content Include="Images\chave.png" />
@@ -297,6 +295,8 @@
     <Content Include="Images\question.png" />
     <Content Include="Images\site.png" />
     <Content Include="Images\user.png" />
+    <None Include="Resources\LimparBarra.png" />
+    <None Include="Resources\ExcluirBarra.png" />
     <None Include="Images\senha.png" />
   </ItemGroup>
   <ItemGroup>
