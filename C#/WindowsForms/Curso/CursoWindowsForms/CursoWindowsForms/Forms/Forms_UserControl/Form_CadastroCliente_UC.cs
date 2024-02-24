@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CursoWindowsFormsBiblioteca.Classes;
+using Microsoft.VisualBasic;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms.Forms.Forms_UserControl
@@ -15,6 +11,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         public Form_CadastroCliente_UC()
         {
             InitializeComponent();
+            Txt_NumeroCliente.Focus();
             Grp_Codigo.Text = "Código do Cliente";
             Grp_DadosPessoais.Text = "Dados pessoais";
             Grp_Endereco.Text = "Endereço";
@@ -28,6 +25,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Rdb_Feminino.Text = "Feminino";
             Rdb_Indefinido.Text = "Indefinido";
             Lbl_Logradouro.Text = "Logradouro";
+            Lbl_Cidade.Text = "Cidade";
             Lbl_NomeCliente.Text = "Nome";
             Lbl_NomeMae.Text = "Nome da Mãe";
             Lbl_NomePai.Text = "Nome do Pai";
@@ -83,7 +81,48 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void novoToolStripButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Cliente.Unit cliente = new Cliente.Unit();
+                cliente = LeituraForm();
+                cliente.ValidaClasse();
+                cliente.ValidaComplemento();
+            }
+            catch (ValidationException err)
+            {
+                throw new ValidationException(err.Message);
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
+        }
 
+        private Cliente.Unit LeituraForm()
+        {
+            Cliente.Unit cliente = new Cliente.Unit();
+            cliente.Id = Txt_NumeroCliente.Text;
+            cliente.CPF = Msk_CPF.Text.Replace(",", "").Replace("-", "").Trim();
+            cliente.Nome = Txt_NomeCliente.Text;
+            cliente.NomeMae = Txt_NomeMae.Text;
+            cliente.NomePai = Txt_NomePai.Text;
+            cliente.NaoTemPai = false;
+            if (Ckb_TemPai.Checked) cliente.NaoTemPai = true;
+            if (Rdb_Masculino.Checked) cliente.Genero = 0;
+            if (Rdb_Feminino.Checked) cliente.Genero = 1;
+            if (Rdb_Indefinido.Checked) cliente.Genero = 2;
+            cliente.Cep = Txt_CEP.Text;
+            cliente.Logradouro = Txt_Logradouro.Text;
+            cliente.Bairro = Txt_Bairro.Text;
+            cliente.Cidade = Txt_Cidade.Text;
+            cliente.Complemento = Txt_Complemento.Text;
+            cliente.Estado = Cmb_Estados.SelectedIndex != -1 ? Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString() : "";
+            cliente.Telefone = Txt_Telefone.Text;
+            cliente.Profissao = Txt_Profissao.Text;
+            cliente.RendaFamiliar = (Information.IsNumeric(Txt_RendaFamiliar.Text) && double.Parse(Txt_RendaFamiliar.Text) > 0) ?
+                cliente.RendaFamiliar = double.Parse(Txt_RendaFamiliar.Text) :
+                cliente.RendaFamiliar = 0;
+            return cliente;
         }
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
