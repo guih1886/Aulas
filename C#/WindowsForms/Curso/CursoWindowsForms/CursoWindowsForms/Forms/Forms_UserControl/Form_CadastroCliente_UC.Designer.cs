@@ -37,7 +37,6 @@
             this.Txt_NomeMae = new System.Windows.Forms.TextBox();
             this.Lbl_NomeMae = new System.Windows.Forms.Label();
             this.Lbl_CEP = new System.Windows.Forms.Label();
-            this.Txt_CEP = new System.Windows.Forms.TextBox();
             this.Lbl_Logradouro = new System.Windows.Forms.Label();
             this.Txt_Logradouro = new System.Windows.Forms.TextBox();
             this.Lbl_Complemento = new System.Windows.Forms.Label();
@@ -60,17 +59,18 @@
             this.Rdb_Feminino = new System.Windows.Forms.RadioButton();
             this.Rdb_Masculino = new System.Windows.Forms.RadioButton();
             this.Grp_Endereco = new System.Windows.Forms.GroupBox();
+            this.Msk_CEP = new System.Windows.Forms.MaskedTextBox();
+            this.Lbl_Cidade = new System.Windows.Forms.Label();
+            this.Txt_Cidade = new System.Windows.Forms.TextBox();
             this.Cmb_Estados = new System.Windows.Forms.ComboBox();
             this.Grp_Outros = new System.Windows.Forms.GroupBox();
+            this.Txt_RendaFamiliar = new System.Windows.Forms.TextBox();
             this.Tls_Principal = new System.Windows.Forms.ToolStrip();
             this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.abrirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.apagaToolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.Txt_Cidade = new System.Windows.Forms.TextBox();
-            this.Lbl_Cidade = new System.Windows.Forms.Label();
-            this.Txt_RendaFamiliar = new System.Windows.Forms.TextBox();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
@@ -153,13 +153,6 @@
             this.Lbl_CEP.Size = new System.Drawing.Size(35, 13);
             this.Lbl_CEP.TabIndex = 10;
             this.Lbl_CEP.Text = "label1";
-            // 
-            // Txt_CEP
-            // 
-            this.Txt_CEP.Location = new System.Drawing.Point(6, 33);
-            this.Txt_CEP.Name = "Txt_CEP";
-            this.Txt_CEP.Size = new System.Drawing.Size(203, 20);
-            this.Txt_CEP.TabIndex = 7;
             // 
             // Lbl_Logradouro
             // 
@@ -364,6 +357,7 @@
             // 
             // Grp_Endereco
             // 
+            this.Grp_Endereco.Controls.Add(this.Msk_CEP);
             this.Grp_Endereco.Controls.Add(this.Lbl_Cidade);
             this.Grp_Endereco.Controls.Add(this.Txt_Cidade);
             this.Grp_Endereco.Controls.Add(this.Cmb_Estados);
@@ -372,7 +366,6 @@
             this.Grp_Endereco.Controls.Add(this.Lbl_Complemento);
             this.Grp_Endereco.Controls.Add(this.Txt_Complemento);
             this.Grp_Endereco.Controls.Add(this.Lbl_Bairro);
-            this.Grp_Endereco.Controls.Add(this.Txt_CEP);
             this.Grp_Endereco.Controls.Add(this.Txt_Bairro);
             this.Grp_Endereco.Controls.Add(this.Lbl_CEP);
             this.Grp_Endereco.Controls.Add(this.Lbl_Estado);
@@ -382,6 +375,31 @@
             this.Grp_Endereco.TabIndex = 3;
             this.Grp_Endereco.TabStop = false;
             this.Grp_Endereco.Text = "groupBox1";
+            // 
+            // Msk_CEP
+            // 
+            this.Msk_CEP.Location = new System.Drawing.Point(10, 33);
+            this.Msk_CEP.Mask = "00000-000";
+            this.Msk_CEP.Name = "Msk_CEP";
+            this.Msk_CEP.Size = new System.Drawing.Size(199, 20);
+            this.Msk_CEP.TabIndex = 21;
+            this.Msk_CEP.Leave += new System.EventHandler(this.Msk_CEP_Leave);
+            // 
+            // Lbl_Cidade
+            // 
+            this.Lbl_Cidade.AutoSize = true;
+            this.Lbl_Cidade.Location = new System.Drawing.Point(212, 57);
+            this.Lbl_Cidade.Name = "Lbl_Cidade";
+            this.Lbl_Cidade.Size = new System.Drawing.Size(35, 13);
+            this.Lbl_Cidade.TabIndex = 20;
+            this.Lbl_Cidade.Text = "label1";
+            // 
+            // Txt_Cidade
+            // 
+            this.Txt_Cidade.Location = new System.Drawing.Point(215, 73);
+            this.Txt_Cidade.Name = "Txt_Cidade";
+            this.Txt_Cidade.Size = new System.Drawing.Size(214, 20);
+            this.Txt_Cidade.TabIndex = 19;
             // 
             // Cmb_Estados
             // 
@@ -406,6 +424,13 @@
             this.Grp_Outros.TabIndex = 4;
             this.Grp_Outros.TabStop = false;
             this.Grp_Outros.Text = "groupBox1";
+            // 
+            // Txt_RendaFamiliar
+            // 
+            this.Txt_RendaFamiliar.Location = new System.Drawing.Point(7, 76);
+            this.Txt_RendaFamiliar.Name = "Txt_RendaFamiliar";
+            this.Txt_RendaFamiliar.Size = new System.Drawing.Size(187, 20);
+            this.Txt_RendaFamiliar.TabIndex = 14;
             // 
             // Tls_Principal
             // 
@@ -473,29 +498,6 @@
             this.apagaToolStripButton2.ToolTipText = "Excluir";
             this.apagaToolStripButton2.Click += new System.EventHandler(this.apagaToolStripButton2_Click);
             // 
-            // Txt_Cidade
-            // 
-            this.Txt_Cidade.Location = new System.Drawing.Point(215, 73);
-            this.Txt_Cidade.Name = "Txt_Cidade";
-            this.Txt_Cidade.Size = new System.Drawing.Size(214, 20);
-            this.Txt_Cidade.TabIndex = 19;
-            // 
-            // Lbl_Cidade
-            // 
-            this.Lbl_Cidade.AutoSize = true;
-            this.Lbl_Cidade.Location = new System.Drawing.Point(212, 57);
-            this.Lbl_Cidade.Name = "Lbl_Cidade";
-            this.Lbl_Cidade.Size = new System.Drawing.Size(35, 13);
-            this.Lbl_Cidade.TabIndex = 20;
-            this.Lbl_Cidade.Text = "label1";
-            // 
-            // Txt_RendaFamiliar
-            // 
-            this.Txt_RendaFamiliar.Location = new System.Drawing.Point(7, 76);
-            this.Txt_RendaFamiliar.Name = "Txt_RendaFamiliar";
-            this.Txt_RendaFamiliar.Size = new System.Drawing.Size(187, 20);
-            this.Txt_RendaFamiliar.TabIndex = 14;
-            // 
             // Form_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,7 +536,6 @@
         private System.Windows.Forms.TextBox Txt_NomeMae;
         private System.Windows.Forms.Label Lbl_NomeMae;
         private System.Windows.Forms.Label Lbl_CEP;
-        private System.Windows.Forms.TextBox Txt_CEP;
         private System.Windows.Forms.Label Lbl_Logradouro;
         private System.Windows.Forms.TextBox Txt_Logradouro;
         private System.Windows.Forms.Label Lbl_Complemento;
@@ -568,5 +569,6 @@
         private System.Windows.Forms.Label Lbl_Cidade;
         private System.Windows.Forms.TextBox Txt_Cidade;
         private System.Windows.Forms.TextBox Txt_RendaFamiliar;
+        private System.Windows.Forms.MaskedTextBox Msk_CEP;
     }
 }

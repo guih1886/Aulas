@@ -1,5 +1,10 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace CursoWindowsFormsBiblioteca
 {
@@ -125,6 +130,24 @@ namespace CursoWindowsFormsBiblioteca
                 return ForcaDaSenha.Forte;
             else
                 return ForcaDaSenha.Segura;
+        }
+
+        public static string GeraJSONCEP(string CEP)
+        {
+            string url = $"https://viacep.com.br/ws/{CEP}/json/";
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                byte[] bytes = response.Content.ReadAsByteArrayAsync().Result;
+                return Encoding.UTF8.GetString(bytes);
+            }
+            else
+            {
+                return "";
+            }
+
         }
     }
 }

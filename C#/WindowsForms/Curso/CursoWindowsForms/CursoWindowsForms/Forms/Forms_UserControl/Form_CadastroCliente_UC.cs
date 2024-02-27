@@ -1,4 +1,5 @@
-﻿using CursoWindowsFormsBiblioteca.Classes;
+﻿using CursoWindowsFormsBiblioteca;
+using CursoWindowsFormsBiblioteca.Classes;
 using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -35,34 +36,34 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Ckb_TemPai.Text = "Pai desconhecido";
 
             Cmb_Estados.Items.AddRange(new object[] {
-                             "Acre",
-  "Alagoas",
-  "Amapá",
-  "Amazonas",
-  "Bahia",
-  "Ceará",
-  "Distrito Federal",
-  "Espirito Santo",
-  "Goiás",
-  "Maranhão",
-  "Mato Grosso do Sul",
-  "Mato Grosso",
-  "Minas Gerais",
-  "Pará",
-  "Paraíba",
-  "Paraná",
-  "Pernambuco",
-  "Piauí",
-  "Rio de Janeiro",
-  "Rio Grande do Norte",
-  "Rio Grande do Sul",
-  "Rondônia",
-  "Roraima",
-  "Santa Catarina",
-  "São Paulo",
-  "Sergipe",
-  "Tocantins",
-                        });
+                "AC",
+                "AL",
+                "AP",
+                "AM",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MT",
+                "MS",
+                "MG",
+                "PA",
+                "PB",
+                "PR",
+                "PE",
+                "PI",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SP",
+                "SE",
+                "TO"
+            });
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             if (Rdb_Masculino.Checked) cliente.Genero = 0;
             if (Rdb_Feminino.Checked) cliente.Genero = 1;
             if (Rdb_Indefinido.Checked) cliente.Genero = 2;
-            cliente.Cep = Txt_CEP.Text;
+            cliente.Cep = Msk_CEP.Text;
             cliente.Logradouro = Txt_Logradouro.Text;
             cliente.Bairro = Txt_Bairro.Text;
             cliente.Cidade = Txt_Cidade.Text;
@@ -143,6 +144,30 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         private void apagaToolStripButton2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Msk_CEP_Leave(object sender, EventArgs e)
+        {
+            string cep = Msk_CEP.Text.Replace("-", "").Trim();
+            string vJson = Cls_Uteis.GeraJSONCEP(cep);
+            Cep.Unit CEP = new Cep.Unit();
+            CEP = Cep.DesSerializeClassUnit(vJson);
+
+            if (vJson.Contains("logradouro"))
+            {
+                if (CEP.Logradouro != string.Empty) Txt_Logradouro.Enabled = false;
+                Txt_Logradouro.Text = CEP.Logradouro;
+                if (CEP.Bairro != string.Empty) Txt_Bairro.Enabled = false;
+                Txt_Bairro.Text = CEP.Bairro;
+                if (CEP.Localidade != string.Empty) Txt_Cidade.Enabled = false;
+                Txt_Cidade.Text = CEP.Localidade;
+                if (CEP.Complemento != string.Empty) Txt_Complemento.Enabled = false;
+                Txt_Complemento.Text = CEP.Complemento;
+                Cmb_Estados.SelectedIndex = Cmb_Estados.Items.IndexOf(CEP.UF.Normalize());
+            } else
+            {
+                MessageBox.Show("CEP inválido", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }
