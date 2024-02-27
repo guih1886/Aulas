@@ -1,8 +1,10 @@
 ﻿using CursoWindowsFormsBiblioteca;
 using CursoWindowsFormsBiblioteca.Classes;
+using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms.Forms.Forms_UserControl
@@ -34,7 +36,6 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Lbl_RendaFamiliar.Text = "Renda Familiar";
             Lbl_Telefone.Text = "Telefone";
             Ckb_TemPai.Text = "Pai desconhecido";
-
             Cmb_Estados.Items.AddRange(new object[] {
                 "AC",
                 "AL",
@@ -66,20 +67,6 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             });
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Ckb_TemPai.Checked)
-            {
-                Txt_NomePai.Text = "Pai desconhecido.";
-                Txt_NomePai.Enabled = false;
-            }
-            else
-            {
-                Txt_NomePai.Text = "";
-                Txt_NomePai.Enabled = true;
-            }
-        }
-
         private void novoToolStripButton_Click(object sender, EventArgs e)
         {
             try
@@ -88,42 +75,37 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 cliente = LeituraForm();
                 cliente.ValidaClasse();
                 cliente.ValidaComplemento();
+                string clienteJson = Cliente.SerializeClassUnit(cliente);
+
+                Fichario fichario = new Fichario("C:\\Fichario", clienteJson);
+                if (fichario.status)
+                {
+                    fichario.Incluir(cliente.Id, clienteJson);
+                    if (fichario.status)
+                    {
+                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
             }
             catch (ValidationException err)
             {
-                throw new ValidationException(err.Message);
+                MessageBox.Show(err.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception err)
             {
-                throw new Exception(err.Message);
+                MessageBox.Show(err.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private Cliente.Unit LeituraForm()
-        {
-            Cliente.Unit cliente = new Cliente.Unit();
-            cliente.Id = Txt_NumeroCliente.Text;
-            cliente.CPF = Msk_CPF.Text.Replace(",", "").Replace("-", "").Trim();
-            cliente.Nome = Txt_NomeCliente.Text;
-            cliente.NomeMae = Txt_NomeMae.Text;
-            cliente.NomePai = Txt_NomePai.Text;
-            cliente.NaoTemPai = false;
-            if (Ckb_TemPai.Checked) cliente.NaoTemPai = true;
-            if (Rdb_Masculino.Checked) cliente.Genero = 0;
-            if (Rdb_Feminino.Checked) cliente.Genero = 1;
-            if (Rdb_Indefinido.Checked) cliente.Genero = 2;
-            cliente.Cep = Msk_CEP.Text;
-            cliente.Logradouro = Txt_Logradouro.Text;
-            cliente.Bairro = Txt_Bairro.Text;
-            cliente.Cidade = Txt_Cidade.Text;
-            cliente.Complemento = Txt_Complemento.Text;
-            cliente.Estado = Cmb_Estados.SelectedIndex != -1 ? Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString() : "";
-            cliente.Telefone = Txt_Telefone.Text;
-            cliente.Profissao = Txt_Profissao.Text;
-            cliente.RendaFamiliar = (Information.IsNumeric(Txt_RendaFamiliar.Text) && double.Parse(Txt_RendaFamiliar.Text) > 0) ?
-                cliente.RendaFamiliar = double.Parse(Txt_RendaFamiliar.Text) :
-                cliente.RendaFamiliar = 0;
-            return cliente;
         }
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
@@ -138,12 +120,53 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void limparToolStripButton1_Click(object sender, EventArgs e)
         {
-
+            LimparForm();
         }
 
         private void apagaToolStripButton2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private Cliente.Unit LeituraForm()
+        {
+            Cliente.Unit cliente = new Cliente.Unit();
+            cliente.Id = Txt_NumeroCliente.Text;
+            cliente.CPF = Msk_CPF.Text.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
+            cliente.Nome = Txt_NomeCliente.Text;
+            cliente.NomeMae = Txt_NomeMae.Text;
+            cliente.NomePai = Txt_NomePai.Text;
+            cliente.NaoTemPai = false;
+            if (Ckb_TemPai.Checked) cliente.NaoTemPai = true;
+            if (Rdb_Masculino.Checked) cliente.Genero = 0;
+            if (Rdb_Feminino.Checked) cliente.Genero = 1;
+            if (Rdb_Indefinido.Checked) cliente.Genero = 2;
+            cliente.Cep = Msk_CEP.Text.Replace("-", "");
+            cliente.Logradouro = Txt_Logradouro.Text;
+            cliente.Bairro = Txt_Bairro.Text;
+            cliente.Cidade = Txt_Cidade.Text;
+            cliente.Complemento = Txt_Complemento.Text;
+            cliente.Estado = Cmb_Estados.SelectedIndex != -1 ? Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString() : "";
+            cliente.Telefone = Txt_Telefone.Text;
+            cliente.Profissao = Txt_Profissao.Text;
+            cliente.RendaFamiliar = (Information.IsNumeric(Txt_RendaFamiliar.Text) && double.Parse(Txt_RendaFamiliar.Text) > 0) ?
+                cliente.RendaFamiliar = double.Parse(Txt_RendaFamiliar.Text) :
+                cliente.RendaFamiliar = 0;
+            return cliente;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Ckb_TemPai.Checked)
+            {
+                Txt_NomePai.Text = "Pai desconhecido.";
+                Txt_NomePai.Enabled = false;
+            }
+            else
+            {
+                Txt_NomePai.Text = "";
+                Txt_NomePai.Enabled = true;
+            }
         }
 
         private void Msk_CEP_Leave(object sender, EventArgs e)
@@ -164,10 +187,50 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 if (CEP.Complemento != string.Empty) Txt_Complemento.Enabled = false;
                 Txt_Complemento.Text = CEP.Complemento;
                 Cmb_Estados.SelectedIndex = Cmb_Estados.Items.IndexOf(CEP.UF.Normalize());
-            } else
+            }
+            else
             {
                 MessageBox.Show("CEP inválido", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void LimparForm()
+        {
+            Txt_NumeroCliente.Text = string.Empty;
+            Txt_Bairro.Text = string.Empty;
+            Msk_CEP.Text = string.Empty;
+            Txt_Complemento.Text = string.Empty;
+            Msk_CPF.Text = string.Empty;
+            Cmb_Estados.SelectedIndex = -1;
+            Txt_Logradouro.Text = string.Empty;
+            Txt_Cidade.Text = string.Empty;
+            Txt_NomeCliente.Text = string.Empty;
+            Txt_NomeMae.Text = string.Empty;
+            Txt_NomePai.Text = string.Empty;
+            Txt_Profissao.Text = string.Empty;
+            Txt_RendaFamiliar.Text = string.Empty;
+            Txt_Telefone.Text = string.Empty;
+            Ckb_TemPai.Checked = false;
+            Rdb_Feminino.Checked = false;
+            Rdb_Indefinido.Checked = false;
+            Rdb_Masculino.Checked = false;
+            Txt_NumeroCliente.Focus();
+
+            HabilitarCamposEndereco();
+        }
+
+        private void Pic_HabilitarEndereco_Click(object sender, EventArgs e)
+        {
+            HabilitarCamposEndereco();
+        }
+
+        private void HabilitarCamposEndereco()
+        {
+            Txt_Logradouro.Enabled = true;
+            Txt_Bairro.Enabled = true;
+            Txt_Cidade.Enabled = true;
+            Txt_Complemento.Enabled = true;
+        }
+
     }
 }

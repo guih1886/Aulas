@@ -69,14 +69,16 @@
             this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.abrirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.apagaToolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.Pic_HabilitarEndereco = new System.Windows.Forms.PictureBox();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
             this.Grp_Endereco.SuspendLayout();
             this.Grp_Outros.SuspendLayout();
             this.Tls_Principal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_CPF
@@ -357,6 +359,7 @@
             // 
             // Grp_Endereco
             // 
+            this.Grp_Endereco.Controls.Add(this.Pic_HabilitarEndereco);
             this.Grp_Endereco.Controls.Add(this.Msk_CEP);
             this.Grp_Endereco.Controls.Add(this.Lbl_Cidade);
             this.Grp_Endereco.Controls.Add(this.Txt_Cidade);
@@ -438,8 +441,8 @@
             this.novoToolStripButton,
             this.abrirToolStripButton,
             this.salvarToolStripButton,
-            this.limparToolStripButton1,
-            this.apagaToolStripButton2});
+            this.apagaToolStripButton2,
+            this.limparToolStripButton1});
             this.Tls_Principal.Location = new System.Drawing.Point(0, 0);
             this.Tls_Principal.Name = "Tls_Principal";
             this.Tls_Principal.Size = new System.Drawing.Size(822, 25);
@@ -476,6 +479,17 @@
             this.salvarToolStripButton.Text = "&Salvar";
             this.salvarToolStripButton.Click += new System.EventHandler(this.salvarToolStripButton_Click);
             // 
+            // apagaToolStripButton2
+            // 
+            this.apagaToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.apagaToolStripButton2.Image = global::CursoWindowsForms.Properties.Resources.ExcluirBarra;
+            this.apagaToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.apagaToolStripButton2.Name = "apagaToolStripButton2";
+            this.apagaToolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.apagaToolStripButton2.Text = "toolStripButton2";
+            this.apagaToolStripButton2.ToolTipText = "Excluir";
+            this.apagaToolStripButton2.Click += new System.EventHandler(this.apagaToolStripButton2_Click);
+            // 
             // limparToolStripButton1
             // 
             this.limparToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -487,16 +501,18 @@
             this.limparToolStripButton1.ToolTipText = "Limpar";
             this.limparToolStripButton1.Click += new System.EventHandler(this.limparToolStripButton1_Click);
             // 
-            // apagaToolStripButton2
+            // Pic_HabilitarEndereco
             // 
-            this.apagaToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.apagaToolStripButton2.Image = global::CursoWindowsForms.Properties.Resources.ExcluirBarra;
-            this.apagaToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.apagaToolStripButton2.Name = "apagaToolStripButton2";
-            this.apagaToolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.apagaToolStripButton2.Text = "toolStripButton2";
-            this.apagaToolStripButton2.ToolTipText = "Excluir";
-            this.apagaToolStripButton2.Click += new System.EventHandler(this.apagaToolStripButton2_Click);
+            this.Pic_HabilitarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Pic_HabilitarEndereco.Image = global::CursoWindowsForms.Properties.Resources.Cadastros;
+            this.Pic_HabilitarEndereco.Location = new System.Drawing.Point(769, 0);
+            this.Pic_HabilitarEndereco.Name = "Pic_HabilitarEndereco";
+            this.Pic_HabilitarEndereco.Size = new System.Drawing.Size(23, 20);
+            this.Pic_HabilitarEndereco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_HabilitarEndereco.TabIndex = 22;
+            this.Pic_HabilitarEndereco.TabStop = false;
+            this.Pic_HabilitarEndereco.Tag = "&Habilitar campos do endereço";
+            this.Pic_HabilitarEndereco.Click += new System.EventHandler(this.Pic_HabilitarEndereco_Click);
             // 
             // Form_CadastroCliente_UC
             // 
@@ -521,6 +537,7 @@
             this.Grp_Outros.PerformLayout();
             this.Tls_Principal.ResumeLayout(false);
             this.Tls_Principal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,5 +587,6 @@
         private System.Windows.Forms.TextBox Txt_Cidade;
         private System.Windows.Forms.TextBox Txt_RendaFamiliar;
         private System.Windows.Forms.MaskedTextBox Msk_CEP;
+        private System.Windows.Forms.PictureBox Pic_HabilitarEndereco;
     }
 }
