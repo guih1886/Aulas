@@ -10,7 +10,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
         public string mensagem;
         public bool status;
 
-        public Fichario(string diretorio, string arquivo)
+        public Fichario(string diretorio)
         {
             status = true;
             try
@@ -23,6 +23,74 @@ namespace CursoWindowsFormsBiblioteca.Databases
             {
                 status = false;
                 mensagem = "Conexão com o fichario não pode ser criada \n " + error.Message;
+            }
+        }
+
+        public void Atualizar(string id, string arquivo)
+        {
+            status = true;
+            try
+            {
+                if (File.Exists($"{Diretorio}\\{id}.json"))
+                {
+                    File.Delete($"{Diretorio}\\{id}.json");
+                }
+
+                File.WriteAllText($"{Diretorio}\\{id}.json", arquivo);
+                mensagem = "Atualização efetuada com sucesso.";
+            }
+            catch (Exception error)
+            {
+                status = false;
+                mensagem = "Arquivo não pode ser criado \n " + error.Message;
+                throw new Exception("Arquivo não pode ser criado \n " + error.Message);
+            }
+        }
+
+        public string Buscar(string id)
+        {
+            status = true;
+            try
+            {
+                if (!File.Exists($"{Diretorio}\\{id}.json"))
+                {
+                    status = false;
+                    mensagem = "Id não encontrado.";
+                    return "";
+                }
+                else
+                {
+                    status = true;
+                    mensagem = "Id encontrado com sucesso.";
+                    string conteudo = File.ReadAllText($"{Diretorio}\\{id}.json");
+                    return conteudo;
+                }
+            }
+            catch (Exception error)
+            {
+                status = false;
+                mensagem = "Erro ao buscar conteudo do id.\n " + error.Message;
+                return "";
+            }
+        }
+
+        public void Excluir(string id)
+        {
+            status = true;
+            try
+            {
+                if (File.Exists($"{Diretorio}\\{id}.json"))
+                {
+                    File.Delete($"{Diretorio}\\{id}.json");
+                    mensagem = "Exclusão efetuada com sucesso.";
+                }
+                mensagem = "Cliente não encontrado.";
+            }
+            catch (Exception error)
+            {
+                status = false;
+                mensagem = "Arquivo não pode ser criado \n " + error.Message;
+                throw new Exception("Arquivo não pode ser criado \n " + error.Message);
             }
         }
 
