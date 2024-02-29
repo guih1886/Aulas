@@ -143,14 +143,33 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Fichario fichario = new Fichario("C:\\Fichario");
             try
             {
-                Cliente.Unit cliente = new Cliente.Unit();
-                cliente = LeituraForm();
-                cliente.ValidaClasse();
-                cliente.ValidaComplemento();
-                string clienteJson = Cliente.SerializeClassUnit(cliente);
-                fichario.Atualizar(cliente.Id, clienteJson);
-                MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparForm();
+                if (Txt_NumeroCliente.Text == "")
+                {
+                    MessageBox.Show("Preencher um id válido.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string clienteString = fichario.Buscar(Txt_NumeroCliente.Text);
+                    if (clienteString != "")
+                    {
+                        var cliente = Cliente.DesSerializeClassUnit(clienteString);
+                        PreencherForm(cliente);
+                        string clienteJson = Cliente.SerializeClassUnit(cliente);
+
+                        DialogResult result = MessageBox.Show($"Deseja realmente alterar o " +
+                            $"cadastro do cliente {cliente.Id}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                        if (result == DialogResult.OK)
+                        {
+                            fichario.Atualizar(cliente.Id, clienteJson);
+                            MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparForm();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             catch (Exception error)
             {
