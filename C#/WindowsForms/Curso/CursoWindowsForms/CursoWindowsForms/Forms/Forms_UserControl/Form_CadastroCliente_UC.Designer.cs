@@ -59,6 +59,7 @@
             this.Rdb_Feminino = new System.Windows.Forms.RadioButton();
             this.Rdb_Masculino = new System.Windows.Forms.RadioButton();
             this.Grp_Endereco = new System.Windows.Forms.GroupBox();
+            this.Pic_HabilitarEndereco = new System.Windows.Forms.PictureBox();
             this.Msk_CEP = new System.Windows.Forms.MaskedTextBox();
             this.Lbl_Cidade = new System.Windows.Forms.Label();
             this.Txt_Cidade = new System.Windows.Forms.TextBox();
@@ -71,14 +72,13 @@
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.apagaToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.Pic_HabilitarEndereco = new System.Windows.Forms.PictureBox();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
             this.Grp_Endereco.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).BeginInit();
             this.Grp_Outros.SuspendLayout();
             this.Tls_Principal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_CPF
@@ -379,6 +379,19 @@
             this.Grp_Endereco.TabStop = false;
             this.Grp_Endereco.Text = "groupBox1";
             // 
+            // Pic_HabilitarEndereco
+            // 
+            this.Pic_HabilitarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Pic_HabilitarEndereco.Image = global::CursoWindowsForms.Properties.Resources.Cadastros;
+            this.Pic_HabilitarEndereco.Location = new System.Drawing.Point(769, 0);
+            this.Pic_HabilitarEndereco.Name = "Pic_HabilitarEndereco";
+            this.Pic_HabilitarEndereco.Size = new System.Drawing.Size(23, 20);
+            this.Pic_HabilitarEndereco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_HabilitarEndereco.TabIndex = 22;
+            this.Pic_HabilitarEndereco.TabStop = false;
+            this.Pic_HabilitarEndereco.Tag = "&Habilitar campos do endereço";
+            this.Pic_HabilitarEndereco.Click += new System.EventHandler(this.Pic_HabilitarEndereco_Click);
+            // 
             // Msk_CEP
             // 
             this.Msk_CEP.Location = new System.Drawing.Point(10, 33);
@@ -501,19 +514,6 @@
             this.limparToolStripButton1.ToolTipText = "Limpar";
             this.limparToolStripButton1.Click += new System.EventHandler(this.limparToolStripButton1_Click);
             // 
-            // Pic_HabilitarEndereco
-            // 
-            this.Pic_HabilitarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Pic_HabilitarEndereco.Image = global::CursoWindowsForms.Properties.Resources.Cadastros;
-            this.Pic_HabilitarEndereco.Location = new System.Drawing.Point(769, 0);
-            this.Pic_HabilitarEndereco.Name = "Pic_HabilitarEndereco";
-            this.Pic_HabilitarEndereco.Size = new System.Drawing.Size(23, 20);
-            this.Pic_HabilitarEndereco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pic_HabilitarEndereco.TabIndex = 22;
-            this.Pic_HabilitarEndereco.TabStop = false;
-            this.Pic_HabilitarEndereco.Tag = "&Habilitar campos do endereço";
-            this.Pic_HabilitarEndereco.Click += new System.EventHandler(this.Pic_HabilitarEndereco_Click);
-            // 
             // Form_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,11 +533,11 @@
             this.Grp_Genero.PerformLayout();
             this.Grp_Endereco.ResumeLayout(false);
             this.Grp_Endereco.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).EndInit();
             this.Grp_Outros.ResumeLayout(false);
             this.Grp_Outros.PerformLayout();
             this.Tls_Principal.ResumeLayout(false);
             this.Tls_Principal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
