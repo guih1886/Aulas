@@ -77,7 +77,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 cliente.ValidaComplemento();
                 string clienteJson = Cliente.SerializeClassUnit(cliente);
 
-                Fichario fichario = new Fichario("C:\\Fichario", clienteJson);
+                Fichario fichario = new Fichario("C:\\Fichario");
                 if (fichario.status)
                 {
                     fichario.Incluir(cliente.Id, clienteJson);
@@ -110,12 +110,52 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
         {
+            if (Txt_NumeroCliente.Text == "")
+            {
+                MessageBox.Show("Insira um id para buscar o cliente.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Fichario fichario = new Fichario("C:\\Fichario");
+                if (fichario.status)
+                {
+                    string clienteJson = fichario.Buscar(Txt_NumeroCliente.Text);
+                    if (clienteJson != "")
+                    {
+                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
+                        PreencherForm(cliente);
+                    }
+                    else
+                    {
+                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void salvarToolStripButton_Click(object sender, EventArgs e)
         {
-
+            Fichario fichario = new Fichario("C:\\Fichario");
+            try
+            {
+                Cliente.Unit cliente = new Cliente.Unit();
+                cliente = LeituraForm();
+                cliente.ValidaClasse();
+                cliente.ValidaComplemento();
+                string clienteJson = Cliente.SerializeClassUnit(cliente);
+                fichario.Atualizar(cliente.Id, clienteJson);
+                MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparForm();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void limparToolStripButton1_Click(object sender, EventArgs e)
@@ -125,7 +165,41 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void apagaToolStripButton2_Click(object sender, EventArgs e)
         {
+            Fichario fichario = new Fichario("C:\\Fichario");
+            var clienteId = Txt_NumeroCliente.Text;
+            string clienteString = fichario.Buscar(clienteId);
+            var cliente = Cliente.DesSerializeClassUnit(clienteString);
+            PreencherForm(cliente);
 
+            DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
+                $"cadastro do cliente {clienteId}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.OK)
+            {
+                fichario.Excluir(clienteId);
+                MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparForm();
+            }
+        }
+
+        private void PreencherForm(Cliente.Unit cliente)
+        {
+            Msk_CPF.Text = cliente.CPF;
+            Txt_NomeCliente.Text = cliente.Nome;
+            Txt_NomeMae.Text = cliente.NomeMae;
+            Txt_NomePai.Text = cliente.NomePai;
+            if (cliente.NaoTemPai == true) Ckb_TemPai.Checked = true;
+            if (cliente.Genero == 0) Rdb_Masculino.Checked = true;
+            if (cliente.Genero == 1) Rdb_Feminino.Checked = true;
+            if (cliente.Genero == 2) Rdb_Indefinido.Checked = true;
+            Msk_CEP.Text = cliente.Cep;
+            Txt_Logradouro.Text = cliente.Logradouro;
+            Txt_Bairro.Text = cliente.Bairro;
+            Txt_Cidade.Text = cliente.Cidade;
+            Txt_Complemento.Text = cliente.Complemento;
+            Cmb_Estados.SelectedItem = cliente.Estado;
+            Txt_Telefone.Text = cliente.Telefone;
+            Txt_Profissao.Text = cliente.Profissao;
+            Txt_RendaFamiliar.Text = cliente.RendaFamiliar.ToString();
         }
 
         private Cliente.Unit LeituraForm()
