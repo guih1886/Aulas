@@ -1,5 +1,6 @@
 ﻿using CursoWindowsFormsBiblioteca.Classes;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CursoWindowsFormsBiblioteca.Databases
@@ -72,6 +73,28 @@ namespace CursoWindowsFormsBiblioteca.Databases
                 mensagem = "Erro ao buscar conteudo do id.\n " + error.Message;
                 return "";
             }
+        }
+
+        public List<string> BuscarTodos()
+        {
+            status = true;
+            List<string> list = new List<string>();
+            try
+            {
+                string[] arquivos = Directory.GetFiles(Diretorio, "*.json");
+                foreach (string arquivo in arquivos)
+                {
+                    string conteudo = File.ReadAllText(arquivo);
+                    list.Add(conteudo);
+                }
+                return list;
+            }
+            catch (Exception error)
+            {
+                status = false;
+                mensagem = "Erro ao buscar clientes.\n " + error.Message;
+            }
+            return list;
         }
 
         public void Excluir(string id)

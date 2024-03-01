@@ -96,6 +96,12 @@
     <Compile Include="Forms\Forms_UserControl\Frm_ArquivoImagem.Designer.cs">
       <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Busca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Busca.Designer.cs">
+      <DependentUpon>Form_Busca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Mascara.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_UserControl\Frm_ArquivoImagem.resx">
       <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Busca.resx">
+      <DependentUpon>Form_Busca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Menu_Flutuante.resx">
       <DependentUpon>Form_Menu_Flutuante.cs</DependentUpon>

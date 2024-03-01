@@ -3,6 +3,7 @@ using CursoWindowsFormsBiblioteca.Classes;
 using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Windows.Forms;
@@ -65,6 +66,8 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 "SE",
                 "TO"
             });
+
+            Btn_Busca.Text = "Buscar";
         }
 
         private void novoToolStripButton_Click(object sender, EventArgs e)
@@ -149,11 +152,12 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 }
                 else
                 {
-                    string clienteString = fichario.Buscar(Txt_NumeroCliente.Text);
-                    if (clienteString != "")
+                    //string clienteString = fichario.Buscar(Txt_NumeroCliente.Text);
+                    Cliente.Unit cliente = new Cliente.Unit();
+                    cliente = LeituraForm();
+                    var busca = fichario.Buscar(cliente.Id);
+                    if (busca != "")
                     {
-                        var cliente = Cliente.DesSerializeClassUnit(clienteString);
-                        PreencherForm(cliente);
                         string clienteJson = Cliente.SerializeClassUnit(cliente);
 
                         DialogResult result = MessageBox.Show($"Deseja realmente alterar o " +
@@ -167,7 +171,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                     }
                     else
                     {
-                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -187,21 +191,29 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Fichario fichario = new Fichario("C:\\Fichario");
             var clienteId = Txt_NumeroCliente.Text;
             string clienteString = fichario.Buscar(clienteId);
-            var cliente = Cliente.DesSerializeClassUnit(clienteString);
-            PreencherForm(cliente);
-
-            DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
-                $"cadastro do cliente {clienteId}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            if (result == DialogResult.OK)
+            if (clienteString != "")
             {
-                fichario.Excluir(clienteId);
-                MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparForm();
+                var cliente = Cliente.DesSerializeClassUnit(clienteString);
+                PreencherForm(cliente);
+
+                DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
+                    $"cadastro do cliente {clienteId}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.OK)
+                {
+                    fichario.Excluir(clienteId);
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparForm();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id não encontrado.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void PreencherForm(Cliente.Unit cliente)
         {
+            Txt_NumeroCliente.Text = cliente.Id;
             Msk_CPF.Text = cliente.CPF;
             Txt_NomeCliente.Text = cliente.Nome;
             Txt_NomeMae.Text = cliente.NomeMae;
@@ -325,5 +337,38 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Txt_Complemento.Enabled = true;
         }
 
+        private void Btn_Busca_Click(object sender, EventArgs e)
+        {
+            Fichario fichario = new Fichario("C:\\Fichario");
+            if (fichario.status)
+            {
+                List<string> lista = fichario.BuscarTodos();
+                if (fichario.status)
+                {
+                    List<List<string>> listaBusca = new List<List<string>>();
+                    foreach (var item in lista)
+                    {
+                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(item);
+                        listaBusca.Add(new List<string> { cliente.Id, cliente.Nome });
+                    }
+                    Form_Busca busca = new Form_Busca(listaBusca);
+                    busca.ShowDialog();
+                    if (busca.DialogResult == DialogResult.OK)
+                    {
+                        string clienteJson = fichario.Buscar(busca.idSelected);
+                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
+                        PreencherForm(cliente);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                MessageBox.Show("CEP inválido", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
