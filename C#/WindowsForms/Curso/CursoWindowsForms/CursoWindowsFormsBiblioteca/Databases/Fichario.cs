@@ -107,7 +107,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
                     File.Delete($"{Diretorio}\\{id}.json");
                     mensagem = "Exclusão efetuada com sucesso.";
                 }
-                mensagem = "Cliente não encontrado.";
+                else
+                {
+                    mensagem = "Cliente não encontrado.";
+                }
             }
             catch (Exception error)
             {

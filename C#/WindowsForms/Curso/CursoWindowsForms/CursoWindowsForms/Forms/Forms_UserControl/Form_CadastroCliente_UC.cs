@@ -12,8 +12,10 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 {
     public partial class Form_CadastroCliente_UC : UserControl
     {
+        private Cliente.Unit ClienteUnit;
         public Form_CadastroCliente_UC()
         {
+            ClienteUnit = new Cliente.Unit();
             InitializeComponent();
             Txt_NumeroCliente.Focus();
             Grp_Codigo.Text = "Código do Cliente";
@@ -74,36 +76,10 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         {
             try
             {
-                Cliente.Unit cliente = new Cliente.Unit();
-                cliente = LeituraForm();
-                cliente.ValidaClasse();
-                cliente.ValidaComplemento();
-                string clienteJson = Cliente.SerializeClassUnit(cliente);
-
-                Fichario fichario = new Fichario("C:\\Fichario");
-                if (fichario.status)
-                {
-                    fichario.Incluir(cliente.Id, clienteJson);
-                    if (fichario.status)
-                    {
-                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparForm();
-                    }
-                    else
-                    {
-                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-
-            }
-            catch (ValidationException err)
-            {
-                MessageBox.Show(err.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClienteUnit = LeituraForm();
+                ClienteUnit.IncluirFichario("C:\\Fichario");
+                MessageBox.Show("Cliente incluso com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparForm();
             }
             catch (Exception err)
             {
@@ -119,65 +95,40 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             }
             else
             {
-                Fichario fichario = new Fichario("C:\\Fichario");
-                if (fichario.status)
+                try
                 {
-                    string clienteJson = fichario.Buscar(Txt_NumeroCliente.Text);
-                    if (clienteJson != "")
-                    {
-                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
-                        PreencherForm(cliente);
-                    }
-                    else
-                    {
-                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
+                    Cliente.Unit cliente = ClienteUnit.BuscarFichario("C:\\Fichario", Txt_NumeroCliente.Text);
+                    PreencherForm(cliente);
                 }
-                else
+                catch (Exception error)
                 {
-                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void salvarToolStripButton_Click(object sender, EventArgs e)
         {
-            Fichario fichario = new Fichario("C:\\Fichario");
-            try
-            {
-                if (Txt_NumeroCliente.Text == "")
-                {
-                    MessageBox.Show("Preencher um id válido.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    //string clienteString = fichario.Buscar(Txt_NumeroCliente.Text);
-                    Cliente.Unit cliente = new Cliente.Unit();
-                    cliente = LeituraForm();
-                    var busca = fichario.Buscar(cliente.Id);
-                    if (busca != "")
-                    {
-                        string clienteJson = Cliente.SerializeClassUnit(cliente);
+            if (Txt_NumeroCliente.Text == "") MessageBox.Show("Preencher um id válido.",
+                "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        DialogResult result = MessageBox.Show($"Deseja realmente alterar o " +
-                            $"cadastro do cliente {cliente.Id}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                        if (result == DialogResult.OK)
-                        {
-                            fichario.Atualizar(cliente.Id, clienteJson);
-                            MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LimparForm();
-                        }
-                    }
-                    else
+            else
+            {
+                try
+                {
+                    ClienteUnit = LeituraForm();
+                    DialogResult result = MessageBox.Show($"Deseja realmente alterar o " +
+                        $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
                     {
-                        MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClienteUnit.AlterarFichario("C:\\Fichario");
+                        LimparForm();
                     }
                 }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -188,27 +139,31 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void apagaToolStripButton2_Click(object sender, EventArgs e)
         {
-            Fichario fichario = new Fichario("C:\\Fichario");
             var clienteId = Txt_NumeroCliente.Text;
-            string clienteString = fichario.Buscar(clienteId);
-            if (clienteString != "")
+            if (clienteId != "")
             {
-                var cliente = Cliente.DesSerializeClassUnit(clienteString);
-                PreencherForm(cliente);
-
-                DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
-                    $"cadastro do cliente {clienteId}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.OK)
+                try
                 {
-                    fichario.Excluir(clienteId);
-                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparForm();
+                    ClienteUnit = ClienteUnit.BuscarFichario("C:\\Fichario", clienteId);
+                    PreencherForm(ClienteUnit);
+                    DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
+                            $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
+                    {
+                        ClienteUnit.ExcluirFichario("C:\\Fichario");
+                        LimparForm();
+                    }
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Id não encontrado.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Preencha um id para excluir.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void PreencherForm(Cliente.Unit cliente)
@@ -339,35 +294,23 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void Btn_Busca_Click(object sender, EventArgs e)
         {
-            Fichario fichario = new Fichario("C:\\Fichario");
-            if (fichario.status)
+            List<string> lista = new List<string>();
+            List<List<string>> listaBusca = new List<List<string>>();
+            lista = ClienteUnit.ListaFichario("C:\\Fichario");
+
+            //Exibindo a lista de clientes
+            foreach (var item in lista)
             {
-                List<string> lista = fichario.BuscarTodos();
-                if (fichario.status)
-                {
-                    List<List<string>> listaBusca = new List<List<string>>();
-                    foreach (var item in lista)
-                    {
-                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(item);
-                        listaBusca.Add(new List<string> { cliente.Id, cliente.Nome });
-                    }
-                    Form_Busca busca = new Form_Busca(listaBusca);
-                    busca.ShowDialog();
-                    if (busca.DialogResult == DialogResult.OK)
-                    {
-                        string clienteJson = fichario.Buscar(busca.idSelected);
-                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
-                        PreencherForm(cliente);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                Cliente.Unit cliente = Cliente.DesSerializeClassUnit(item);
+                listaBusca.Add(new List<string> { cliente.Id, cliente.Nome });
             }
-            else
+
+            Form_Busca busca = new Form_Busca(listaBusca);
+            busca.ShowDialog();
+            if (busca.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("CEP inválido", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ClienteUnit = ClienteUnit.BuscarFichario("C:\\Fichario", busca.idSelected);
+                PreencherForm(ClienteUnit);
             }
         }
     }

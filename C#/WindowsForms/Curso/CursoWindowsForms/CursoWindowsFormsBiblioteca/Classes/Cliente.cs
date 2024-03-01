@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using CursoWindowsFormsBiblioteca.Databases;
 
 namespace CursoWindowsFormsBiblioteca.Classes
 {
@@ -105,6 +106,98 @@ namespace CursoWindowsFormsBiblioteca.Classes
                     throw new Exception("CPF inválido!");
                 }
             }
+
+            #region "CRUD Fichario"
+
+            public void IncluirFichario(string path)
+            {
+                this.ValidaClasse();
+                this.ValidaComplemento();
+                string clienteJson = Cliente.SerializeClassUnit(this);
+                Fichario fichario = new Fichario(path);
+                if (fichario.status)
+                {
+                    fichario.Incluir(this.Id, clienteJson);
+                    if (!fichario.status)
+                    {
+                        throw new Exception(fichario.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(fichario.mensagem);
+                }
+            }
+
+            public Unit BuscarFichario(string path, string id)
+            {
+                Fichario fichario = new Fichario(path);
+                if (fichario.status)
+                {
+                    string clienteJson = fichario.Buscar(id);
+                    if (clienteJson != "")
+                    {
+                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
+                        return cliente;
+                    }
+                    else
+                    {
+                        throw new Exception(fichario.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(fichario.mensagem);
+                }
+            }
+
+            public void AlterarFichario(string path)
+            {
+                ValidaClasse();
+                ValidaComplemento();
+                Fichario fichario = new Fichario(path);
+                var busca = fichario.Buscar(Id);
+                if (busca != "")
+                {
+                    string clienteJson = SerializeClassUnit(this);
+                    fichario.Atualizar(Id, clienteJson);
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new Exception("Cliente não encontrado.");
+                }
+            }
+
+            public void ExcluirFichario(string path)
+            {
+                Fichario fichario = new Fichario(path);
+                if (fichario.status)
+                {
+                    fichario.Excluir(this.Id);
+                    MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new Exception("Fichario não encontrado.");
+                }
+            }
+
+            public List<string> ListaFichario(string path)
+            {
+                Fichario fichario = new Fichario(path);
+                if (fichario.status)
+                {
+                    List<string> lista = fichario.BuscarTodos();
+                    return lista;
+                }
+                else
+                {
+                    throw new Exception(fichario.mensagem);
+                }
+            }
+
+            #endregion
 
 
         }
