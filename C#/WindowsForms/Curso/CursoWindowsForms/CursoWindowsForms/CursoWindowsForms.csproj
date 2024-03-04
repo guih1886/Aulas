@@ -54,6 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FicharioDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FicharioDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_UserControl\Form_CadastroCliente_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,6 +267,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="FicharioDataSet.xsc">
+      <DependentUpon>FicharioDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FicharioDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FicharioDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FicharioDataSet.xss">
+      <DependentUpon>FicharioDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

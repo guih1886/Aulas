@@ -43,8 +43,8 @@ namespace CursoWindowsFormsBiblioteca.Databases
             catch (Exception error)
             {
                 status = false;
-                mensagem = "Arquivo não pode ser criado \n " + error.Message;
-                throw new Exception("Arquivo não pode ser criado \n " + error.Message);
+                mensagem = "Não foi possível atualizar o cliente.\n " + error.Message;
+                throw new Exception(mensagem);
             }
         }
 
@@ -93,6 +93,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             {
                 status = false;
                 mensagem = "Erro ao buscar clientes.\n " + error.Message;
+                throw new Exception(mensagem);
             }
             return list;
         }
@@ -116,7 +117,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             {
                 status = false;
                 mensagem = "Arquivo não pode ser criado \n " + error.Message;
-                throw new Exception("Arquivo não pode ser criado \n " + error.Message);
+                throw new Exception(mensagem);
             }
         }
 
@@ -139,8 +140,8 @@ namespace CursoWindowsFormsBiblioteca.Databases
             catch (Exception error)
             {
                 status = false;
-                mensagem = "Arquivo não pode ser criado \n " + error.Message;
-                throw new Exception("Arquivo não pode ser criado \n " + error.Message);
+                mensagem = "Não foi possível incluir o cliente.\n " + error.Message;
+                throw new Exception(mensagem);
             }
         }
     }
