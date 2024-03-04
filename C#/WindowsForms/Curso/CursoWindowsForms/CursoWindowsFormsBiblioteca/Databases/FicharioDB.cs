@@ -118,7 +118,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             catch (Exception error)
             {
                 status = false;
-                mensagem = $"Não foi possível atualizar o {tabela}.\n " + error.Message;
+                mensagem = "Não foi possível atualizar o {tabela}.\n " + error.Message;
                 throw new Exception(mensagem);
             }
         }
