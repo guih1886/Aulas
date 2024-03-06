@@ -109,15 +109,15 @@ namespace CursoWindowsFormsBiblioteca.Classes
 
             #region "CRUD Fichario"
 
-            public void IncluirFichario(string path)
+            public void IncluirFichario(string tabela)
             {
-                this.ValidaClasse();
-                this.ValidaComplemento();
-                string clienteJson = Cliente.SerializeClassUnit(this);
-                Fichario fichario = new Fichario(path);
+                ValidaClasse();
+                ValidaComplemento();
+                string clienteJson = SerializeClassUnit(this);
+                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
-                    fichario.Incluir(this.Id, clienteJson);
+                    fichario.Incluir(Id, clienteJson);
                     if (!fichario.status)
                     {
                         throw new Exception(fichario.mensagem);
@@ -129,15 +129,15 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public Unit BuscarFichario(string path, string id)
+            public Unit BuscarFichario(string tabela, string id)
             {
-                Fichario fichario = new Fichario(path);
+                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     string clienteJson = fichario.Buscar(id);
                     if (clienteJson != "")
                     {
-                        Cliente.Unit cliente = Cliente.DesSerializeClassUnit(clienteJson);
+                        Cliente.Unit cliente = DesSerializeClassUnit(clienteJson);
                         return cliente;
                     }
                     else
@@ -151,11 +151,11 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public void AlterarFichario(string path)
+            public void AlterarFichario(string tabela)
             {
                 ValidaClasse();
                 ValidaComplemento();
-                Fichario fichario = new Fichario(path);
+                FicharioDB fichario = new FicharioDB(tabela);
                 var busca = fichario.Buscar(Id);
                 if (busca != "")
                 {
@@ -169,9 +169,9 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public void ExcluirFichario(string path)
+            public void ExcluirFichario(string tabela)
             {
-                Fichario fichario = new Fichario(path);
+                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     fichario.Excluir(this.Id);
@@ -183,9 +183,9 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public List<string> ListaFichario(string path)
+            public List<string> ListaFichario(string tabela)
             {
-                Fichario fichario = new Fichario(path);
+                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     List<string> lista = fichario.BuscarTodos();
