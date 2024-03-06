@@ -77,7 +77,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             try
             {
                 ClienteUnit = LeituraForm();
-                ClienteUnit.IncluirFichario("C:\\Fichario");
+                ClienteUnit.IncluirFichario("Cliente");
                 MessageBox.Show("Cliente incluso com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparForm();
             }
@@ -97,7 +97,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    Cliente.Unit cliente = ClienteUnit.BuscarFichario("C:\\Fichario", Txt_NumeroCliente.Text);
+                    Cliente.Unit cliente = ClienteUnit.BuscarFichario("Cliente", Txt_NumeroCliente.Text);
                     PreencherForm(cliente);
                 }
                 catch (Exception error)
@@ -121,7 +121,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                         $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.AlterarFichario("C:\\Fichario");
+                        ClienteUnit.AlterarFichario("Cliente");
                         LimparForm();
                     }
                 }
@@ -144,13 +144,13 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    ClienteUnit = ClienteUnit.BuscarFichario("C:\\Fichario", clienteId);
+                    ClienteUnit = ClienteUnit.BuscarFichario("Cliente", clienteId);
                     PreencherForm(ClienteUnit);
                     DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
                             $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.ExcluirFichario("C:\\Fichario");
+                        ClienteUnit.ExcluirFichario("Cliente");
                         LimparForm();
                     }
                 }
@@ -296,7 +296,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         {
             List<string> lista = new List<string>();
             List<List<string>> listaBusca = new List<List<string>>();
-            lista = ClienteUnit.ListaFichario("C:\\Fichario");
+            lista = ClienteUnit.ListaFichario("Cliente");
 
             //Exibindo a lista de clientes
             foreach (var item in lista)
@@ -309,7 +309,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             busca.ShowDialog();
             if (busca.DialogResult == DialogResult.OK)
             {
-                ClienteUnit = ClienteUnit.BuscarFichario("C:\\Fichario", busca.idSelected);
+                ClienteUnit = ClienteUnit.BuscarFichario("Cliente", busca.idSelected);
                 PreencherForm(ClienteUnit);
             }
         }
