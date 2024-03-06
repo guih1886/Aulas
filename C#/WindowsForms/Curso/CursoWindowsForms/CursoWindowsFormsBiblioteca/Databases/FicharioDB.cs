@@ -36,7 +36,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             status = true;
             try
             {
-                string comando = $"SELECT * from {tabela} WHERE id = {id}";
+                string comando = $"SELECT * from {tabela} WHERE id = '" + id + "'";
                 DataTable retorno = connection.SQLQuery(comando);
                 mensagem = $"{tabela} foi resgatado foi um sucesso.";
                 return retorno.Rows[0]["JSON"].ToString();
@@ -57,7 +57,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             {
                 string comando = $"SELECT * FROM {tabela}";
                 DataTable retorno = connection.SQLQuery(comando);
-                for (int i = 0; i < retorno.Rows.Count - 1; i++)
+                for (int i = 0; i < retorno.Rows.Count; i++)
                 {
                     lista.Add(retorno.Rows[i]["JSON"].ToString());
                 }
@@ -77,7 +77,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             status = true;
             try
             {
-                string comando = $"DELETE FROM {tabela} WHERE id = {id}";
+                string comando = $"DELETE FROM {tabela} WHERE id = '" + id + "'";
                 connection.SQLComand(comando);
                 mensagem = $"{tabela} excluido com sucesso.";
             }
@@ -94,14 +94,14 @@ namespace CursoWindowsFormsBiblioteca.Databases
             status = true;
             try
             {
-                string comando = $"INSERT INTO {tabela} (ID, JSON) VALUES ({id},{arquivo})";
+                string comando = $"INSERT INTO {tabela} (Id, Json) VALUES ('" + id + "','" + arquivo + "')";
                 connection.SQLComand(comando);
                 mensagem = $"{tabela} incluido com sucesso.";
             }
             catch (Exception error)
             {
                 status = false;
-                mensagem = "Não foi possível incluir o {tabela}.\n " + error.Message;
+                mensagem = $"Não foi possível incluir o {tabela}.\n " + error.Message;
                 throw new Exception(mensagem);
             }
         }
@@ -111,7 +111,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
             status = true;
             try
             {
-                string comando = $"UPDATE {tabela} SET JSON = {arquivo} WHERE id = {id}";
+                string comando = $"UPDATE {tabela} SET JSON = '" + arquivo + "' WHERE id = '" + id + "'";
                 connection.SQLComand(comando);
                 mensagem = $"{tabela} atualizado com sucesso.";
             }
