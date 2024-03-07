@@ -77,7 +77,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             try
             {
                 ClienteUnit = LeituraForm();
-                ClienteUnit.IncluirFichario("Cliente");
+                ClienteUnit.IncluirFichario();
                 MessageBox.Show("Cliente incluso com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparForm();
             }
@@ -97,7 +97,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    Cliente.Unit cliente = ClienteUnit.BuscarFichario("Cliente", Txt_NumeroCliente.Text);
+                    Cliente.Unit cliente = ClienteUnit.BuscarFichario(Txt_NumeroCliente.Text);
                     PreencherForm(cliente);
                 }
                 catch (Exception error)
@@ -121,7 +121,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                         $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.AlterarFichario("Cliente");
+                        ClienteUnit.AlterarFichario();
                         LimparForm();
                     }
                 }
@@ -144,13 +144,13 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    ClienteUnit = ClienteUnit.BuscarFichario("Cliente", clienteId);
+                    ClienteUnit = ClienteUnit.BuscarFichario(clienteId);
                     PreencherForm(ClienteUnit);
                     DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
                             $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.ExcluirFichario("Cliente");
+                        ClienteUnit.ExcluirFichario();
                         LimparForm();
                     }
                 }
@@ -190,29 +190,28 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private Cliente.Unit LeituraForm()
         {
-            Cliente.Unit cliente = new Cliente.Unit();
-            cliente.Id = Txt_NumeroCliente.Text;
-            cliente.CPF = Msk_CPF.Text.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
-            cliente.Nome = Txt_NomeCliente.Text;
-            cliente.NomeMae = Txt_NomeMae.Text;
-            cliente.NomePai = Txt_NomePai.Text;
-            cliente.NaoTemPai = false;
-            if (Ckb_TemPai.Checked) cliente.NaoTemPai = true;
-            if (Rdb_Masculino.Checked) cliente.Genero = 0;
-            if (Rdb_Feminino.Checked) cliente.Genero = 1;
-            if (Rdb_Indefinido.Checked) cliente.Genero = 2;
-            cliente.Cep = Msk_CEP.Text.Replace("-", "");
-            cliente.Logradouro = Txt_Logradouro.Text;
-            cliente.Bairro = Txt_Bairro.Text;
-            cliente.Cidade = Txt_Cidade.Text;
-            cliente.Complemento = Txt_Complemento.Text;
-            cliente.Estado = Cmb_Estados.SelectedIndex != -1 ? Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString() : "";
-            cliente.Telefone = Txt_Telefone.Text;
-            cliente.Profissao = Txt_Profissao.Text;
-            cliente.RendaFamiliar = (Information.IsNumeric(Txt_RendaFamiliar.Text) && double.Parse(Txt_RendaFamiliar.Text) > 0) ?
-                cliente.RendaFamiliar = double.Parse(Txt_RendaFamiliar.Text) :
-                cliente.RendaFamiliar = 0;
-            return cliente;
+            ClienteUnit.Id = Txt_NumeroCliente.Text;
+            ClienteUnit.CPF = Msk_CPF.Text.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
+            ClienteUnit.Nome = Txt_NomeCliente.Text;
+            ClienteUnit.NomeMae = Txt_NomeMae.Text;
+            ClienteUnit.NomePai = Txt_NomePai.Text;
+            ClienteUnit.NaoTemPai = false;
+            if (Ckb_TemPai.Checked) ClienteUnit.NaoTemPai = true;
+            if (Rdb_Masculino.Checked) ClienteUnit.Genero = 0;
+            if (Rdb_Feminino.Checked) ClienteUnit.Genero = 1;
+            if (Rdb_Indefinido.Checked) ClienteUnit.Genero = 2;
+            ClienteUnit.Cep = Msk_CEP.Text.Replace("-", "");
+            ClienteUnit.Logradouro = Txt_Logradouro.Text;
+            ClienteUnit.Bairro = Txt_Bairro.Text;
+            ClienteUnit.Cidade = Txt_Cidade.Text;
+            ClienteUnit.Complemento = Txt_Complemento.Text;
+            ClienteUnit.Estado = Cmb_Estados.SelectedIndex != -1 ? Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString() : "";
+            ClienteUnit.Telefone = Txt_Telefone.Text;
+            ClienteUnit.Profissao = Txt_Profissao.Text;
+            ClienteUnit.RendaFamiliar = (Information.IsNumeric(Txt_RendaFamiliar.Text) && double.Parse(Txt_RendaFamiliar.Text) > 0) ?
+                ClienteUnit.RendaFamiliar = double.Parse(Txt_RendaFamiliar.Text) :
+                ClienteUnit.RendaFamiliar = 0;
+            return ClienteUnit;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -296,7 +295,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         {
             List<string> lista = new List<string>();
             List<List<string>> listaBusca = new List<List<string>>();
-            lista = ClienteUnit.ListaFichario("Cliente");
+            lista = ClienteUnit.ListaFichario();
 
             //Exibindo a lista de clientes
             foreach (var item in lista)
@@ -309,9 +308,10 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             busca.ShowDialog();
             if (busca.DialogResult == DialogResult.OK)
             {
-                ClienteUnit = ClienteUnit.BuscarFichario("Cliente", busca.idSelected);
+                ClienteUnit = ClienteUnit.BuscarFichario(busca.idSelected);
                 PreencherForm(ClienteUnit);
             }
         }
+
     }
 }

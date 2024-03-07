@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using CursoWindowsFormsBiblioteca.Databases;
+using System.Reflection.Emit;
 
 namespace CursoWindowsFormsBiblioteca.Classes
 {
@@ -14,6 +15,15 @@ namespace CursoWindowsFormsBiblioteca.Classes
     {
         public class Unit
         {
+            private FicharioSqlServer fichario;
+            
+
+            public Unit()
+            {
+                fichario = new FicharioSqlServer();
+            }
+
+            #region "Propriedades"
             [Required(ErrorMessage = "O código do cliente é obrigatório.")]
             [RegularExpression("([0-9]+)", ErrorMessage = "O Id só pode ser números.")]
             [StringLength(6, MinimumLength = 6, ErrorMessage = "O código do cliente deve ter 6 dígitos.")]
@@ -69,6 +79,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
             [Required(ErrorMessage = "A renda familiar do cliente é obrigatório.")]
             [Range(0, double.MaxValue, ErrorMessage = "O renda familiar só pode ser números.")]
             public double RendaFamiliar { get; set; }
+            #endregion
 
             public void ValidaClasse()
             {
@@ -109,12 +120,11 @@ namespace CursoWindowsFormsBiblioteca.Classes
 
             #region "CRUD Fichario"
 
-            public void IncluirFichario(string tabela)
+            public void IncluirFichario()
             {
                 ValidaClasse();
                 ValidaComplemento();
                 string clienteJson = SerializeClassUnit(this);
-                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     fichario.Incluir(Id, clienteJson);
@@ -129,15 +139,14 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public Unit BuscarFichario(string tabela, string id)
+            public Unit BuscarFichario(string id)
             {
-                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     string clienteJson = fichario.Buscar(id);
                     if (clienteJson != "")
                     {
-                        Cliente.Unit cliente = DesSerializeClassUnit(clienteJson);
+                        Unit cliente = DesSerializeClassUnit(clienteJson);
                         return cliente;
                     }
                     else
@@ -151,11 +160,10 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public void AlterarFichario(string tabela)
+            public void AlterarFichario()
             {
                 ValidaClasse();
                 ValidaComplemento();
-                FicharioDB fichario = new FicharioDB(tabela);
                 var busca = fichario.Buscar(Id);
                 if (busca != "")
                 {
@@ -169,12 +177,11 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public void ExcluirFichario(string tabela)
+            public void ExcluirFichario()
             {
-                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
-                    fichario.Excluir(this.Id);
+                    fichario.Excluir(Id);
                     MessageBox.Show(fichario.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -183,9 +190,8 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 }
             }
 
-            public List<string> ListaFichario(string tabela)
+            public List<string> ListaFichario()
             {
-                FicharioDB fichario = new FicharioDB(tabela);
                 if (fichario.status)
                 {
                     List<string> lista = fichario.BuscarTodos();
