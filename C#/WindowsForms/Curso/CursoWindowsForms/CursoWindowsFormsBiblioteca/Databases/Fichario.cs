@@ -95,7 +95,6 @@ namespace CursoWindowsFormsBiblioteca.Databases
                 mensagem = "Erro ao buscar clientes.\n " + error.Message;
                 throw new Exception(mensagem);
             }
-            return list;
         }
 
         public void Excluir(string id)
