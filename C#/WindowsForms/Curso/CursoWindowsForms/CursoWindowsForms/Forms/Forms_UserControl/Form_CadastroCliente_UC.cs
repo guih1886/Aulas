@@ -1,11 +1,8 @@
 ﻿using CursoWindowsFormsBiblioteca;
 using CursoWindowsFormsBiblioteca.Classes;
-using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms.Forms.Forms_UserControl
@@ -121,11 +118,14 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 try
                 {
                     ClienteUnit = LeituraForm();
+                    ClienteUnit.ValidaClasse();
+                    ClienteUnit.ValidaComplemento();
                     DialogResult result = MessageBox.Show($"Deseja realmente alterar o " +
                         $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.AlterarFichario();
+                        ClienteUnit.AlterarFicharioSql(Txt_NumeroCliente.Text);
+                        MessageBox.Show($"Cliente atualizado com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparForm();
                     }
                 }
@@ -148,13 +148,14 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    ClienteUnit = ClienteUnit.BuscarFichario(clienteId);
+                    ClienteUnit = ClienteUnit.BuscarFicharioSql(clienteId);
                     PreencherForm(ClienteUnit);
                     DialogResult result = MessageBox.Show($"Deseja realmente excluir o " +
                             $"cadastro do cliente {ClienteUnit.Nome}?", "ByteBank", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.OK)
                     {
-                        ClienteUnit.ExcluirFichario();
+                        ClienteUnit.ExcluirFicharioSql(ClienteUnit.Id);
+                        MessageBox.Show($"Cliente excluido com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparForm();
                     }
                 }
@@ -297,23 +298,22 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void Btn_Busca_Click(object sender, EventArgs e)
         {
-            List<string> lista = new List<string>();
-            //List<Cliente.Unit> lista = new List<Cliente.Unit>();
+            //List<string> lista = new List<string>();
+            List<Cliente.Unit> lista = new List<Cliente.Unit>();
             List<List<string>> listaBusca = new List<List<string>>();
-            lista = ClienteUnit.ListaFichario();
+            lista = ClienteUnit.BuscarTodosFichariosSql();
 
             //Exibindo a lista de clientes
             foreach (var item in lista)
             {
-                Cliente.Unit cliente = Cliente.DesSerializeClassUnit(item);
-                listaBusca.Add(new List<string> { cliente.Id, cliente.Nome });
+                listaBusca.Add(new List<string> { item.Id, item.Nome });
             }
 
             Form_Busca busca = new Form_Busca(listaBusca);
             busca.ShowDialog();
             if (busca.DialogResult == DialogResult.OK)
             {
-                ClienteUnit = ClienteUnit.BuscarFichario(busca.idSelected);
+                ClienteUnit = ClienteUnit.BuscarFicharioSql(busca.idSelected);
                 PreencherForm(ClienteUnit);
             }
         }
