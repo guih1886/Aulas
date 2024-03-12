@@ -77,7 +77,9 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             try
             {
                 ClienteUnit = LeituraForm();
-                ClienteUnit.IncluirFichario();
+                ClienteUnit.ValidaClasse();
+                ClienteUnit.ValidaComplemento();
+                ClienteUnit.IncluirFicharioSql();
                 MessageBox.Show("Cliente incluso com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparForm();
             }
@@ -97,7 +99,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             {
                 try
                 {
-                    Cliente.Unit cliente = ClienteUnit.BuscarFichario(Txt_NumeroCliente.Text);
+                    Cliente.Unit cliente = ClienteUnit.BuscarFicharioSql(Txt_NumeroCliente.Text);
                     PreencherForm(cliente);
                 }
                 catch (Exception error)
@@ -109,9 +111,11 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
 
         private void salvarToolStripButton_Click(object sender, EventArgs e)
         {
-            if (Txt_NumeroCliente.Text == "") MessageBox.Show("Preencher um id válido.",
+            if (Txt_NumeroCliente.Text == "")
+            {
+                MessageBox.Show("Preencher um id válido.",
                 "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            }
             else
             {
                 try
@@ -173,7 +177,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             Txt_NomeCliente.Text = cliente.Nome;
             Txt_NomeMae.Text = cliente.NomeMae;
             Txt_NomePai.Text = cliente.NomePai;
-            if (cliente.NaoTemPai == true) Ckb_TemPai.Checked = true;
+            if (cliente.NaoTemPai == 1) Ckb_TemPai.Checked = true;
             if (cliente.Genero == 0) Rdb_Masculino.Checked = true;
             if (cliente.Genero == 1) Rdb_Feminino.Checked = true;
             if (cliente.Genero == 2) Rdb_Indefinido.Checked = true;
@@ -195,8 +199,8 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             ClienteUnit.Nome = Txt_NomeCliente.Text;
             ClienteUnit.NomeMae = Txt_NomeMae.Text;
             ClienteUnit.NomePai = Txt_NomePai.Text;
-            ClienteUnit.NaoTemPai = false;
-            if (Ckb_TemPai.Checked) ClienteUnit.NaoTemPai = true;
+            ClienteUnit.NaoTemPai = 0;
+            if (Ckb_TemPai.Checked) ClienteUnit.NaoTemPai = 1;
             if (Rdb_Masculino.Checked) ClienteUnit.Genero = 0;
             if (Rdb_Feminino.Checked) ClienteUnit.Genero = 1;
             if (Rdb_Indefinido.Checked) ClienteUnit.Genero = 2;
@@ -294,6 +298,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
         private void Btn_Busca_Click(object sender, EventArgs e)
         {
             List<string> lista = new List<string>();
+            //List<Cliente.Unit> lista = new List<Cliente.Unit>();
             List<List<string>> listaBusca = new List<List<string>>();
             lista = ClienteUnit.ListaFichario();
 
