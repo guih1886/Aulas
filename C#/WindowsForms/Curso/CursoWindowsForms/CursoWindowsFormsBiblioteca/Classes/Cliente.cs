@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using CursoWindowsFormsBiblioteca.Databases;
 using System.Reflection.Emit;
+using System.Data;
 
 namespace CursoWindowsFormsBiblioteca.Classes
 {
@@ -16,11 +17,12 @@ namespace CursoWindowsFormsBiblioteca.Classes
         public class Unit
         {
             private FicharioSqlServer fichario;
-            
+            private SQLServer db;
 
             public Unit()
             {
                 fichario = new FicharioSqlServer();
+                db = new SQLServer();
             }
 
             #region "Propriedades"
@@ -39,7 +41,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 
             public string NomePai { get; set; }
 
-            public bool NaoTemPai { get; set; }
+            public int NaoTemPai { get; set; }
 
             [Required(ErrorMessage = "O CPF do cliente é obrigatório.")]
             [RegularExpression("([0-9]+)", ErrorMessage = "O CPF só pode ser números.")]
@@ -105,7 +107,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 {
                     throw new Exception("Nome do pai e da mãe não podem ser iguais.");
                 }
-                if (this.NaoTemPai == false)
+                if (this.NaoTemPai == 1)
                 {
                     if (this.NomePai == "")
                     {
@@ -200,6 +202,161 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 else
                 {
                     throw new Exception(fichario.mensagem);
+                }
+            }
+
+            #endregion
+
+            #region "CRUD Clientes Sql Server"
+
+            public string ToInsert()
+            {
+                string SQL = $@"INSERT INTO Clientes2
+                                (Id,Nome,NomeMae,NomePai,
+                                NaoTemPai,CPF,Genero,Cep,
+                                Logradouro,Complemento,Bairro,
+                                Cidade,Estado,Telefone,Profissao,RendaFamiliar)
+                                VALUES ('{Id}','{Nome}','{NomeMae}','{NomePai}',{NaoTemPai},'{CPF}',
+                           {Genero},'{Cep}','{Logradouro}','{Complemento}','{Bairro}',
+                           '{Cidade}','{Estado}','{Telefone}','{Profissao}',{RendaFamiliar})";
+                return SQL;
+            }
+
+            public string ToUpdate(string id)
+            {
+                string SQL = $@"UPDATE Clientes2 
+                                SET Id = {id},
+                                    Nome = {Nome},
+                                    NomeMae = {NomeMae},
+                                    NomePai = {NomePai},
+                                    NaoTemPai = {NaoTemPai},
+                                    CPF = {CPF},
+                                    Genero = {Genero},
+                                    Cep = {Cep},
+                                    Logradouro = {Logradouro},
+                                    Complemento = {Complemento},
+                                    Bairro = {Bairro},
+                                    Cidade = {Cidade},
+                                    Estado = {Estado},
+                                    Telefone = {Telefone},
+                                    Profissao = {Profissao},
+                                    RendaFamiliar = {RendaFamiliar}
+                                  WHERE Id = {id};";
+                return SQL;
+            }
+
+            public Unit DataRowToUnit(DataRow dr)
+            {
+                Unit cliente = new Unit();
+                cliente.Id = dr["Id"].ToString();
+                cliente.Nome = dr["Nome"].ToString();
+                cliente.NomeMae = dr["NomeMae"].ToString();
+                cliente.NomePai = dr["NomePai"].ToString();
+                cliente.NaoTemPai = Convert.ToInt32(dr["NaoTemPai"]);
+                cliente.CPF = dr["CPF"].ToString();
+                cliente.Genero = Convert.ToInt32(dr["Genero"]);
+                cliente.Cep = dr["Cep"].ToString();
+                cliente.Logradouro = dr["Logradouro"].ToString();
+                cliente.Complemento = dr["Complemento"].ToString();
+                cliente.Bairro = dr["Bairro"].ToString();
+                cliente.Cidade = dr["Cidade"].ToString();
+                cliente.Estado = dr["Estado"].ToString();
+                cliente.Telefone = dr["Telefone"].ToString();
+                cliente.Profissao = dr["Telefone"].ToString();
+                cliente.RendaFamiliar = Convert.ToDouble(dr["Telefone"]);
+                return cliente;
+            }
+
+            public void IncluirFicharioSql()
+            {
+                try
+                {
+                    string sql = ToInsert();
+                    db.SQLComand(sql);
+                }
+                catch (Exception erro)
+                {
+                    throw new Exception("Erro ao incluir o cliente.\n" + erro);
+                }
+            }
+
+            public Unit BuscarFicharioSql(string id)
+            {
+                try
+                {
+                    string sql = $"SELECT * FROM Clientes2 WHERE Id = {id}";
+                    DataTable result = db.SQLQuery(sql);
+                    if (result.Rows.Count != 0)
+                    {
+                        Unit cliente = DataRowToUnit(result.Rows[0]);
+                        return cliente;
+                    }
+                    throw new Exception("Cliente com o Id não encontrado.");
+                }
+                catch (Exception error)
+                {
+                    throw new Exception("Erro ao buscar o cliente.\n" + error.Message);
+                }
+            }
+
+            public void AlterarFicharioSql(string id)
+            {
+                try
+                {
+                    string sql = $"SELECT * FROM Clientes2 WHERE Id = {id}";
+                    DataTable result = db.SQLQuery(sql);
+                    if (result.Rows.Count != 0)
+                    {
+                        sql = ToUpdate(id);
+                        db.SQLComand(sql);
+                    }
+                    throw new Exception("Cliente com o Id não encontrado.");
+                }
+                catch (Exception error)
+                {
+                    throw new Exception("Erro ao alterar o cliente.\n" + error.Message);
+                }
+            }
+
+            public void ExcluirFicharioSql(string id)
+            {
+                try
+                {
+                    string sql = $"SELECT * FROM Clientes2 WHERE Id = {id}";
+                    DataTable result = db.SQLQuery(sql);
+                    if (result.Rows.Count != 0)
+                    {
+                        sql = $"DELETE FROM Clientes2 WHERE Id = {id}";
+                        db.SQLComand(sql);
+                    }
+                    throw new Exception("Cliente com o Id não encontrado.");
+                }
+                catch (Exception error)
+                {
+                    throw new Exception("Erro ao excluir o cliente.\n" + error.Message);
+                }
+            }
+
+            public List<Unit> BuscarTodosFichariosSql()
+            {
+                try
+                {
+                    string sql = $"SELECT * FROM Clientes2";
+                    DataTable result = db.SQLQuery(sql);
+                    if (result.Rows.Count != 0)
+                    {
+                        List<Unit> clientes = new List<Unit>();
+                        foreach (DataRow row in result.Rows)
+                        {
+                            clientes.Add(DataRowToUnit(row));
+                        }
+                        return clientes;
+                    }
+                    throw new Exception("Sem clientes cadastrados!");
+                }
+                catch (Exception error)
+                {
+                    throw new Exception("Erro ao buscar os clientes.\n" + error.Message);
                 }
             }
 
