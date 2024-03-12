@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using CursoWindowsFormsBiblioteca.Databases;
-using System.Reflection.Emit;
 using System.Data;
 
 namespace CursoWindowsFormsBiblioteca.Classes
@@ -225,23 +222,23 @@ namespace CursoWindowsFormsBiblioteca.Classes
             public string ToUpdate(string id)
             {
                 string SQL = $@"UPDATE Clientes2 
-                                SET Id = {id},
-                                    Nome = {Nome},
-                                    NomeMae = {NomeMae},
-                                    NomePai = {NomePai},
+                                SET Id = '{id}',
+                                    Nome = '{Nome}',
+                                    NomeMae = '{NomeMae}',
+                                    NomePai = '{NomePai}',
                                     NaoTemPai = {NaoTemPai},
-                                    CPF = {CPF},
+                                    CPF = '{CPF}',
                                     Genero = {Genero},
-                                    Cep = {Cep},
-                                    Logradouro = {Logradouro},
-                                    Complemento = {Complemento},
-                                    Bairro = {Bairro},
-                                    Cidade = {Cidade},
-                                    Estado = {Estado},
-                                    Telefone = {Telefone},
-                                    Profissao = {Profissao},
+                                    Cep = '{Cep}',
+                                    Logradouro = '{Logradouro}',
+                                    Complemento = '{Complemento}',
+                                    Bairro = '{Bairro}',
+                                    Cidade = '{Cidade}',
+                                    Estado = '{Estado}',
+                                    Telefone = '{Telefone}',
+                                    Profissao = '{Profissao}',
                                     RendaFamiliar = {RendaFamiliar}
-                                  WHERE Id = {id};";
+                                  WHERE Id = '{id}';";
                 return SQL;
             }
 
@@ -262,8 +259,8 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 cliente.Cidade = dr["Cidade"].ToString();
                 cliente.Estado = dr["Estado"].ToString();
                 cliente.Telefone = dr["Telefone"].ToString();
-                cliente.Profissao = dr["Telefone"].ToString();
-                cliente.RendaFamiliar = Convert.ToDouble(dr["Telefone"]);
+                cliente.Profissao = dr["Profissao"].ToString();
+                cliente.RendaFamiliar = Convert.ToDouble(dr["RendaFamiliar"]);
                 return cliente;
             }
 
@@ -310,7 +307,10 @@ namespace CursoWindowsFormsBiblioteca.Classes
                         sql = ToUpdate(id);
                         db.SQLComand(sql);
                     }
-                    throw new Exception("Cliente com o Id não encontrado.");
+                    else
+                    {
+                        throw new Exception("Cliente com o Id não encontrado.");
+                    }
                 }
                 catch (Exception error)
                 {
@@ -329,7 +329,10 @@ namespace CursoWindowsFormsBiblioteca.Classes
                         sql = $"DELETE FROM Clientes2 WHERE Id = {id}";
                         db.SQLComand(sql);
                     }
-                    throw new Exception("Cliente com o Id não encontrado.");
+                    else
+                    {
+                        throw new Exception("Cliente com o Id não encontrado.");
+                    }
                 }
                 catch (Exception error)
                 {
@@ -343,16 +346,16 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 {
                     string sql = $"SELECT * FROM Clientes2";
                     DataTable result = db.SQLQuery(sql);
+                    List<Unit> clientes = new List<Unit>();
                     if (result.Rows.Count != 0)
                     {
-                        List<Unit> clientes = new List<Unit>();
                         foreach (DataRow row in result.Rows)
                         {
                             clientes.Add(DataRowToUnit(row));
                         }
                         return clientes;
                     }
-                    throw new Exception("Sem clientes cadastrados!");
+                    return clientes;
                 }
                 catch (Exception error)
                 {
