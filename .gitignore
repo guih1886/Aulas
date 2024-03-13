@@ -1,3 +1,4 @@
 
 *.config
 /C#/WindowsForms/Curso/CursoWindowsForms/CursoWindowsForms/App.config
+C\#/WindowsForms/Curso/CursoWindowsForms/CursoWindowsForms/Properties/Settings.Designer.cs
