@@ -212,7 +212,7 @@ namespace CursoWindowsForms
             if (controleCadastroCliente == 1)
             {
                 Form_CadastroCliente_UC u = new Form_CadastroCliente_UC();
-                u.Dock = DockStyle.Fill;        
+                u.Dock = DockStyle.Fill;
                 TabPage tb = new TabPage();
                 tb.Name = "CadastroCliente";
                 tb.Text = $"Cadastro de Cliente ({controleCadastroCliente})";
@@ -239,6 +239,12 @@ namespace CursoWindowsForms
                 return;
             }
             Tuc_Aplicacao.TabPages.Remove(tb);
+        }
+
+        private void agênciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Agencia agencia = new Form_Agencia();
+            agencia.ShowDialog();
         }
     }
 }
