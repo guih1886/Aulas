@@ -51,6 +51,7 @@
             this.Lbl_RendaFamiliar = new System.Windows.Forms.Label();
             this.Txt_NumeroCliente = new System.Windows.Forms.TextBox();
             this.Grp_Codigo = new System.Windows.Forms.GroupBox();
+            this.Btn_Busca = new System.Windows.Forms.Button();
             this.Grp_DadosPessoais = new System.Windows.Forms.GroupBox();
             this.Ckb_TemPai = new System.Windows.Forms.CheckBox();
             this.Msk_CPF = new System.Windows.Forms.MaskedTextBox();
@@ -72,7 +73,10 @@
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.apagaToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.limparToolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.Btn_Busca = new System.Windows.Forms.Button();
+            this.Grb_DataGrid = new System.Windows.Forms.GroupBox();
+            this.Dg_Clientes = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
@@ -80,6 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HabilitarEndereco)).BeginInit();
             this.Grp_Outros.SuspendLayout();
             this.Tls_Principal.SuspendLayout();
+            this.Grb_DataGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dg_Clientes)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_CPF
@@ -278,6 +284,16 @@
             this.Grp_Codigo.TabStop = false;
             this.Grp_Codigo.Text = "groupBox1";
             // 
+            // Btn_Busca
+            // 
+            this.Btn_Busca.Location = new System.Drawing.Point(200, 17);
+            this.Btn_Busca.Name = "Btn_Busca";
+            this.Btn_Busca.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Busca.TabIndex = 2;
+            this.Btn_Busca.Text = "button1";
+            this.Btn_Busca.UseVisualStyleBackColor = true;
+            this.Btn_Busca.Click += new System.EventHandler(this.Btn_Busca_Click);
+            // 
             // Grp_DadosPessoais
             // 
             this.Grp_DadosPessoais.Controls.Add(this.Ckb_TemPai);
@@ -460,7 +476,7 @@
             this.limparToolStripButton1});
             this.Tls_Principal.Location = new System.Drawing.Point(0, 0);
             this.Tls_Principal.Name = "Tls_Principal";
-            this.Tls_Principal.Size = new System.Drawing.Size(822, 25);
+            this.Tls_Principal.Size = new System.Drawing.Size(1225, 25);
             this.Tls_Principal.TabIndex = 5;
             this.Tls_Principal.Text = "toolStrip1";
             // 
@@ -516,27 +532,60 @@
             this.limparToolStripButton1.ToolTipText = "Limpar";
             this.limparToolStripButton1.Click += new System.EventHandler(this.limparToolStripButton1_Click);
             // 
-            // Btn_Busca
+            // Grb_DataGrid
             // 
-            this.Btn_Busca.Location = new System.Drawing.Point(200, 17);
-            this.Btn_Busca.Name = "Btn_Busca";
-            this.Btn_Busca.Size = new System.Drawing.Size(75, 23);
-            this.Btn_Busca.TabIndex = 2;
-            this.Btn_Busca.Text = "button1";
-            this.Btn_Busca.UseVisualStyleBackColor = true;
-            this.Btn_Busca.Click += new System.EventHandler(this.Btn_Busca_Click);
+            this.Grb_DataGrid.Controls.Add(this.Dg_Clientes);
+            this.Grb_DataGrid.Location = new System.Drawing.Point(816, 92);
+            this.Grb_DataGrid.Name = "Grb_DataGrid";
+            this.Grb_DataGrid.Size = new System.Drawing.Size(383, 345);
+            this.Grb_DataGrid.TabIndex = 6;
+            this.Grb_DataGrid.TabStop = false;
+            this.Grb_DataGrid.Text = "Clientes";
+            // 
+            // Dg_Clientes
+            // 
+            this.Dg_Clientes.AllowUserToAddRows = false;
+            this.Dg_Clientes.AllowUserToDeleteRows = false;
+            this.Dg_Clientes.AllowUserToOrderColumns = true;
+            this.Dg_Clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dg_Clientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Nome});
+            this.Dg_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dg_Clientes.Location = new System.Drawing.Point(3, 16);
+            this.Dg_Clientes.MultiSelect = false;
+            this.Dg_Clientes.Name = "Dg_Clientes";
+            this.Dg_Clientes.ReadOnly = true;
+            this.Dg_Clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dg_Clientes.Size = new System.Drawing.Size(377, 326);
+            this.Dg_Clientes.TabIndex = 0;
+            this.Dg_Clientes.DoubleClick += new System.EventHandler(this.Dg_Clientes_DoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Código do Cliente";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome do cliente";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 230;
             // 
             // Form_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Grb_DataGrid);
             this.Controls.Add(this.Tls_Principal);
             this.Controls.Add(this.Grp_Outros);
             this.Controls.Add(this.Grp_Endereco);
             this.Controls.Add(this.Grp_DadosPessoais);
             this.Controls.Add(this.Grp_Codigo);
             this.Name = "Form_CadastroCliente_UC";
-            this.Size = new System.Drawing.Size(822, 537);
+            this.Size = new System.Drawing.Size(1225, 501);
             this.Grp_Codigo.ResumeLayout(false);
             this.Grp_Codigo.PerformLayout();
             this.Grp_DadosPessoais.ResumeLayout(false);
@@ -550,6 +599,8 @@
             this.Grp_Outros.PerformLayout();
             this.Tls_Principal.ResumeLayout(false);
             this.Tls_Principal.PerformLayout();
+            this.Grb_DataGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dg_Clientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,5 +652,9 @@
         private System.Windows.Forms.MaskedTextBox Msk_CEP;
         private System.Windows.Forms.PictureBox Pic_HabilitarEndereco;
         private System.Windows.Forms.Button Btn_Busca;
+        private System.Windows.Forms.GroupBox Grb_DataGrid;
+        private System.Windows.Forms.DataGridView Dg_Clientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
     }
 }

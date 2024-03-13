@@ -54,6 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteBankDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FicharioDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +105,12 @@
     </Compile>
     <Compile Include="Forms\Forms_UserControl\Frm_ArquivoImagem.Designer.cs">
       <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_Agencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Agencia.Designer.cs">
+      <DependentUpon>Form_Agencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_Busca.cs">
       <SubType>Form</SubType>
@@ -214,6 +225,9 @@
     <EmbeddedResource Include="Forms\Forms_UserControl\Frm_ArquivoImagem.resx">
       <DependentUpon>Frm_ArquivoImagem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Agencia.resx">
+      <DependentUpon>Form_Agencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Busca.resx">
       <DependentUpon>Form_Busca.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +281,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ByteBankDataSet.xsc">
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ByteBankDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ByteBankDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ByteBankDataSet.xss">
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </None>
     <None Include="FicharioDataSet.xsc">
       <DependentUpon>FicharioDataSet.xsd</DependentUpon>
     </None>
@@ -317,6 +342,7 @@
     <Content Include="Images\Frm_ValidaCPF2.png" />
     <Content Include="Images\Frm_ValidaSenha.ico" />
     <Content Include="Images\Frm_ValidaSenha.png" />
+    <None Include="Images\governo.png" />
     <Content Include="Images\linkedin.png" />
     <Content Include="Images\money.png" />
     <Content Include="Images\question.png" />

@@ -67,6 +67,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             });
 
             Btn_Busca.Text = "Buscar";
+            AtualizaGrid();
         }
 
         private void novoToolStripButton_Click(object sender, EventArgs e)
@@ -77,6 +78,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                 ClienteUnit.ValidaClasse();
                 ClienteUnit.ValidaComplemento();
                 ClienteUnit.IncluirFicharioSql();
+                AtualizaGrid();
                 MessageBox.Show("Cliente incluso com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparForm();
             }
@@ -125,6 +127,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                     if (result == DialogResult.OK)
                     {
                         ClienteUnit.AlterarFicharioSql(Txt_NumeroCliente.Text);
+                        AtualizaGrid();
                         MessageBox.Show($"Cliente atualizado com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparForm();
                     }
@@ -155,6 +158,7 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
                     if (result == DialogResult.OK)
                     {
                         ClienteUnit.ExcluirFicharioSql(ClienteUnit.Id);
+                        AtualizaGrid();
                         MessageBox.Show($"Cliente excluido com sucesso.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparForm();
                     }
@@ -318,5 +322,43 @@ namespace CursoWindowsForms.Forms.Forms_UserControl
             }
         }
 
+        private void AtualizaGrid()
+        {
+            try
+            {
+                List<Cliente.Unit> lista = new List<Cliente.Unit>();
+                lista = ClienteUnit.BuscarTodosFichariosSql();
+                Dg_Clientes.Rows.Clear();
+
+                foreach (var item in lista)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(Dg_Clientes);
+                    row.Cells[0].Value = item.Id.ToString();
+                    row.Cells[1].Value = item.Nome.ToString();
+                    Dg_Clientes.Rows.Add(row);
+                }
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Erro ao atualizar o Grid." + error.Message);
+            }
+        }
+
+        private void Dg_Clientes_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row = Dg_Clientes.SelectedRows[0];
+                string id = row.Cells[0].Value.ToString();
+                ClienteUnit = ClienteUnit.BuscarFicharioSql(id);
+                PreencherForm(ClienteUnit);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
