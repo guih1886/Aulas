@@ -10,12 +10,15 @@ public class Usuario
         Nome = nome;
         Email = email;
         Telefones = telefone;
+        ChavesDeAcessos = new List<Guid>();
     }
 
     public int Id { get; set; }
     public string Nome { get; set; }
     public string Email { get; set; }
     public List<string> Telefones { get; set; }
+    public List<Guid> ChavesDeAcessos { get; set; }
+    public LinkedList<Guid> LinkedChavesDeAcessos { get; set; }
 
     public void PadronizaTelefones()
     {
