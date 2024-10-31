@@ -53,6 +53,8 @@ class MyApp extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () => print("Cadastrando."),
                         iconAlignment: IconAlignment.end,
+
+
                         style: const ButtonStyle(
                             alignment: AlignmentDirectional.center),
                         child: const Text(
