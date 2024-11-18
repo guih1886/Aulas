@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'difficult.dart';
 
-class Tasks extends StatefulWidget {
+class Task extends StatefulWidget {
   /// O nome para a tarefa
   final String name;
   final String src;
   final int difficult;
 
   /// Widget para a criação de tarefas
-  const Tasks(
+  const Task(
       {super.key, required this.name, this.src = "", required this.difficult});
 
   @override
-  State<Tasks> createState() => _TasksState();
+  State<Task> createState() => _TaskState();
 }
 
-class _TasksState extends State<Tasks> {
+class _TaskState extends State<Task> {
   int level = 0;
 
   @override
