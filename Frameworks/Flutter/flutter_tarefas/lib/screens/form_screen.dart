@@ -4,7 +4,8 @@ import 'package:flutter_tarefas/data/task_inherited.dart';
 import '../utils/validacoes.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  final BuildContext taskContext;
+  const FormScreen({super.key, required this.taskContext});
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -118,20 +119,14 @@ class _FormScreenState extends State<FormScreen> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
 
-                          clearForm([
-                            nameController,
-                            difficultController,
-                            imageController
-                          ]);
-
-                          TaskInherited.of(context).newTask(
+                          TaskInherited.of(widget.taskContext).newTask(
                               nameController.text,
                               int.parse(difficultController.text),
                               imageController.text);
 
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text("Salvando tarefa..."),
+                                  content: Text("Criando nova tarefa..."),
                                   duration: Duration(milliseconds: 10000),
                                   showCloseIcon: true));
 
@@ -146,11 +141,5 @@ class _FormScreenState extends State<FormScreen> {
         ),
       ),
     );
-  }
-}
-
-void clearForm(List<TextEditingController> controllers) {
-  for (var element in controllers) {
-    element.text = "";
   }
 }

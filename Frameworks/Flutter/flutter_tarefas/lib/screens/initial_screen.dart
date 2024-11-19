@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tarefas/data/task_inherited.dart';
+import 'package:flutter_tarefas/screens/form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -16,12 +17,23 @@ class _InitialScreenState extends State<InitialScreen> {
         backgroundColor: Colors.blue,
         title: const Text('Tarefas', style: TextStyle(color: Colors.white)),
       ),
-      body: ListView(
-        children: TaskInherited.of(context).taskList,
+      body: Column(
+        children: [
+          SizedBox(
+            width: 412,
+            height: 735,
+            child: ListView(
+              children: TaskInherited.of(context).taskList,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, "/FormScreen");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (contextNew) => FormScreen(taskContext: context)));
         },
         child: const Icon(Icons.add),
       ),

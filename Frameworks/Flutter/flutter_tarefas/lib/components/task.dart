@@ -50,12 +50,13 @@ class _TaskState extends State<Task> {
                       height: 100,
                       color: Colors.black12,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          widget.src,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(12),
+                          child: widget.src.contains("http")
+                              ? Image.network(
+                                  widget.src,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(widget.src, fit: BoxFit.cover)),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
