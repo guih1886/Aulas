@@ -5,17 +5,13 @@ import 'package:sqflite/sqflite.dart';
 class TaskDAO {
   static const String tabela = "CREATE TABLE Tasks ("
       "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-      "$_nome TEXT, "
-      "$_dificuldade INTEGER, "
-      "$_imagem TEXT)";
+      "nome TEXT, "
+      "dificuldade INTEGER, "
+      "imagem TEXT)";
 
-  static const String _nome = "";
-  static const int _dificuldade = 0;
-  static const String _imagem = "";
-
-  void salvar(Task terafa) async {
+  void salvar(Task tarefa) async {
     Database db = await getDatabase();
-    db.insert("Tasks", value)
+    db.insert("Tasks", toMap(tarefa));
   }
 
   Future<List<Task>> listarTodas() async {
@@ -27,26 +23,30 @@ class TaskDAO {
   Future<List<Task>> buscarPorNome(String nomeTarefa) async {
     Database db = await getDatabase();
     List<Map<String, Object?>> result =
-        await db.query("Tasks", where: "$_nome = ?", whereArgs: [nomeTarefa]);
+        await db.query("Tasks", where: "nome = ?", whereArgs: [nomeTarefa]);
     return toList(result);
   }
 
-  void deletar(int id) async {
+  void deletar(String nome) async {
     Database db = await getDatabase();
-    await db.delete("Tasks", where: "id = ?", whereArgs: [id]);
+    await db.delete("Tasks", where: "nome = ?", whereArgs: [nome]);
   }
 
   List<Task> toList(List<Map<String, dynamic>> lista) {
     final List<Task> tarefas = [];
     for (Map<String, dynamic> item in lista) {
       final Task tarefa = Task(
-          name: item[_nome], difficult: item[_dificuldade], src: item[_imagem]);
+          name: item["nome"], difficult: item["dificuldade"], src: item["imagem"]);
       tarefas.add(tarefa);
     }
     return tarefas;
   }
 
-  Map<String, dynamic> toMap(Task tarefa){
-      
+  Map<String, dynamic> toMap(Task tarefa) {
+    final Map<String, dynamic> mapaTarefas = {};
+    mapaTarefas["nome"] = tarefa.name;
+    mapaTarefas["dificuldade"] = tarefa.difficult;
+    mapaTarefas["imagem"] = tarefa.src;
+    return mapaTarefas;
   }
 }

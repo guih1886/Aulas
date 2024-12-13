@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tarefas/components/task.dart';
+import 'package:flutter_tarefas/data/task_dao.dart';
 import 'package:flutter_tarefas/data/task_inherited.dart';
 
 import '../utils/validacoes.dart';
 
 class FormScreen extends StatefulWidget {
   final BuildContext taskContext;
+
   const FormScreen({super.key, required this.taskContext});
 
   @override
@@ -118,11 +121,12 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-
-                          TaskInherited.of(widget.taskContext).newTask(
-                              nameController.text,
-                              int.parse(difficultController.text),
-                              imageController.text);
+                          TaskDAO().salvar(
+                            Task(
+                                name: nameController.text,
+                                difficult: int.parse(difficultController.text),
+                                src: imageController.text),
+                          );
 
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
