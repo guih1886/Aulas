@@ -41,6 +41,7 @@ static void MostrarMenu()
     Console.WriteLine();
     Console.WriteLine("1. Ler arquivo de boletos");
     Console.WriteLine("2. Gravar arquivo com boletos agrupados por cedente");
+    Console.WriteLine("3. Executar plugins.");
     Console.WriteLine();
     Console.Write("Digite o número da opção desejada: ");
 }
@@ -54,6 +55,9 @@ static void ExecutarEscolha(int escolha)
             break;
         case 2:
             GravarGrupoBoletos();
+            break;
+        case 3:
+            ExecutarPlugins();
             break;
         default:
             Console.WriteLine("Opção inválida. Tente novamente.");
@@ -115,5 +119,104 @@ static void ProcessarDinamicamente(string nomeParametroConstrutor, string parame
 
     MethodInfo? metodoProcessar = tipo.GetMethod(nomeMetodo);
 
-    metodoProcessar.Invoke(instanciaClasse, new[] { parametroMetodo });
+    if (metodoProcessar != null)
+    {
+        metodoProcessar.Invoke(instanciaClasse, new[] { parametroMetodo });
+    }
+
+    var novoConstrutor = construtores
+    .Single(c => string.Join(",", c.GetParameters().Select(p => p.Name).ToArray()) ==
+    "nomeArquivoSaida,dataRelatorio");
+}
+
+static void ExecutarPlugins()
+{
+    //Ler boletos a partir do arquivo CSV
+    var leitorDeCSV = new LeitorDeBoleto();
+    List<Boleto> boletos = leitorDeCSV.LerBoletos("Boletos.csv");
+
+    //Obter classes de plugin 
+    List<Type> classesDePlugin = ObterClassesDePlugin<IRelatorio<Boleto>>();
+
+    foreach (var classe in classesDePlugin)
+    {
+        // Criar uma instância do plugin
+        //var plugin = Activator.CreateInstance(classe, new object[] { "BoletosPorCedente.csv" });
+        var plugin = Activator.CreateInstance(classe);
+
+        // Chamar o método Processar usando Reflection
+        MethodInfo? metodoSalvar = classe.GetMethod("Processar");
+        if (metodoSalvar != null)
+        {
+            metodoSalvar.Invoke(plugin, new object[] { boletos });
+        }
+    }
+}
+
+static List<Type> ObterClassesDePlugin<T>()
+{
+    var tipoEncontrados = new List<Type>();
+
+    //Obtendo assembly que está em execução
+    Assembly assemblyEmExecucao = Assembly.GetExecutingAssembly();
+
+    //Pegar o assembly onde o tipo é declarado
+    Assembly assemblyDosPlugins = typeof(T).Assembly;
+
+    List<Assembly> assemblies = ObterAssembliesDePlugins();
+
+    foreach (Assembly assembly in assemblies)
+    {
+        Console.WriteLine($"Assembly encontrado: {assembly.FullName}");
+        IEnumerable<Type> tiposImplementandoT = ObterTiposDoAssembly<T>(assembly);
+
+        tipoEncontrados.AddRange(tiposImplementandoT);
+    }
+
+    return tipoEncontrados;
+}
+
+static IEnumerable<Type> ObterTiposDoAssembly<T>(Assembly assembly)
+{
+    //Obtem os tipos do assembly - 
+    var tipos = assembly.GetTypes();
+
+    foreach (Type tipo in tipos)
+    {
+        Console.WriteLine($"Nome: {tipo.Name}");
+        Console.WriteLine($"Nome completo: {tipo.FullName}");
+        Console.WriteLine($"É classe: {tipo.IsClass}");
+        Console.WriteLine($"É interface: {tipo.IsInterface}");
+        Console.WriteLine($"É abstrato: {tipo.IsAbstract}");
+
+        Console.WriteLine($"Interfaces implementadas");
+        foreach (var interfaceType in tipo.GetInterfaces())
+        {
+            Console.WriteLine($"Nome Interface: {interfaceType.Name}");
+        }
+        Console.WriteLine("");
+    }
+
+    //Encontrando tipos que implementam a interface T
+    var tiposImplementandoT = tipos.Where(t => typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract);
+    return tiposImplementandoT;
+}
+
+static List<Assembly> ObterAssembliesDePlugins()
+{
+    var assemblies = new List<Assembly>();
+
+    const string diretorio = @"C:\Plugins";
+
+    //Obter todos os arquivos .dll da pasta
+    string[] arquivos = Directory.GetFiles(diretorio, "*.dll");
+
+    foreach (string arquivo in arquivos)
+    {
+        //Carregar assembly a partir do arquivo DLL
+        Assembly assembly = Assembly.LoadFrom(arquivo);
+        assemblies.Add(assembly);
+    }
+
+    return assemblies;
 }

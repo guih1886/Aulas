@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteBank.ConsoleApp", "Byte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteBank.Common", "ByteBank.Common\ByteBank.Common.csproj", "{B4E91CE8-7FDF-4AD0-92BE-4580AFF15C0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultoriaABC.Plugins", "ConsultoriaABC.Plugins\ConsultoriaABC.Plugins.csproj", "{D53A65C6-D380-42D7-8203-2EDE684742BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultoriaXYZ.Plugins", "ConsultoriaXYZ.Plugins\ConsultoriaXYZ.Plugins.csproj", "{D6E4BC2A-263B-4BD5-8982-C42F5DD2AF7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultoriaXPTO.Plugins", "ConsultoriaXPTO\ConsultoriaXPTO.Plugins.csproj", "{0CD8BEEF-963C-4F4C-B328-A5099354A23E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{B4E91CE8-7FDF-4AD0-92BE-4580AFF15C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E91CE8-7FDF-4AD0-92BE-4580AFF15C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4E91CE8-7FDF-4AD0-92BE-4580AFF15C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D53A65C6-D380-42D7-8203-2EDE684742BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D53A65C6-D380-42D7-8203-2EDE684742BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D53A65C6-D380-42D7-8203-2EDE684742BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D53A65C6-D380-42D7-8203-2EDE684742BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E4BC2A-263B-4BD5-8982-C42F5DD2AF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E4BC2A-263B-4BD5-8982-C42F5DD2AF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E4BC2A-263B-4BD5-8982-C42F5DD2AF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E4BC2A-263B-4BD5-8982-C42F5DD2AF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD8BEEF-963C-4F4C-B328-A5099354A23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD8BEEF-963C-4F4C-B328-A5099354A23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD8BEEF-963C-4F4C-B328-A5099354A23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD8BEEF-963C-4F4C-B328-A5099354A23E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

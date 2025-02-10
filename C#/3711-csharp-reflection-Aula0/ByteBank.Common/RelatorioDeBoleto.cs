@@ -2,12 +2,7 @@
 
 namespace ByteBank.Common;
 
-public interface IRelatorioDeBoleto<T>
-{
-    void Processar(List<T> boletos);
-}
-
-public class RelatorioDeBoleto : IRelatorioDeBoleto<Boleto>
+public class RelatorioDeBoleto : IRelatorio<Boleto>
 {
     private readonly string? nomeArquivoSaida;
     private readonly DateTime dataRelatorio = DateTime.Now;
