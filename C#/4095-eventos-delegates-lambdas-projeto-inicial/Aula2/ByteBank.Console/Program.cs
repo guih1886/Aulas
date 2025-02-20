@@ -1,8 +1,10 @@
-﻿internal class Program
+﻿using ByteBank.Console.Eventos;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-
+        caixaEletronico.OnSaldoInsuficiente += CaixaEletronico_OnSaldoInsuficiente;
         new Logo().MostrarBanner();
 
         while (true)
@@ -19,6 +21,12 @@
             }
         }
 
+    }
+
+    private static void CaixaEletronico_OnSaldoInsuficiente(object? sender, SaldoInsuficienteEventArgs e, string msg)
+    {
+        Console.WriteLine($"Você tentou sacar {e.Saque} mas o saldo é de {e.Saldo}.");
+        Console.WriteLine(msg);
     }
 
     static void MostrarMenu()

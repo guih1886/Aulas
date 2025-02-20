@@ -1,17 +1,21 @@
-﻿public class CaixaEletronico
+﻿using ByteBank.Console.Eventos;
+
+public class CaixaEletronico : ICaixaEletronico
 {
     private const int LarguraExtrato = 80;
     private decimal saldo;
     private List<ItemExtrato> itensExtrato = new();
 
+    public event SaldoInsuficienteEventHandler? OnSaldoInsuficiente;
+
     public CaixaEletronico()
     {
         saldo = 100;
         var item = new ItemExtrato
-        { 
-            Data = DateTime.Now.AddDays(-2), 
-            Descricao = "Saldo Inicial", 
-            Valor = saldo, 
+        {
+            Data = DateTime.Now.AddDays(-2),
+            Descricao = "Saldo Inicial",
+            Valor = saldo,
             Sinal = SinalOperacao.Credito
         };
         itensExtrato.Add(item);
@@ -55,7 +59,7 @@
     {
         if (valor > saldo)
         {
-            Console.WriteLine("Saldo insuficiente.");
+            OnSaldoInsuficiente?.Invoke(this, new SaldoInsuficienteEventArgs(saldo, valor), "Valor de saque maior que o saldo.");
         }
         else
         {
@@ -74,11 +78,18 @@
         }
     }
 
+    private static void MostrarSaldoInsuficiente()
+    {
+        Console.WriteLine("Saldo insuficiente.");
+    }
+
     public void AplicarPoupanca(decimal valor)
     {
         if (valor > saldo)
         {
-            Console.WriteLine("Saldo insuficiente.");
+            //MostrarSaldoInsuficiente();
+            Console.WriteLine("Invocanto evento");
+            OnSaldoInsuficiente?.Invoke(this, new SaldoInsuficienteEventArgs(saldo, valor), "Erro ao aplicar poupança.");
         }
         else
         {
@@ -95,6 +106,7 @@
             itensExtrato.Add(item);
             ImprimirItemExtrato(item);
         }
+        Console.WriteLine("Continuando o fluxo");
     }
 
     private static void ImprimirItemExtrato(ItemExtrato item)
@@ -125,14 +137,14 @@
 public class ItemExtrato
 {
     public DateTime Data { get; set; }
-    public string Descricao { get; set; }
+    public string Descricao { get; set; } = string.Empty;
     public SinalOperacao Sinal { get; set; }
     public decimal Valor { get; set; }
 
     public override string ToString()
     {
         string data = Data.ToString("dd/MM/yyyy HH:mm:ss");
-        string descricao = Descricao.Length > 50 ? Descricao.Substring(0, 50) : Descricao;
+        string descricao = Descricao!.Length > 50 ? Descricao.Substring(0, 50) : Descricao;
         string valor = (Valor * (int)Sinal).ToString("N2").PadLeft(18);
 
         return string.Format("{0,-20} {1,-25} {2}", data, descricao, valor);
