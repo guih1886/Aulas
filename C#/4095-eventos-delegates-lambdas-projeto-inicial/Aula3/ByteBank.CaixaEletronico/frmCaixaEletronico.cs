@@ -9,6 +9,21 @@
             InitializeComponent();
             caixaEletronico = new CaixaEletronico();
             ImprimirLogo();
+            btnSacar.Click += BtnSacar_Click;
+            btnDepositar.Click += BtnDepositar_Click;
+            btnSaldo.Click += BtnSaldo_Click;
+            btnExtrato.Click += BtnExtrato_Click;
+
+            caixaEletronico.OnDeposito += CaixaEletronico_OnDeposito;
+            caixaEletronico.OnSaque += CaixaEletronico_OnSaque;
+            caixaEletronico.OnSaldoInsuficiente += CaixaEletronico_OnSaldoInsuficiente;
+        }
+
+        private void CaixaEletronico_OnSaldoInsuficiente(object sender, TransacaoEventArgs e)
+        {
+            string mensagem = $"Saque de {e.ValorTransacao:C} não pode ser realizado! Saldo insuficiente. Saldo disponível {caixaEletronico.Saldo():C}";
+            WriteToConsole(mensagem);
+            txtValor.Text = string.Empty;
         }
 
         private void ImprimirLogo()
@@ -48,6 +63,7 @@
             if (decimal.TryParse(txtValor.Text, out decimal valorSaque))
             {
                 caixaEletronico.Sacar(valorSaque);
+
             }
             else
             {
@@ -104,6 +120,18 @@
             txtConsole.Text += Environment.NewLine;
             txtConsole.SelectionStart = txtConsole.TextLength;
             txtConsole.ScrollToCaret();
+        }
+
+        private void btnNumero_Click(object sender, EventArgs e)
+        {
+            //Obter botão que está emitindo o click
+            Button btnSender = sender as Button;
+
+            //Obter o numeral do botão
+            char numeral = btnSender.Name.Last();
+
+            txtValor.Text += numeral;
+
         }
     }
 }
