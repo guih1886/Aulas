@@ -1,0 +1,22 @@
+{
+  "ofertas": [
+    {
+      "titulo": "Oferta Especial 25/02",
+      "data_inicio": "2025-02-25T00:00:00Z" ,
+      "data_fim": "2025-03-25T23:59:59Z",
+      "produtos": []
+    },
+    {
+      "titulo": "Oferta Molhos",
+      "data_inicio": "2025-03-25T00:00:00Z" ,
+      "data_fim": "2025-05-25T23:59:59Z",
+      "produtos": []
+    },
+    {
+      "titulo": "Oferta Bebidas",
+      "data_inicio": "2025-03-25T00:00:00Z" ,
+      "data_fim": "2025-05-25T23:59:59Z",
+      "produtos": []
+    }
+  ]
+}
