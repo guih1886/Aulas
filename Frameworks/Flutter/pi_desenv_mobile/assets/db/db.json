@@ -1,18 +1,28 @@
 {
   "ofertas": [
     {
+      "id": 1,
       "titulo": "Oferta Especial 25/02",
       "data_inicio": "2025-02-25T00:00:00Z" ,
       "data_fim": "2025-03-25T23:59:59Z",
       "produtos": []
     },
     {
+      "id": 2,
       "titulo": "Oferta Molhos",
       "data_inicio": "2025-03-25T00:00:00Z" ,
       "data_fim": "2025-05-25T23:59:59Z",
       "produtos": []
     },
     {
+      "id": 3,
+      "titulo": "Oferta Bebidas",
+      "data_inicio": "2025-03-25T00:00:00Z" ,
+      "data_fim": "2025-05-25T23:59:59Z",
+      "produtos": []
+    },
+    {
+      "id": 4,
       "titulo": "Oferta Bebidas",
       "data_inicio": "2025-03-25T00:00:00Z" ,
       "data_fim": "2025-05-25T23:59:59Z",
