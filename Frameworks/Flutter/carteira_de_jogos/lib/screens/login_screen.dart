@@ -1,5 +1,6 @@
 import 'package:carteira_de_jogos/services/login_service.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,6 +14,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordHidden = true;
+
+  @override
+  void initState() {
+    super.initState();
+    handleLoggedUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,10 +113,33 @@ class _LoginScreenState extends State<LoginScreen> {
         .login(_userController.text, _passwordController.text)
         .then((value) {
       if (value != null) {
+        Navigator.pushReplacementNamed(context, "home");
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Usuário ou senha inválido(s), tente novamente.")));
       }
     });
+  }
+
+  handleLoggedUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? email = prefs.getString("email");
+    DateTime dataExpiracaoToken;
+    bool isValido;
+
+    int? timestamp = prefs.getInt("dataExpiracao");
+
+    if (timestamp != null) {
+      dataExpiracaoToken =
+          DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+      isValido = dataExpiracaoToken.isAfter(DateTime.now());
+
+      if (email != null && email != "" && isValido) {
+        Navigator.pushReplacementNamed(context, "home");
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Login expirado.")));
+      }
+    }
   }
 }

@@ -1,0 +1,1 @@
+ D:\\Documentos\\Repositorios\\Aulas\\Frameworks\\Flutter\\flutter_webapi_first_course-main\\.dart_tool\\flutter_build\\afd9fba890c24f36901e2ca7cfc90a30\\native_assets.yaml: 
