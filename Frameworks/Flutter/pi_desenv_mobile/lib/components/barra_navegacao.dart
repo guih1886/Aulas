@@ -15,6 +15,7 @@ class _BarraNavegacaoState extends State<BarraNavegacao> {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+        backgroundColor: const Color.fromRGBO(255, 200, 255, 0.5),
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
