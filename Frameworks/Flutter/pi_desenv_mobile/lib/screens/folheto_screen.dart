@@ -37,9 +37,7 @@ class _FolhetoScreenState extends State<FolhetoScreen> {
   Future<void> downloadAndSaveImage(String url) async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      var fileName = DateTime
-          .now()
-          .microsecondsSinceEpoch;
+      var fileName = DateTime.now().microsecondsSinceEpoch;
       final filePath = '${directory.path}/$fileName';
 
       Response response = await Dio().get(
@@ -58,45 +56,53 @@ class _FolhetoScreenState extends State<FolhetoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var fontSize = 16 * MediaQuery.of(context).textScaleFactor;
+
     return SafeArea(
       child: Scaffold(
-
-        appBar: AppBar(title: const Text("Folhetos"),
+        appBar: AppBar(
+            title: const Text("Folhetos"),
             backgroundColor: const Color.fromRGBO(255, 200, 255, 0.5)),
         body: ofertas.isEmpty
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
-          itemCount: ofertas.length,
-          itemBuilder: (context, index) {
-            OfertaModel oferta = ofertas[index];
-            return Card(
-              color: Colors.white70,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Exibindo a imagem da URL
-                  Image.network(
-                    'https://www.imigrantesbebidas.com.br/bebida/images/products/full/7256-licor-amarula-750ml.20221202123124.jpg',
-                    // Substitua pela URL da imagem
-                    width: 200,
-                    height: 200,
-                  ),
-                  const SizedBox(height: 20),
-                  // Botão para download
-                  ElevatedButton(
-                    onPressed: () {
-                      // Chamar o método para baixar a imagem
-                      downloadAndSaveImage(
-                        'https://www.imigrantesbebidas.com.br/bebida/images/products/full/7256-licor-amarula-750ml.20221202123124.jpg',
-                      );
-                    },
-                    child: const Text('Baixar Imagem'),
-                  ),
-                ],
+                itemCount: ofertas.length,
+                itemBuilder: (context, index) {
+                  OfertaModel oferta = ofertas[index];
+                  return Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Card(
+                      color: Colors.white70,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(
+                            oferta.folheto,
+                            fit: BoxFit.fill
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(oferta.titulo, style: TextStyle(
+                                    fontSize: fontSize, fontWeight: FontWeight.bold)),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    // Chamar o método para baixar a imagem
+                                    downloadAndSaveImage(oferta.folheto);
+                                  },
+                                  child: const Text('Baixar Folheto'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
       ),
     );
   }

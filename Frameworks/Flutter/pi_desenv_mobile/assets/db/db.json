@@ -3,7 +3,7 @@
     {
       "id": 1,
       "titulo": "Oferta Especial 25/02",
-      "folheto": "folheto1",
+      "folheto": "https://i.postimg.cc/gkB4VQ8k/1.jpg",
       "data_inicio": "2025-02-25T00:00:00Z",
       "data_fim": "2025-03-25T23:59:59Z",
       "produtos": [
@@ -68,7 +68,7 @@
     {
       "id": 2,
       "titulo": "Oferta Molhos",
-      "folheto": "folheto2",
+      "folheto": "https://i.postimg.cc/hjg04BWM/molhos.jpg",
       "data_inicio": "2025-03-25T00:00:00Z",
       "data_fim": "2025-05-25T23:59:59Z",
       "produtos": [
@@ -105,7 +105,7 @@
     {
       "id": 3,
       "titulo": "Oferta Bebidas",
-      "folheto": "folheto3",
+      "folheto": "https://i.postimg.cc/4yxbtQ39/2.jpg",
       "data_inicio": "2025-03-25T00:00:00Z",
       "data_fim": "2025-05-25T23:59:59Z",
       "produtos": [
