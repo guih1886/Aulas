@@ -25,7 +25,7 @@ class _DetalheOfertaScreenState extends State<DetalheOfertaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var fontSize = 18 * MediaQuery.of(context).textScaleFactor;
+    var fontSize = MediaQuery.of(context).textScaler.scale(16);
 
     return SafeArea(
       child: Expanded(
@@ -40,7 +40,6 @@ class _DetalheOfertaScreenState extends State<DetalheOfertaScreen> {
                   itemCount: produtos.length,
                   itemBuilder: (context, index) {
                     ProdutoModel produto = produtos[index];
-
                     return Card(
                       color: Colors.white70,
                       margin: const EdgeInsets.symmetric(
@@ -56,33 +55,32 @@ class _DetalheOfertaScreenState extends State<DetalheOfertaScreen> {
                                 ClipRRect(
                                   child: Image.network(
                                     produto.imagem,
-                                    width: 80, // Ajuste o tamanho da imagem
-                                    height: 80, // Ajuste o tamanho da imagem
-                                    fit: BoxFit.fill, // Ajusta a imagem para cobrir a área
+                                    width: 80,
+                                    height: 80,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
-
-                                SizedBox(width: 16), // Espaço entre imagem e detalhes
-
-                                // Coluna para os detalhes
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Text(
                                         produto.descricao,
                                         style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold
-                                        ),
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold),
                                         softWrap: true,
                                       ),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(
-                                        NumberFormat.simpleCurrency(locale: 'pt_BR').format(produto.valor),
+                                        NumberFormat.simpleCurrency(
+                                                locale: 'pt_BR')
+                                            .format(produto.valor),
                                         style: TextStyle(fontSize: fontSize),
                                       ),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(
                                         "Estoque: ${produto.estoque}",
                                         style: TextStyle(fontSize: fontSize),
@@ -94,8 +92,6 @@ class _DetalheOfertaScreenState extends State<DetalheOfertaScreen> {
                             ),
                           ),
                         ],
-
-
                       ),
                     );
                   },

@@ -39,13 +39,15 @@ class _OfertaScreenState extends State<OfertaScreen> {
         backgroundColor: const Color.fromRGBO(255, 200, 255, 0.5),
       ),
       body: ofertas.isEmpty
-          ? const Center(child: CircularProgressIndicator()) // Carregando...
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: ofertas.length,
               itemBuilder: (context, index) {
                 var oferta = ofertas[index];
-                var dataInicioFormatada = DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataInicio);
-                var dataFimFormatada = DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataFim);
+                var dataInicioFormatada =
+                    DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataInicio);
+                var dataFimFormatada =
+                    DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataFim);
                 return Card(
                   color: Colors.white70,
                   margin:
@@ -57,7 +59,7 @@ class _OfertaScreenState extends State<OfertaScreen> {
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     subtitle: Text(
-                      "Válido de ${dataInicioFormatada} até ${dataFimFormatada}",
+                      "Válido de $dataInicioFormatada até $dataFimFormatada",
                       style: const TextStyle(fontSize: 14),
                     ),
                     onTap: () {

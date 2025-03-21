@@ -56,7 +56,7 @@ class _FolhetoScreenState extends State<FolhetoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var fontSize = 16 * MediaQuery.of(context).textScaleFactor;
+    var fontSize = MediaQuery.of(context).textScaler.scale(16);
 
     return SafeArea(
       child: Scaffold(
@@ -70,26 +70,24 @@ class _FolhetoScreenState extends State<FolhetoScreen> {
                 itemBuilder: (context, index) {
                   OfertaModel oferta = ofertas[index];
                   return Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Card(
                       color: Colors.white70,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.network(
-                            oferta.folheto,
-                            fit: BoxFit.fill
-                          ),
+                          Image.network(oferta.folheto, fit: BoxFit.fill),
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(oferta.titulo, style: TextStyle(
-                                    fontSize: fontSize, fontWeight: FontWeight.bold)),
+                                Text(oferta.titulo,
+                                    style: TextStyle(
+                                        fontSize: fontSize,
+                                        fontWeight: FontWeight.bold)),
                                 ElevatedButton(
                                   onPressed: () {
-                                    // Chamar o método para baixar a imagem
                                     downloadAndSaveImage(oferta.folheto);
                                   },
                                   child: const Text('Baixar Folheto'),

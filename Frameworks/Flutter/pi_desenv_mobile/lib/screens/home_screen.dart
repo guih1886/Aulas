@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BarraNavegacao(
         onPageChanged: (int index) {
           setState(() {
-            currentPageIndex = index; // Atualiza a página
+            currentPageIndex = index;
           });
         },
       ),
