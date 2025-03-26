@@ -1,15 +1,37 @@
-﻿using ContainRs.WebApp.Models;
+﻿using ContainRs.Application.Repositories;
+using ContainRs.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace ContainRs.WebApp.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : DbContext, IClienteRepository
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
 
     public DbSet<Cliente> Clientes { get; set; }
+
+    public async Task<Cliente> AddAsync(Cliente cliente)
+    {
+        await Clientes.AddAsync(cliente);
+        await SaveChangesAsync();
+        return cliente;
+    }
+
+    public async Task<IEnumerable<Cliente>> GetAsync(Expression<Func<Cliente, bool>>? filtro = null)
+    {
+        IQueryable<Cliente> queryClientes = this.Clientes;
+        if (filtro != null)
+        {
+            queryClientes = queryClientes.Where(filtro);
+        }
+        return await queryClientes
+            .AsNoTracking()
+            .ToListAsync();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -21,7 +43,17 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Cliente>()
             .Property(c => c.Nome).IsRequired();
         modelBuilder.Entity<Cliente>()
-            .Property(c => c.Email).IsRequired();
+            .OwnsOne(c => c.Email, cfg =>
+            {
+                cfg.Property(e => e.Value)
+                    .HasColumnName("Email")
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity<Cliente>()
+            .Property(c => c.Estado)
+            .HasConversion<string>();
+
         modelBuilder.Entity<Cliente>()
             .Property(c => c.CPF).IsRequired();
     }
