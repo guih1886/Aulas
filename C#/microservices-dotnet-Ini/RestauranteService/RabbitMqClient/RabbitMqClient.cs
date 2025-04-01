@@ -8,27 +8,34 @@ namespace RestauranteService.RabbitMqClient
     public class RabbitMqClient : IRabbitMqClient
     {
         private readonly IConfiguration _configuration;
-        private readonly IConnection _connection;
-        private readonly IModel _channel;
+        private readonly ConnectionFactory _factory;
+        private readonly IChannel _channel;
 
         public RabbitMqClient(IConfiguration configuration)
         {
             _configuration = configuration;
-            _connection = new ConnectionFactory()
+            _factory = new ConnectionFactory()
             {
                 HostName = _configuration["RabbitMqHost"],
-                Port = Int32.Parse(_configuration["RabbitMqPort"]!)
-            }.CreateConnection();
-            _channel = _connection.CreateModel();
-            _channel.ExchangeDeclare(exchange: "trigger", type: ExchangeType.Fanout);
+                Port = int.Parse(_configuration["RabbitMqPort"]!)
+            };
         }
 
-        public void PublicaRestaurante(RestauranteReadDto restauranteReadDto)
+        public async void PublicaRestaurante(RestauranteReadDto restauranteReadDto)
         {
-            string mensagem = JsonSerializer.Serialize(restauranteReadDto);
-            var body = Encoding.UTF8.GetBytes(mensagem);
+            using var connection = await _factory.CreateConnectionAsync();
+            using var channel = await connection.CreateChannelAsync();
 
-            _channel.BasicPublish(exchange: "trigger", routingKey: "", basicProperties: null, body: body);
+            string mensagem = JsonSerializer.Serialize(restauranteReadDto);
+            byte[] body = Encoding.UTF8.GetBytes(mensagem);
+
+            BasicProperties properties = new BasicProperties
+            {
+
+            };
+
+            await channel.BasicPublishAsync(exchange: "trigger", routingKey: "", mandatory: true, basicProperties: properties, body: body);
+
         }
     }
 }

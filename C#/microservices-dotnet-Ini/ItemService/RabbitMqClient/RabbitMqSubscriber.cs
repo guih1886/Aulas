@@ -29,10 +29,11 @@ namespace ItemService.RabbitMqClient
             using var connection = await _factory.CreateConnectionAsync();
             using var channel = await connection.CreateChannelAsync();
 
-            await _channel.ExchangeDeclareAsync(exchange: "trigger", type: ExchangeType.Fanout);
-            await _channel.QueueBindAsync(queue: "trigger", exchange: "trigger", routingKey: "");
+            await channel.ExchangeDeclareAsync(exchange: "trigger", type: ExchangeType.Fanout);
+            var nome = await channel.QueueDeclareAsync();
+            await channel.QueueBindAsync(queue: nome.QueueName, exchange: "trigger", routingKey: "");
 
-            var consumidor = new AsyncEventingBasicConsumer(_channel);
+            var consumidor = new AsyncEventingBasicConsumer(channel);
 
             consumidor.ReceivedAsync += (model, ea) =>
             {
@@ -42,7 +43,7 @@ namespace ItemService.RabbitMqClient
                 return Task.CompletedTask;
             };
 
-            await _channel.BasicConsumeAsync(queue: "trigger", autoAck: true, consumer: consumidor);
+            await channel.BasicConsumeAsync(queue: nome.QueueName, autoAck: true, consumer: consumidor);
         }
     }
 }

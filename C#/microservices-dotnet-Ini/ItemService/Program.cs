@@ -13,10 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-var connectionString = builder.Configuration.GetConnectionString("RestauranteConnection");
-
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemoryDatabase"));
 
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddHostedService<RabbitMqSubscriber>();
