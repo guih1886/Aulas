@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ItemService.Dtos;
 using ItemService.Models;
 
 namespace ItemService.Data
@@ -49,9 +50,22 @@ namespace ItemService.Data
             return _context.Restaurantes.Any(restaurante => restaurante.Id == restauranteId);
         }
 
-        public void SaveChanges()
+        public async void SaveChanges()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+        }
+
+        public void SaveRangeAsync(List<Restaurante> lista)
+        {
+            foreach (var item in lista)
+            {
+                if (!_context.Restaurantes.Contains(item))
+                {
+                    _context.Restaurantes.Add(item);
+                }
+            }
+
+            SaveChanges();
         }
     }
 }

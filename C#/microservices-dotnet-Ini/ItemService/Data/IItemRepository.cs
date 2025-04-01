@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ItemService.Dtos;
 using ItemService.Models;
 
 namespace ItemService.Data;
@@ -14,4 +15,5 @@ public interface IItemRepository
     IEnumerable<Item> GetItensDeRestaurante(int restauranteId);
     Item GetItem(int restauranteId, int itemId);
     void CreateItem(int restauranteId, Item item);
+    void SaveRangeAsync(List<Restaurante> lista);
 }

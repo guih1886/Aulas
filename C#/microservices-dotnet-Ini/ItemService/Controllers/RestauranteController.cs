@@ -19,18 +19,10 @@ public class RestauranteController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<RestauranteReadDto>> GetRestaurantes()
+    public async Task<ActionResult<IEnumerable<RestauranteReadDto>>> GetRestaurantes()
     {
         var restaurantes = _repository.GetAllRestaurantes();
 
         return Ok(_mapper.Map<IEnumerable<RestauranteReadDto>>(restaurantes));
-    }
-
-
-    [HttpPost]
-    public ActionResult RecebeRestauranteDoRestauranteService(RestauranteReadDto dto)
-    {
-        Console.WriteLine(dto.Id);
-        return Ok();
     }
 }

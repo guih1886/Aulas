@@ -4,3 +4,4 @@
 C\#/WindowsForms/Curso/CursoWindowsForms/CursoWindowsForms/Properties/Settings.Designer.cs
 *.json
 /C#/microservices-dotnet-Ini/RestauranteService/appsettings.json
+/C#/microservices-dotnet-Ini/ItemService/appsettings.json
