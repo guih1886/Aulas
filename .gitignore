@@ -5,3 +5,7 @@ C\#/WindowsForms/Curso/CursoWindowsForms/CursoWindowsForms/Properties/Settings.D
 *.json
 /C#/microservices-dotnet-Ini/RestauranteService/appsettings.json
 /C#/microservices-dotnet-Ini/ItemService/appsettings.json
+/C#/RabbitMq/.vs/RabbitMq
+/C#/RabbitMq/RabbitMq/Migrations
+/C#/RabbitMq/RabbitMq/bin/Debug/net8.0
+/C#/RabbitMq/RabbitMq/obj
