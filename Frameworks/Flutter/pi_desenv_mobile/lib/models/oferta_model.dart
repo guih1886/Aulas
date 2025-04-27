@@ -1,32 +1,29 @@
-import 'package:pi_desenv_mobile/models/produto_model.dart';
-
 class OfertaModel {
   final int id;
-  final String titulo;
-  final String folheto;
-  final DateTime dataInicio;
-  final DateTime dataFim;
-  final List<ProdutoModel> produtos;
+  final int seqKit;
+  final String descricao;
+  final DateTime validadeDe;
+  final DateTime validadeAte;
+  final bool ativo;
+  final bool envioPalmTop;
 
-  OfertaModel({
-    required this.id,
-    required this.titulo,
-    required this.folheto,
-    required this.dataInicio,
-    required this.dataFim,
-    required this.produtos,
-  });
+  OfertaModel(
+      {required this.id,
+      required this.seqKit,
+      required this.descricao,
+      required this.validadeDe,
+      required this.validadeAte,
+      required this.ativo,
+      required this.envioPalmTop});
 
   factory OfertaModel.fromJson(Map<String, dynamic> json) {
     return OfertaModel(
-      id: json['id'],
-      titulo: json['titulo'],
-      folheto: json['folheto'],
-      dataInicio: DateTime.parse(json['data_inicio']),
-      dataFim: DateTime.parse(json['data_fim']),
-      produtos: (json['produtos'] as List)
-          .map((produto) => ProdutoModel.fromJson(produto))
-          .toList(),
-    );
+        id: json['id'],
+        seqKit: json['seqKit'],
+        descricao: json['descricao'],
+        validadeDe: DateTime.parse(json['validadeDe']),
+        validadeAte: DateTime.parse(json['validadeAte']),
+        ativo: json['ativo'] == 1,
+        envioPalmTop: json['envioPalmTop'] == 1);
   }
 }

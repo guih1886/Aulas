@@ -30,8 +30,8 @@ class _BarraNavegacaoState extends State<BarraNavegacao> {
             label: 'Ofertas',
           ),
           NavigationDestination(
-            icon: Icon(Icons.list_alt_outlined),
-            label: 'Folheto',
+            icon: Icon(Icons.local_offer),
+            label: 'Ofertas',
           )
         ]);
   }

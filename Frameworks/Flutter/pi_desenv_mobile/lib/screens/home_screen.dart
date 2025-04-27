@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pi_desenv_mobile/components/barra_navegacao.dart';
-import 'package:pi_desenv_mobile/screens/folheto_screen.dart';
 import 'package:pi_desenv_mobile/screens/oferta_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,8 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
   final List<Widget> pages = [
-    const OfertaScreen(),
-    const FolhetoScreen()
+    const OfertaScreen()
   ];
 
   @override

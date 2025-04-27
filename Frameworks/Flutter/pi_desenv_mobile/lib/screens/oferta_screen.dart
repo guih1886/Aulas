@@ -44,10 +44,8 @@ class _OfertaScreenState extends State<OfertaScreen> {
               itemCount: ofertas.length,
               itemBuilder: (context, index) {
                 var oferta = ofertas[index];
-                var dataInicioFormatada =
-                    DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataInicio);
                 var dataFimFormatada =
-                    DateFormat("dd/MM/yyyy HH:mm").format(oferta.dataFim);
+                    DateFormat("dd/MM/yyyy HH:mm").format(oferta.validadeAte);
                 return Card(
                   color: Colors.white70,
                   margin:
@@ -55,11 +53,11 @@ class _OfertaScreenState extends State<OfertaScreen> {
                   elevation: 4,
                   child: ListTile(
                     leading: const Icon(Icons.local_offer, color: Colors.blue),
-                    title: Text(oferta.titulo,
+                    title: Text(oferta.descricao,
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     subtitle: Text(
-                      "Válido de $dataInicioFormatada até $dataFimFormatada",
+                      "Válido até $dataFimFormatada",
                       style: const TextStyle(fontSize: 14),
                     ),
                     onTap: () {

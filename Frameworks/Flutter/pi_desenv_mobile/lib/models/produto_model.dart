@@ -17,9 +17,9 @@ class ProdutoModel {
     return ProdutoModel(
       id: json['id'],
       descricao: json['descricao'],
-      valor: json['valor'],
-      imagem: json['imagem'],
-      estoque: json['estoque'],
+      valor: 15.00,
+      imagem: "",
+      estoque: 123,
     );
   }
 }
